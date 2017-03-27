@@ -1,0 +1,13 @@
+type: particle
+title: Search
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: search
+  attributes:
+    enabled: '1'
+assignments:
+  page:
+    -
+      home: true

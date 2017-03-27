@@ -1,0 +1,16 @@
+{% try %}
+
+{% do gantry.theme.load('jquery') %}
+<div class="recent-posts">
+{% if particle.layout == 'vertical' %}
+    {% if particle.title %}<h3>{% if particle.icon %}<i class="{{ particle.icon }}"></i> {% endif %}{{ particle.title }}</h3>{% endif %}
+    {{ include ('partials/recent-posts.html.twig', {'colum': particle.colums}) }}
+{% else %}
+    {% if particle.title %}<span class="title">{{ particle.title }}: </span>{% endif %}
+    {% include 'partials/recent-posts2.html.twig' %}
+{% endif %}
+</div>
+
+{% catch %}
+<div class="alert alert-error"><strong>Error:</strong> Please enable recent-posts plugin!</div>
+{% endtry %}

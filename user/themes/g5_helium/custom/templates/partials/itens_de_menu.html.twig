@@ -1,0 +1,6 @@
+{% set articles = page.find(pagina) %}
+<ul class="items-menus-page">
+    {% for p in articles.collection()%}
+        <li><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
+    {% endfor %}
+</ul>

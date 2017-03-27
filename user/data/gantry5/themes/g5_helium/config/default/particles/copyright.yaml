@@ -1,0 +1,11 @@
+enabled: '1'
+date:
+  start: '2016'
+  end: now
+owner: 'Eagle Tecnologia'
+link: 'http://getgrav.org'
+target: _blank
+additional:
+  text: 'Desenvolvido com Grav'
+css:
+  class: ''

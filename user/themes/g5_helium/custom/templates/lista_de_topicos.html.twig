@@ -1,0 +1,39 @@
+{% extends "@nucleus/page.html.twig" %}
+
+{% set collection = page.collection() %}
+{% set hasChildren = page.find(page.url).children %}
+
+{% block content %}
+    <div class="block-module-topics">
+        <div class="g-container">
+            <div class="g-grid">
+                <div class="g-block {% if hasChildren is empty %}size-100{% else %}size-75{% endif %}">
+                    <div class="g-content">
+                        <h1 class="title-page"><i class="fa fa-file-text-o"></i> {{ page.title }}</h1>
+                        {% include 'partials/breadcrumbs.html.twig' %}
+                        <div class="content-page-topic">{{ page.content|raw }}</div>
+                        {% for p in collection %}
+                            <h3><a href="{{ p.url }}"><i class="fa fa-file"></i> {{ p.title }}</a></h3>
+                            {{ p.summary|raw }}
+                            {% include 'partials/lista_de_topicos_item.html.twig' with {'pagina': p.url} %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if not hasChildren is empty %}
+                <div class="g-block size-25 page-menu">
+                    <div class="g-content" id="sticker">
+                        {% include 'partials/itens_de_menu.html.twig' with {'pagina': page.url} %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% do assets.addJs('theme://js/jquery.sticky.js') %}
+{% do assets.addInlineJs('
+    $(document).ready(function(){
+       $("#sticker").sticky({topSpacing:0});
+    });
+')%}

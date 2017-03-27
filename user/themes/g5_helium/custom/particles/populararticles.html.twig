@@ -1,0 +1,24 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set collection = page.evaluate(['@root.descendants']) %}
+
+{% block particle %}
+
+    <div>
+        <h3><i class="fa fa-star"></i> Tópicos Populares</h3>
+        <ul class="topic-wraper">
+            {% for row in collection|batch(6) %}
+                <li class="topic-children"><ul>
+                        {% for p in row %}
+                            {% if config.plugins['count-views'].counts[p.url] > 100 %}
+                                {% if p.home() != true %}
+                                <li><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

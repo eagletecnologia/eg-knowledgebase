@@ -1,0 +1,10 @@
+type: particle
+title: 'Popular Articles'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: populararticles
+  attributes:
+    enabled: '1'
+assignments: all

@@ -1,0 +1,20 @@
+settings:
+  title: Mainmenu
+ordering:
+  home: ''
+  manuais: ''
+  faq: ''
+  materiais: ''
+items:
+  home:
+    enabled: true
+    anchor_class: ''
+  manuais:
+    enabled: true
+    anchor_class: ''
+  faq:
+    enabled: true
+    anchor_class: ''
+  materiais:
+    enabled: true
+    anchor_class: ''

@@ -1,0 +1,19 @@
+title: 'Base de Conhecimento - Eagle Tecnologia'
+default_lang: pt-br
+author:
+  name: 'Eagle Tecnologia'
+  email: websites@eagletecnologia.com
+taxonomies:
+  - categoria
+  - tag
+  - autor
+metadata:
+  description: 'Base de Conhecimento da Eagle Tecnologia. Aqui você encontrará materiais, faqs e manuais de nossos processos, projetos e sistemas.'
+  keywords: 'base de conhecimento, ajuda eagle tecnologia, suporte da eagle tecnologia, suporte, help desk eagle tecnologia'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+blog:
+  route: /blog

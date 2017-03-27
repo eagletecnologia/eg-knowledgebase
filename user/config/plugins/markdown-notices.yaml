@@ -1,0 +1,7 @@
+enabled: true
+built_in_css: false
+level_classes:
+  - yellow
+  - red
+  - blue
+  - green

@@ -1,0 +1,56 @@
+.notices{
+  padding: 1px 1px 1px 75px;
+  margin: 15px 0;
+  position: relative;
+  p{}
+  &.yellow{
+    border: 1px solid #f0ad4e;
+    background: #fcf8f2;
+    color: #df8a13;
+    &:before{
+      content: "\f05a";
+      font-family: "FontAwesome";
+      position: absolute;
+      font-size: rem(35px);
+      left: rem(26px);
+    }
+  }
+  &.red,
+  &.error{
+    border: 1px solid #d9534f;
+    background: #fdf7f7;
+    color: #b52b27;
+    &:before{
+      content: "\f05e";
+      font-family: "FontAwesome";
+      position: absolute;
+      font-size: rem(35px);
+      left: rem(26px);
+    }
+  }
+  &.blue,
+  &.info{
+    border: 1px solid #5bc0de;
+    background: #f4f8fa;
+    color: #28a1c5;
+    &:before{
+      content: "\f059";
+      font-family: "FontAwesome";
+      position: absolute;
+      font-size: rem(35px);
+      left: rem(26px);
+    }
+  }
+  &.green{
+    border: 1px solid #5cb85c;
+    background: #f1f9f1;
+    color: #3d8b3d;
+    &:before{
+      content: "\f040";
+      font-family: "FontAwesome";
+      position: absolute;
+      font-size: rem(35px);
+      left: rem(26px);
+    }
+  }
+}

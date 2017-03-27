@@ -1,0 +1,21 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+<div class="g-contentsections">
+    {% if particle.items %}
+        <div class="content-sections-wraper g-grid">
+            {% for item in particle.items %}
+                <div class="content-sections-item">
+                    <div class="g-block">
+                        {% if item.link %} <a href="{{ url(item.link)|e }}"></a> {% endif %}
+                        {% if item.image %} <img src="{{ url(item.image)|e }}" alt="{{ item.title|e }}"> {% endif %}
+                        {% if item.title %} <h3>{{ item.title|e }}</h3> {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

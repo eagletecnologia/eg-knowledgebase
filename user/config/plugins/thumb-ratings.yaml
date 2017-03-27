@@ -1,0 +1,10 @@
+enabled: true
+built_in_css: true
+callback: /thumb-ratings
+unique_ip_check: false
+disable_after_vote: true
+readonly: false
+up_bgcolor: '#27ae60'
+down_bgcolor: '#c0392b'
+up_color: '#ffffff'
+down_color: '#ffffff'

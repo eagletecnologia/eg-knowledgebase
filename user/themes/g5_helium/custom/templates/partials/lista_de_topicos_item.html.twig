@@ -1,0 +1,12 @@
+{#{% set articles = taxonomy.findTaxonomy({'categoria': category}) %}#}
+{% set articles = page.find(pagina) %}
+
+<ul class="topic-wraper">
+    {% for row in articles.collection()|batch(3) %}
+    <li class="topic-children"><ul>
+        {% for p in row %}
+            <li><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
+        {% endfor %}
+    </ul></li>
+    {% endfor %}
+</ul>

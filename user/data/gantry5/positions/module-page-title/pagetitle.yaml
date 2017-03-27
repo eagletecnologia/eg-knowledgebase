@@ -1,0 +1,16 @@
+type: particle
+title: 'Page Title'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: pagetitle
+  attributes:
+    enabled: '1'
+    image: 'gantry-media://intro/manuais.png'
+    title: Manuais
+    subtitle: 'Aprenda de forma <strong>simples e direta</strong> usar os nossos <strong>Sistemas</strong>'
+assignments:
+  page:
+    -
+      manuais: true

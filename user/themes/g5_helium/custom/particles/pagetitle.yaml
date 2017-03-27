@@ -1,0 +1,27 @@
+name: Page Title
+description: Título das Páginas
+type: particle
+icon: fa-text-width
+
+form:
+  fields:
+    enabled:
+      type: checkbox
+      label: Enabled
+      description: Globally enable search particles.
+      default: true
+
+    image:
+      type: input.imagepicker
+      label: Imagem
+      description: Insira a imagem
+
+    title:
+      type: input.text
+      label: Título
+      description: Insira o título
+
+    subtitle:
+      type: input.text
+      label: Subtítulo
+      description: Insira o subtítulo

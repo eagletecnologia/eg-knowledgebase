@@ -1,0 +1,29 @@
+type: particle
+title: 'Content Sections'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: contentsections
+  attributes:
+    enabled: '1'
+    items:
+      -
+        image: 'gantry-media://intro/manuais.png'
+        title: Manuais
+        link: manuais
+        name: Manuais
+      -
+        image: 'gantry-media://intro/faqs.png'
+        title: FAQs
+        link: faq
+        name: FAQs
+      -
+        image: 'gantry-media://intro/materiais.png'
+        title: Materiais
+        link: materiais
+        name: Materiais
+assignments:
+  page:
+    -
+      home: true

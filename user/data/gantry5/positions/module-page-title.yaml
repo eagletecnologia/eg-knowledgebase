@@ -1,0 +1,6 @@
+name: module-page-title
+title: 'Module Position'
+ordering:
+  - pagetitle
+  - pagetitle_2
+  - pagetitle_4

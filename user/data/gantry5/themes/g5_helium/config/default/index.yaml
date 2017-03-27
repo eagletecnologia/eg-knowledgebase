@@ -1,0 +1,59 @@
+name: default
+timestamp: 1488909753
+version: 7
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1483730305
+positions:
+  module-small-search: 'Module Position'
+  module-big-search: 'Module Position'
+  module-recent-posts: 'Module Position'
+  module-page-title: 'Module Position'
+  module-content-sections: 'Module Position'
+  aside: Aside
+  module-topics: 'Module Topics'
+  sidebar: Sidebar
+sections:
+  navigation: Navigation
+  intro: Intro
+  features: Features
+  utility: Utility
+  above: Above
+  testimonials: Testimonials
+  expanded: Expanded
+  header: Header
+  aside: Aside
+  sidebar: Sidebar
+  mainbar: Mainbar
+  footer: Footer
+  offcanvas: Offcanvas
+particles:
+  custom:
+    custom-8096: 'Custom HTML'
+    custom-3330: 'Custom HTML'
+  logo:
+    logo-9608: 'Logo / Image'
+    logo-9571: 'Logo / Image'
+  position:
+    position-position-1307: 'Module Position'
+    position-position-2334: 'Module Position'
+    position-position-1050: 'Module Position'
+    position-position-1701: 'Module Position'
+    position-position-2346: 'Module Position'
+    position-position-4734: Aside
+    position-position-3025: 'Module Topics'
+    position-position-3949: Sidebar
+  content:
+    system-content-1400: 'Page Content'
+  social:
+    social-6080: Social
+  totop:
+    totop-7223: 'To Top'
+  horizontalmenu:
+    horizontalmenu-9487: 'Horizontal Menu'
+  copyright:
+    copyright-8167: Copyright
+  mobile-menu:
+    mobile-menu-5697: Mobile-menu
+inherit: {  }

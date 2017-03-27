@@ -1,0 +1,16 @@
+email: websites@eagletecnologia.com
+state: enabled
+access:
+  admin:
+    login: 'true'
+    cache: 'true'
+    pages: 'true'
+  site:
+    cliente: 'true'
+    revenda: 'true'
+    colaborador: 'true'
+    login: 'true'
+hashed_password: $2y$10$QjGEXlHF1WfbyqVUlqXMzOKmooZHETez7ylGQ5/HuIV2VnE06HrNS
+fullname: 'Moderador Eagle'
+title: Moderador
+language: pt

@@ -1,0 +1,4 @@
+name: module-recent-posts
+title: 'Module Position'
+ordering:
+  - recentposts

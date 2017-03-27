@@ -1,0 +1,420 @@
+#g-navigation {
+    background: transparent;
+    color: $navigation-text-color;
+    position: relative;
+    z-index: 11;
+
+    // Container
+    .g-container {
+        position: relative;
+    }
+
+    // Logo
+    .g-logo {
+        color: $navigation-text-color;
+        line-height: 2.8rem;
+
+        &.g-logo-helium {
+            svg {
+                fill: $navigation-text-color;
+            }
+        }
+    }
+    .block-a{
+        .g-content{
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    //Botões de contato
+    .block-b{
+        .g-content{
+            padding: 0;
+        }
+    }
+
+    // Social Particle
+    .g-social-header {
+        @include breakpoint(mobile-only) {
+            .g-content {
+                margin-top: 0;
+                padding: 0 $content-padding;
+            }
+        }
+    }
+
+    .g-social {
+        text-align: right;
+        line-height: 3.125;
+
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+
+        .rtl & {
+            text-align: left;
+        }
+    }
+
+    // Menu Styling
+    .g-main-nav {
+        font-family: get-font-family($font-family-title);
+        font-weight: $font-weight-bold;
+        line-height: $navigation-line-height;
+
+        .g-toplevel {
+            line-height: ($navigation-line-height + 1.625);
+
+            > li {
+                margin: 0 0.5rem;
+
+                @include breakpoint(tablet-range) {
+                    margin: 0 0.2rem;
+                }
+
+                > .g-menu-item-container {
+                    color: $navigation-text-color;
+                    padding: $content-padding/4 0;
+
+                    > .g-menu-item-content {
+                        padding: 0 0 $content-padding/4;
+                    }
+
+                    .g-menu-parent-indicator {
+                        vertical-align: top;
+
+                        &:after {
+                            content: "\f107";
+                            opacity: 0.75;
+                            width: 1rem;
+                            font-weight: $font-weight-regular;
+                        }
+                    }
+
+                    i {
+                        opacity: 1;
+                    }
+                }
+
+                &:hover {
+                    > .g-menu-item-container {
+                        color: fadeout($navigation-text-color, 30%);
+
+                        > .g-selected {
+                            color: fadeout($navigation-text-color, 30%);
+                        }
+                    }
+                }
+
+                &.active {
+                    > .g-menu-item-container {
+                        > .g-menu-item-content {
+                            box-shadow: 0 2px 0 fadeout($navigation-text-color, 80%);
+                        }
+
+                        > .g-selected {
+                            box-shadow: 0 2px 0 fadeout($navigation-text-color, 80%);
+                        }
+                    }
+                }
+            }
+        }
+
+        .g-dropdown {
+            background: lighten($navigation-background, 2%);
+            border: 1px solid fadeout($navigation-text-color, 80%);
+            border-radius: $border-radius;
+
+            > .g-dropdown-column {
+                border: 1px solid transparent;
+            }
+
+            a {
+                color: $navigation-text-color;
+
+                &:hover {
+                    color: $accent-color-1;;
+                }
+            }
+
+            .g-dropdown-column {
+                position: relative;
+            }
+
+            .g-dropdown {
+                margin-left: 20px;
+            }
+        }
+
+        .g-sublevel {
+            > li {
+
+                > .g-menu-item-container {
+                    color: $navigation-text-color;
+
+                    > .g-selected {
+                        color: $navigation-text-color;
+                    }
+                }
+
+                &:not(:last-child) {
+                    > .g-menu-item-container {
+                        border-bottom: 1px solid fadeout($navigation-text-color, 80%);
+
+                        > .g-selected {
+                            border-bottom: 1px solid fadeout($navigation-text-color, 80%);
+                        }
+                    }
+                }
+
+                &:hover, &.active {
+                    > .g-menu-item-container {
+                        color: $accent-color-1;
+
+                        > .g-selected {
+                            color: $accent-color-1;
+                        }
+                    }
+                }
+
+                &.g-menu-item-type-particle {
+                    > .g-menu-item-container {
+                        border: 0;
+                    }
+
+                    &:hover, &.active {
+                        > .g-menu-item-container {
+                            border: 0;
+                        }
+                    }
+                }
+
+                &.g-menu-item-type-particle {
+                    &:hover {
+                        > .g-menu-item-container {
+                            background: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .g-menu-block {
+        @include breakpoint(mobile-only) {
+            display: none;
+        }
+    }
+
+    .g-menu-item-subtitle {
+        text-transform: lowercase;
+        font-size: 0.8rem;
+        opacity: 0.8;
+        padding-top: 0;
+    }
+
+    //Configuração do topo para o outline das Páginas
+    .block-small-search{
+        //background: $white;
+        .g-content{
+            margin: 0;
+            padding: rem(14px) 0;
+        }
+        .search-wrapper{
+            h1{
+                display: none;
+            }
+            .search-input{
+                color: #999;
+                border-radius: 0;
+                padding-left: rem(35px);
+                background: url("gantry-media://header/icon-search.png") $white no-repeat left rem(10px) center;
+                background-size: rem(16px);
+                width: 100%;
+            }
+        }
+    }
+
+    //Configuração de Logout
+    .nav-logout{
+        position: relative;
+        .g-content{
+            margin: 0;
+            padding: 0;
+        }
+        text-align: center;
+        a{
+            color: lighten($accent-color-1, 20%);
+        }
+    }
+}
+
+//Navegação lateral das páginas
+.page-menu{
+    .g-content{
+        margin-top: $content-margin !important;
+        padding-top: $content-padding !important;
+        background: $white;
+        border-left: 2px solid $accent-color-2;
+    }
+    .items-menus-page{
+        margin: 0;
+        list-style: none;
+        li{
+            a{
+                display: block;
+                color: $base-text-color;
+                padding: rem(10px);
+                border-bottom: 1px dashed #ccc;
+                &:hover{
+                    background: $base-text-color;
+                    color: $white;
+                }
+            }
+            &:last-child{
+                a{
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+//Configurações Responsivas
+@include breakpoint(desktop-range) {
+    #g-navigation {
+        .block-small-search{
+            .g-content{
+                padding: rem(8px) 0;
+            }
+        }
+        .g-block{
+            &.size-37{
+                @include flex(0 40%);
+                width: 40%;
+            }
+            &.size-29{
+                @include flex(0 40%);
+                width: 40%;
+            }
+            &.size-34{
+                @include flex(0 20%);
+                width: 20%;
+            }
+        }
+        .block-b{
+            .desktop{
+                display: none !important;
+            }
+            .mobile{
+                padding: rem(10px) rem(30px);
+            }
+        }
+    }
+}
+
+@include breakpoint(tablet-range) {
+    #g-navigation {
+        .block-small-search{
+            .g-content{
+                padding: rem(8px) 0;
+            }
+        }
+        .g-block{
+            &.size-37{
+                @include flex(0 40%);
+                width: 40%;
+            }
+            &.size-29{
+                @include flex(0 40%);
+                width: 40%;
+            }
+            &.size-34{
+                @include flex(0 20%);
+                width: 20%;
+            }
+        }
+        .block-b{
+            .desktop{
+                display: none;
+            }
+            .mobile{
+                padding: rem(10px) rem(20px);
+            }
+        }
+    }
+}
+
+@include breakpoint(large-mobile-range) {
+    #g-navigation {
+        .block-a{
+            .g-content{
+                margin-top: rem(15px);
+                text-align: center;
+                .g-logo{
+                    img{
+                        display: inline-block;
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+        .block-small-search{
+            .g-content{
+                margin: rem(10px);
+            }
+            .search-wrapper{
+                h1{
+                    display: none;
+                }
+                .search-input{
+                    padding-left: rem(35px);
+                    background: url("gantry-media://header/icon-search.png") $white no-repeat left rem(10px) center;
+                    background-size: rem(16px);
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@include breakpoint(small-mobile-range) {
+    #g-navigation {
+        .block-a{
+            .g-content{
+                margin-top: rem(15px);
+                text-align: center;
+                .g-logo{
+                    img{
+                        display: inline-block;
+                        max-height: 100%;
+                    }
+                }
+            }
+        }
+        .block-small-search{
+            .g-content{
+                margin: rem(10px);
+            }
+            .search-wrapper{
+                h1{
+                    display: none;
+                }
+                .search-input{
+                    padding-left: rem(35px);
+                    background: url("gantry-media://header/icon-search.png") $white no-repeat left rem(10px) center;
+                    background-size: rem(16px);
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    #g-navigation {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

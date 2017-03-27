@@ -1,0 +1,46 @@
+.noliststyle {
+	list-style: none;
+}
+
+.g-uppercase {
+	text-transform: uppercase;
+}
+
+.g-notexttransform {
+	text-transform: none;
+}
+
+.g-positive-margin-top {
+	margin-top: 23rem;
+}
+
+.g-negative-margin-bottom {
+	margin-bottom: -25rem;
+}
+
+.g-img-circle {
+    border-radius: 50%;
+}
+
+.float-left{
+	float: left;
+}
+
+.float-right{
+	float: right;
+}
+
+.float-none{
+	float: none;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.item-label{
+	background: $accent-color-1;
+	color: $white;
+	border-radius: 50%;
+	padding: 0 rem(5px) !important;
+}

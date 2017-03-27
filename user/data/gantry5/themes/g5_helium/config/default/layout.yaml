@@ -1,0 +1,207 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1483730305
+layout:
+  /navigation/:
+    -
+      - custom-8096
+    -
+      - 'logo-9608 37'
+      - 'position-position-1307 29'
+      - 'custom-3330 34'
+  /header/:
+    -
+      - position-position-2334
+    -
+      - position-position-1050
+    -
+      - position-position-1701
+  /intro/:
+    -
+      - position-position-2346
+  /features/: {  }
+  /utility/: {  }
+  /above/: {  }
+  /testimonials/: {  }
+  /expanded/: {  }
+  /container-main/:
+    -
+      -
+        'aside 25':
+          -
+            - position-position-4734
+      -
+        'mainbar 50':
+          -
+            - system-content-1400
+          -
+            - position-position-3025
+      -
+        'sidebar 25':
+          -
+            - position-position-3949
+  /footer/:
+    -
+      - 'logo-9571 40'
+      - 'social-6080 55'
+      - 'totop-7223 5'
+    -
+      - 'horizontalmenu-9487 60'
+      - 'copyright-8167 40'
+  /offcanvas/:
+    -
+      - mobile-menu-5697
+structure:
+  navigation:
+    type: section
+    attributes:
+      boxed: ''
+      class: k-nav
+  header:
+    attributes:
+      boxed: ''
+      class: ''
+  intro:
+    type: section
+    attributes:
+      boxed: ''
+  features:
+    type: section
+    attributes:
+      boxed: ''
+  utility:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+  above:
+    type: section
+    attributes:
+      boxed: ''
+  testimonials:
+    type: section
+    attributes:
+      boxed: ''
+  expanded:
+    type: section
+    attributes:
+      boxed: ''
+  aside:
+    attributes:
+      class: ''
+    block:
+      fixed: '1'
+  mainbar:
+    type: section
+    subtype: main
+  sidebar:
+    type: section
+    subtype: aside
+    attributes:
+      class: ''
+    block:
+      fixed: '1'
+  container-main:
+    attributes:
+      boxed: ''
+      class: ''
+      extra: {  }
+  footer:
+    attributes:
+      boxed: ''
+  offcanvas:
+    attributes:
+      boxed: ''
+content:
+  custom-8096:
+    title: 'Custom HTML'
+    attributes:
+      html: "{% if config.plugins.login.enabled and grav.user.username %}\r\n    <li><i class=\"fa fa-lock\"></i> {% include 'partials/login-status.html.twig' %}</li>\r\n{% endif %}"
+      twig: '1'
+    block:
+      class: nav-logout
+  logo-9608:
+    title: 'Logo / Image'
+    block:
+      class: block-a
+  position-position-1307:
+    title: 'Module Position'
+    attributes:
+      key: module-small-search
+    block:
+      class: block-small-search
+  custom-3330:
+    title: 'Custom HTML'
+    attributes:
+      html: "<a class=\"button button-outline2 button-xsmall button-square desktop\" href=\"https://eagletecnologia.com\" target=\"_blank\">Contate-nos</a>\n\n<a class=\"button button-outline2 button-xsmall button-square mobile hidden-large\" href=\"https://eagletecnologia.com\" target=\"_blank\"><i class=\"fa fa-envelope\"></i></a>\n\n<a  class=\"button button-outline2 button-xsmall button-square desktop\" href=\"https://eagletecnologia.com/blog\"target=\"_blank\">Blog</a>\n\n<a  class=\"button button-outline2 button-xsmall button-square mobile hidden-large\" href=\"https://eagletecnologia.com/blog\" target=\"_blank\"><i class=\"fa fa-newspaper-o\"></i></a>"
+    block:
+      class: 'block-b hidden-phone'
+      variations: align-right
+  position-position-2334:
+    title: 'Module Position'
+    attributes:
+      key: module-big-search
+    block:
+      class: block-search
+      variations: center
+  position-position-1050:
+    title: 'Module Position'
+    attributes:
+      key: module-recent-posts
+    block:
+      class: 'block-recent-posts hidden-phone'
+      variations: center
+  position-position-1701:
+    title: 'Module Position'
+    attributes:
+      key: module-page-title
+    block:
+      class: header-page-title
+  position-position-2346:
+    title: 'Module Position'
+    attributes:
+      key: module-content-sections
+    block:
+      class: block-content-sections
+  position-position-4734:
+    title: Aside
+    attributes:
+      key: aside
+  system-content-1400:
+    block:
+      class: content-page
+  position-position-3025:
+    title: 'Module Topics'
+    attributes:
+      key: module-topics
+    block:
+      class: block-module-topics
+  position-position-3949:
+    title: Sidebar
+    attributes:
+      key: sidebar
+  logo-9571:
+    title: 'Logo / Image'
+    attributes:
+      image: 'gantry-media://top/logo.png'
+    block:
+      class: footer-block1
+  social-6080:
+    block:
+      class: footer-block2
+      variations: align-right
+  totop-7223:
+    title: 'To Top'
+    block:
+      class: footer-totop
+      variations: 'nopaddingall center'
+  horizontalmenu-9487:
+    title: 'Horizontal Menu'
+    block:
+      class: footer-menu
+  copyright-8167:
+    block:
+      class: footer-copy
+      variations: align-right

@@ -1,0 +1,17 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+
+    <div class="particle-pg-title">
+        {% if particle.image %}
+        <div class="title-img">
+            <img src="{{ url(particle.image)|e }}" alt="{{ particle.title|e }}">
+        </div>
+        {% endif %}
+        <div class="title-content">
+            {% if particle.title %} <h1>{{ particle.title|e }}</h1> {% endif %}
+            {% if particle.subtitle %} <h2>{{ particle.subtitle|raw }}</h2> {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

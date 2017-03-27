@@ -1,0 +1,9 @@
+email: websites@eagletecnologia.com
+state: enabled
+access:
+  site:
+    cliente: 'true'
+    revenda: 'true'
+    login: 'true'
+hashed_password: $2y$10$2Eb5Q699/A46C6k5P5oTt.tBKZnsPXktuAtWqy6SurVNMNotIS42O
+language: pt

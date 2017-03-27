@@ -1,0 +1,32 @@
+//Configurações para ocultar elementos da página inicial
+.page-home{
+	.block-small-search{
+		.search-wrapper{
+			display: none;
+		}
+	}
+	#g-container-main{
+		.content-page{
+			display: none;
+		}
+	}
+}
+
+#g-page-surround {
+	background: url("gantry-media://page/back-page-image-min.jpg") no-repeat top center;
+	background-size: cover;
+	background-attachment: fixed;
+    overflow: hidden;
+
+    .g-bodyonly & {
+		color: $base-text-color;
+		background: $base-background;
+    }
+}
+
+@media print {
+	#g-page-surround {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

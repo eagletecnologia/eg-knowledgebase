@@ -1,0 +1,12 @@
+name: Popular Articles
+description: Lista de Artigos Populares
+type: particle
+icon: fa-star
+
+form:
+  fields:
+    enabled:
+      type: checkbox
+      label: Enabled
+      description: Globally enable search particles.
+      default: true

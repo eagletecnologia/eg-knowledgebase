@@ -1,0 +1,27 @@
+enabled: '1'
+css:
+  class: ''
+title: 'Siga a Eagle Tecnologia'
+target: _blank
+display: both
+items:
+  -
+    icon: 'fa fa-home'
+    text: Website
+    link: 'https://eagletecnologia.com'
+    name: Website
+  -
+    icon: 'fa fa-facebook-official fa-fw'
+    text: Facebook
+    link: 'https://www.facebook.com/EagleTecnologia'
+    name: Facebook
+  -
+    icon: 'fa fa-twitter-square fa-fw'
+    text: Twitter
+    link: 'https://twitter.com/eagletecnologia'
+    name: Twitter
+  -
+    icon: 'fa fa-instagram fa-fw'
+    text: Instagram
+    link: 'https://www.instagram.com/eagletecnologia/'
+    name: Google+

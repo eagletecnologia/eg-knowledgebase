@@ -1,0 +1,17 @@
+type: particle
+title: 'Recent Posts'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: recentposts
+  attributes:
+    enabled: '1'
+    layout: horizontal
+    icon: ''
+    title: 'Tópicos mais Recentes'
+    colums: '3'
+assignments:
+  page:
+    -
+      home: true

@@ -1,0 +1,9 @@
+enabled: true
+production: false
+use_media_folder: false
+offline: false
+asset_timestamps: true
+asset_timestamps_period: !!float 7
+debug: true
+compile_yaml: true
+compile_twig: true

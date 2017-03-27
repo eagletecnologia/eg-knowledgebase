@@ -1,0 +1,44 @@
+name: Recent Posts
+description: Posts recentes adicionados
+type: particle
+icon: fa-file
+
+form:
+  fields:
+    enabled:
+      type: checkbox
+      label: Enabled
+      description: Globally enable search particles.
+      default: true
+
+    layout:
+      type: select.selectize
+      label: Layout
+      description: Escolha o layout de represntação do plugin
+      placeholder: 'Selecione...'
+      options:
+          horizontal: Horizontal
+          vertical: Vertical
+
+    icon:
+      type: input.icon
+      label: Ícone do Título
+      description: Insira o ícone para o título
+
+    title:
+      type: input.text
+      label: Título
+      description: Insira a descrição do módulo
+
+    colums:
+      type: select.selectize
+      label: Quantidade de Colunas
+      description: Selecione a quantidade de colunas que será mostrado os itens
+      placeholder: 'Selecione...'
+      default: 3
+      options:
+        2: 2
+        3: 3
+        4: 4
+        5: 5
+        6: 6

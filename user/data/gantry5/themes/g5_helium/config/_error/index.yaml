@@ -1,0 +1,91 @@
+name: _error
+timestamp: 1488909753
+version: 7
+preset:
+  image: 'gantry-admin://images/layouts/default.png'
+  name: default
+  timestamp: 1483730305
+positions:
+  module-small-search: 'Module Position'
+  module-big-search: 'Module Position'
+  module-recent-posts: 'Module Position'
+  module-page-title: 'Module Position'
+  module-content-sections: 'Module Position'
+  aside: Aside
+  module-topics: 'Module Topics'
+  sidebar: Sidebar
+sections:
+  navigation: Navigation
+  intro: Intro
+  features: Features
+  utility: Utility
+  above: Above
+  testimonials: Testimonials
+  expanded: Expanded
+  header: Header
+  aside: Aside
+  sidebar: Sidebar
+  mainbar: Mainbar
+  footer: Footer
+  offcanvas: Offcanvas
+particles:
+  custom:
+    custom-4391: 'Custom HTML'
+    custom-3404: 'Custom HTML'
+  logo:
+    logo-3044: 'Logo / Image'
+    logo-6728: 'Logo / Image'
+  position:
+    position-position-1190: 'Module Position'
+    position-position-9813: 'Module Position'
+    position-position-7359: 'Module Position'
+    position-position-9681: 'Module Position'
+    position-position-7260: 'Module Position'
+    position-position-8274: Aside
+    position-position-2523: 'Module Topics'
+    position-position-6609: Sidebar
+  content:
+    system-content-6880: 'Page Content'
+  social:
+    social-3341: Social
+  totop:
+    totop-3139: 'To Top'
+  horizontalmenu:
+    horizontalmenu-9379: 'Horizontal Menu'
+  copyright:
+    copyright-6570: Copyright
+  mobile-menu:
+    mobile-menu-8737: Mobile-menu
+inherit:
+  default:
+    navigation: navigation
+    header: header
+    intro: intro
+    features: features
+    utility: utility
+    above: above
+    testimonials: testimonials
+    expanded: expanded
+    aside: aside
+    mainbar: mainbar
+    sidebar: sidebar
+    footer: footer
+    offcanvas: offcanvas
+    custom-4391: custom-8096
+    logo-3044: logo-9608
+    position-position-1190: position-position-1307
+    custom-3404: custom-3330
+    position-position-9813: position-position-2334
+    position-position-7359: position-position-1050
+    position-position-9681: position-position-1701
+    position-position-7260: position-position-2346
+    position-position-8274: position-position-4734
+    system-content-6880: system-content-1400
+    position-position-2523: position-position-3025
+    position-position-6609: position-position-3949
+    logo-6728: logo-9571
+    social-3341: social-6080
+    totop-3139: totop-7223
+    horizontalmenu-9379: horizontalmenu-9487
+    copyright-6570: copyright-8167
+    mobile-menu-8737: mobile-menu-5697

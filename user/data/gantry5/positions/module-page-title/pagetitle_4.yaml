@@ -1,0 +1,17 @@
+type: particle
+title: 'Page Title'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: pagetitle
+  attributes:
+    enabled: '1'
+    image: 'gantry-media://intro/materiais.png'
+    title: Materiais
+    subtitle: 'Aprenda com nossos materiais em vídeo, slide, livros, guias, infográficos e muito mais'
+assignments:
+  page:
+    -
+      materiais: true
+      materiais/interno: true

@@ -1,0 +1,15 @@
+/vendor
+/.idea
+backup/*
+!backup/.*
+cache/*
+!cache/.*
+logs/*
+!logs/.*
+images/*
+!images/.*
+tmp/*
+!tmp/.*
+user/data/count-views.yaml
+user/pages/*
+user/config/system.yaml

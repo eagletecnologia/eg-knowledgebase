@@ -1,0 +1,15 @@
+email: websites@eagletecnologia.com
+fullname: Léo
+title: WG
+state: enabled
+access:
+  admin:
+    super: 'true'
+    login: 'true'
+  site:
+    login: 'true'
+    cliente: 'true'
+    colaborador: 'true'
+    revenda: 'true'
+hashed_password: $2y$10$rzjfzn7DgrYT0Ocu78S8qeIks2r9Ko4hyE6Q5/65DwDHz4od7PCoy
+language: pt

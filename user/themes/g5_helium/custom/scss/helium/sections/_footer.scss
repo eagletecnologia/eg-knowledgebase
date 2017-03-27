@@ -1,0 +1,182 @@
+#g-footer {
+    background: $footer-background;
+    color: $footer-text-color;
+    padding: ($section-padding - rem(30px)) 0;
+    position: relative;
+
+    .g-container{
+        .g-grid{
+            &:first-child{
+                border-bottom: 1px dashed lighten($footer-background, 8%);
+                padding-bottom: rem(10px);
+            }
+            &:last-child{
+                padding-top: rem(10px);
+            }
+        }
+    }
+
+    .g-content {
+        margin: 0;
+        padding: 0;
+    }
+
+    // Copyright
+    .g-copyright {
+        font-size: 0.8125rem;
+        line-height: 1.25rem;
+
+        @include breakpoint(mobile-only) {
+            text-align: center;
+        }
+    }
+
+    //Logo
+    .footer-block1{
+        img{
+            position: relative;
+            left: -13px;
+        }
+    }
+
+    // Social
+    .footer-block2{
+        &.size-55{
+            @include flex(0 60%);
+            width: 60%;
+        }
+        .g-title{
+            margin: 0;
+            font-size: rem(22px);
+        }
+        .g-social{
+            font-size: rem(12px);
+            a{
+                color: lighten($footer-background, 60%);
+                &:last-child{
+                    padding-right: 0;
+                }
+                &:hover{
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    // Menu
+    .footer-menu{
+        .g-horizontalmenu{
+            padding-top: rem(5px);
+            li{
+                padding: 0 rem(10px);
+                border-right: 1px solid lighten($footer-background, 8%);
+                display: inline;
+                &:last-child{
+                    padding-right: 0;
+                    border-right: none;
+                }
+                &:first-child{
+                    padding-left: 0;
+                }
+                a{
+                    color: lighten($footer-background, 60%);
+                    padding: 0;
+                    margin: 0;
+                    text-transform: uppercase;
+                    font-size: rem(14px);
+                    &:hover{
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    // To Top
+    .footer-totop{
+        position: absolute;
+        right: rem(15px);
+        top: rem(-24px);
+        background: $accent-color-2;
+        border-radius: 50%;
+        @include size(rem(50px));
+    }
+    .g-totop {
+        text-align: center;
+        padding: 2;
+        a {
+            color: $footer-text-color;
+            display: block;
+            line-height: rem(48px);
+            &:hover {
+                color: fadeout($footer-text-color, 40%);
+            }
+        }
+    }
+}
+
+@include breakpoint(tablet-range) {
+    #g-footer{
+        .footer-menu{
+            &.size-60{
+                @include flex(0 70%);
+                width: 70%;
+            }
+        }
+        .footer-copy{
+            &.size-40{
+                @include flex(0 30%);
+                width: 30%;
+            }
+        }
+    }
+}
+
+@include breakpoint(large-mobile-range) {
+    #g-footer{
+        .footer-block1,
+        .footer-block2{
+            text-align: center !important;
+        }
+        .footer-block1{
+            img{
+                max-width: 100%;
+                display: inline-block;
+            }
+        }
+        .footer-block2{
+            &.size-55{
+                @include flex(0 100%);
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include breakpoint(small-mobile-range) {
+    #g-footer{
+        .footer-block1,
+        .footer-block2{
+            text-align: center !important;
+        }
+        .footer-block1{
+            img{
+                max-width: 100%;
+                display: inline-block;
+            }
+        }
+        .footer-block2{
+            &.size-55{
+                @include flex(0 100%);
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media print {
+    #g-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

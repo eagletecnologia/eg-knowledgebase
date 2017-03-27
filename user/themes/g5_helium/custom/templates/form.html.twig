@@ -1,0 +1,14 @@
+{% extends "partials/page.html.twig" %}
+
+{% block content %}
+
+    <div class="content-page-default">
+        <h1 class="title-page"><i class="fa fa-user-plus"></i> {{ page.title }}</h1>
+        {% include 'partials/breadcrumbs.html.twig' %}
+        <div class="content">
+            {{ page.content|raw }}
+            {% include "forms/form.html.twig" %}
+        </div>
+    </div>
+
+{% endblock %}

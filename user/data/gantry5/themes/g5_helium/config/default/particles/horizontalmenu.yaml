@@ -1,0 +1,28 @@
+enabled: '1'
+class: ''
+target: _blank
+items:
+  -
+    text: Início
+    link: /
+    name: Início
+  -
+    text: Manuais
+    link: manuais
+    name: Manuais
+  -
+    text: FAQs
+    link: faq
+    name: FAQs
+  -
+    text: Materiais
+    link: materiais
+    name: Materiais
+  -
+    text: Blog
+    link: 'http://blog.eagletecnologia.com'
+    name: Blog
+  -
+    text: Contate-nos
+    link: 'https://eagletecnologia.com'
+    name: Contate-nos

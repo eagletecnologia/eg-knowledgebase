@@ -1,0 +1,14 @@
+type: particle
+title: 'Recent Posts'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: recentposts
+  attributes:
+    enabled: '1'
+    layout: vertical
+    icon: 'fa fa-file-text'
+    title: 'Últimos Tópicos Atualizados'
+    colums: '3'
+assignments: all

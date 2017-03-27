@@ -1,0 +1,16 @@
+type: particle
+title: 'Page Title'
+chrome:
+  display_title: '0'
+  class: ''
+options:
+  type: pagetitle
+  attributes:
+    enabled: '1'
+    image: 'gantry-media://intro/faqs.png'
+    title: FAQs
+    subtitle: 'Tenha as <strong>respostas certas</strong> para todas as suas <strong>dúvidas</strong> mais comum'
+assignments:
+  page:
+    -
+      faq: true
