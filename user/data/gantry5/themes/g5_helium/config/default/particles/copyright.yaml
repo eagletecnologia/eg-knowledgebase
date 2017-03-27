@@ -2,7 +2,7 @@ enabled: '1'
 date:
   start: '2016'
   end: now
-owner: 'Eagle Tecnologia'
+owner: 'Eagle Tecnologia - Base v1.0.0,  '
 link: 'http://getgrav.org'
 target: _blank
 additional:
