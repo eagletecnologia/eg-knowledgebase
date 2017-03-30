@@ -15,7 +15,7 @@
             {% for tag in page.taxonomy.tag %}
                 <span class="tag info"><i class="fa fa-tag"></i> <a href="{{ base_url_relative }}/search/query:{{ tag }}">{{ tag }}</a></span>
             {% endfor %}
-            <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}}</span>
+            <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}} | {{ snappygrav(page.route)|raw }}</span>
         </div>
         <div class="content">
             {{ page.content|raw }}

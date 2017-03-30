@@ -1,0 +1,100 @@
+# English
+en:
+  SNAPPYGRAV_PLUGIN:
+
+    GET_PDF: Get the pdf of the page
+    GET_FULL_PDF: Get a full pdf
+
+    USE_BUILT_IN_CSS: Use Built in CSS
+    
+    WKHTMLTOPDF_PATH: Wkhtmltopdf Path
+    WKHTMLTOPDF_PATH_HELP: Path of Binary Wkhtmltopdf
+
+    SLUG_BLOG: Folder blog
+    SLUG_BLOG_HELP: Name of the blog folder without slash (either before or after)
+
+    MONOCHROME_PRINTOUT: Monochrome printout
+    MONOCHROME_PRINTOUT_HELP: PDF will be generated in grayscale if true
+
+    BOTTOM_MARGIN: Bottom Margin
+    BOTTOM_MARGIN_HELP: Set the page bottom margin (default 10mm)
+
+    LEFT_MARGIN: Left Margin
+    LEFT_MARGIN_HELP: Set the page left margin (default 10mm)
+
+    RIGHT_MARGIN: Right Margin
+    RIGHT_MARGIN_HELP: Set the page right margin (default 10mm)
+
+    TOP_MARGIN: Top Margin
+    TOP_MARGIN_HELP: Set the page top margin (default 10mm)
+
+    PAGE_ORIENTATION: Page Orientation
+    PAGE_ORIENTATION_HELP: Set orientation to Landscape or Portrait
+    LANDSCAPE: Landscape
+    PORTRAIT: Portrait
+
+    PAGE_SIZE: Page Size
+    PAGE_SIZE_HELP: Set paper size to: A4, Letter, etc.
+    EXECUTIVE: Executive
+    FOLIO: Folio
+    LEDGER: Ledger
+    LEGAL: Legal
+    LETTER: Letter
+    TABLOID: Tabloid
+
+    DOCUMENT_TITLE: Document Title
+    DOCUMENT_TITLE_HELP: Puts the property Title in the pdf document
+
+    ZOOM_FACTOR: Zoom Factor
+    ZOOM_FACTOR_HELP: Use this zoom factor (default 1)
+
+# Italiano
+it:
+  SNAPPYGRAV_PLUGIN:
+
+    GET_PDF: Ottieni il pdf della pagina
+    GET_FULL_PDF: Ottieni un pdf completo
+
+    USE_BUILT_IN_CSS: Usa CSS interno
+    
+    WKHTMLTOPDF_PATH: Percorso Wkhtmltopdf
+    WKHTMLTOPDF_PATH_HELP: Percorso del programma Wkhtmltopdf
+
+    SLUG_BLOG: Cartella blog
+    SLUG_BLOG_HELP: Nome della cartella blog senza barra (né prima né dopo)
+
+    MONOCHROME_PRINTOUT: Stampa in bianco e nero
+    MONOCHROME_PRINTOUT_HELP: PDF verrà generato in scala di grigi se è vero
+
+    BOTTOM_MARGIN: Margine inferiore
+    BOTTOM_MARGIN_HELP: Imposta il margine inferiore della pagina (predefinito 10 mm)
+
+    LEFT_MARGIN: Margine sinistro
+    LEFT_MARGIN_HELP: Imposta il margine sinistro della pagina (predefinito 10 mm)
+
+    RIGHT_MARGIN: Margine destro
+    RIGHT_MARGIN_HELP: Imposta il margine destro della pagina (predefinito 10 mm)
+
+    TOP_MARGIN: Margine superiore
+    TOP_MARGIN_HELP: Imposta il margine superiore della pagina (predefinito 10 mm)
+
+    PAGE_ORIENTATION: Orientamento pagina
+    PAGE_ORIENTATION_HELP: Imposta orientamento orizzontale o verticale
+    LANDSCAPE: Orizzontale
+    PORTRAIT: Verticale
+
+    PAGE_SIZE: Dimensioni della pagina
+    PAGE_SIZE_HELP: Imposta il formato della carta a: A4, Lettera, ecc.
+    EXECUTIVE: Executive
+    FOLIO: Folio
+    LEDGER: Ledger
+    LEGAL: Legale
+    LETTER: Lettera
+    TABLOID: Tabloid (formato ridotto)
+    PAGE_SIZE_HELP: Imposta il formato della carta in: A4, Lettera, ecc.
+
+    DOCUMENT_TITLE: Titolo del documento
+    DOCUMENT_TITLE_HELP: Mette il titolo fra le proprietà nel documento PDF
+
+    ZOOM_FACTOR: Fattore di zoom
+    ZOOM_FACTOR_HELP: Usa questo fattore di zoom (predefinito 1)
