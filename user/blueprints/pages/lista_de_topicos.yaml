@@ -1,0 +1,59 @@
+title: Params
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        param:
+          type: tab
+          title: Parâmetros
+
+          fields:
+            header_acl:
+              type: section
+              title: ACL
+              underline: true
+
+            header.access:
+              type: array
+              label: Regra de Acesso
+              placeholder_key: Regra
+              placeholder_value: Valor(0 ou 1)
+
+            header_topic:
+              type: section
+              title: Tópicos Filho
+              underline: true
+
+            header.content.limit:
+              type: text
+              label: Máximo ítens/página
+              default: 10
+              validate:
+                required: true
+                type: int
+                min: 1
+
+            header.content.order.by:
+              type: select
+              label: Ordernar por
+              default: date
+              options:
+                folder: Pasta
+                title: Título
+                date: Data
+                default: Padrão
+
+            header.content.order.dir:
+              type: select
+              label: Ordem
+              default: desc
+              options:
+                asc: Ascendente
+                desc: Descendente
