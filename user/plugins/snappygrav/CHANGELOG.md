@@ -1,3 +1,10 @@
+# v1.3.0
+## 03/30/2017
+
+1. [](#new)
+    * Added Česky translations [#11](https://github.com/iusvar/grav-plugin-snappygrav/pull/11) (Thanks to [@rbukovansky](https://github.com/rbukovansky) for the PR)
+    * Added toggle buttons for preface option [#12](https://github.com/iusvar/grav-plugin-snappygrav/issues/12)
+    
 # v1.2.0
 ## 03/28/2017
 

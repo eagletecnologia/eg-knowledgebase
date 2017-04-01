@@ -1,0 +1,22 @@
+title: Params
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        gallery:
+          type: tab
+          title: Parâmetros
+
+          fields:
+            header.access:
+              type: array
+              label: Regra de Acesso
+              placeholder_key: Regra
+              placeholder_value: Valor(0 ou 1)
