@@ -155,16 +155,19 @@ class AdminPlugin extends Plugin
      */
     protected function validate($type, $value, $extra = '')
     {
+        $username_regex = '/' . $this->config->get('system.username_regex') . '/';
+        $pwd_regex      = '/' . $this->config->get('system.pwd_regex') . '/';
+
         switch ($type) {
             case 'username_format':
-                if (!preg_match('/^[a-z0-9_-]{3,16}$/', $value)) {
+                if (!preg_match($username_regex, $value)) {
                     return false;
                 }
 
                 return true;
 
             case 'password1':
-                if (!preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $value)) {
+                if (!preg_match($pwd_regex, $value)) {
                     return false;
                 }
 
@@ -389,20 +392,16 @@ class AdminPlugin extends Plugin
         // Replace page service with admin.
         $this->grav['page'] = function () use ($self) {
             $page = new Page;
-
             $page->expires(0);
 
-            // If the page cannot be found in other plugins, try looking in admin plugin itself.
+            // First look in the pages provided by the Admin plugin itself
             if (file_exists(__DIR__ . "/pages/admin/{$self->template}.md")) {
                 $page->init(new \SplFileInfo(__DIR__ . "/pages/admin/{$self->template}.md"));
                 $page->slug(basename($self->template));
-
-
-
                 return $page;
             }
 
-            // Allows pages added by plugins in admin
+            // If not provided by Admin, lookup pages added by other plugins
             $plugins = $this->grav['plugins'];
             $locator = $this->grav['locator'];
 
@@ -470,6 +469,7 @@ class AdminPlugin extends Plugin
     public function onTwigSiteVariables()
     {
         $twig = $this->grav['twig'];
+        $page = $this->grav['page'];
 
         $twig->twig_vars['location'] = $this->template;
         $twig->twig_vars['base_url_relative_frontend'] = $twig->twig_vars['base_url_relative'] ?: '/';
@@ -482,6 +482,12 @@ class AdminPlugin extends Plugin
         $twig->twig_vars['base_path'] = GRAV_ROOT;
         $twig->twig_vars['admin'] = $this->admin;
         $twig->twig_vars['admin_version'] = $this->version;
+
+        // add form if it exists in the page
+        $header = $page->header();
+        if (isset($header->form)) {
+            $twig->twig_vars['form'] = new Form($page);
+        }
 
         // Gather Plugin-hooked nav items
         $this->grav->fireEvent('onAdminMenu');

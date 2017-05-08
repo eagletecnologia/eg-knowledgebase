@@ -239,13 +239,23 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
 
         if (!empty($inherit[$old])) {
             foreach ($inherit[$old] as $id => $inheritId) {
-                $element = $this->find($id);
-                $inheritId = isset($element->inherit->particle) ? $element->inherit->particle : $id;
-                if ($new && ($ids === null || isset($ids[$inheritId]))) {
-                    $element->inherit->outline = $new;
+                $element = $this->find($id, false);
+                if ($element) {
+                    $inheritId = isset($element->inherit->particle) ? $element->inherit->particle : $id;
+                    if ($new && ($ids === null || isset($ids[$inheritId]))) {
+                        // Add or modify inheritance.
+                        if (!isset($element->inherit)) {
+                            $element->inherit = new \stdClass;
+                        }
+                        $element->inherit->outline = $new;
+                    } else {
+                        // Remove inheritance.
+                        $element->inherit = new \stdClass;
+                        unset($this->inherit[$element->id]);
+                    }
                 } else {
-                    $element->inherit = new \stdClass;
-                    unset($this->inherit[$element->id]);
+                    // Element does not exist anymore, remove its reference.
+                    unset($this->inherit[$id]);
                 }
             }
         }
@@ -545,14 +555,15 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
 
     /**
      * @param string $id
-     * @return \stdClass
+     * @param bool $createIfNotExists
+     * @return object
      */
-    public function find($id)
+    public function find($id, $createIfNotExists = true)
     {
         $this->init();
 
         if (!isset($this->references[$id])) {
-            return (object)['id' => $id];
+            return $createIfNotExists ? (object)['id' => $id, 'inherit' => new \stdClass] : null;
         }
 
         return $this->references[$id];
@@ -768,7 +779,7 @@ class Layout implements \ArrayAccess, \Iterator, ExportInterface
 
                 $inheritId = !empty($item->inherit->particle) ? $item->inherit->particle : $id;
                 $inherited = $outline ? $outline->find($inheritId) : null;
-                $include = (array) $item->inherit->include;
+                $include = !empty($item->inherit->include) ? (array) $item->inherit->include : [];
 
                 foreach ($include as $part) {
                     switch ($part) {
