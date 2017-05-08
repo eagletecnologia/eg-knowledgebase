@@ -35,7 +35,7 @@ form:
             header.content.items:
               type: textarea
               yaml: true
-              label: Items A
+              label: Items
               default: '@self.children'
 
             header.content.leading:

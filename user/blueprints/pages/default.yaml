@@ -1,4 +1,4 @@
-title: Params
+title: Params Default
 '@extends':
     type: default
     context: blueprints://pages
@@ -10,11 +10,15 @@ form:
       active: 1
 
       fields:
-        gallery:
+        param:
           type: tab
           title: Parâmetros
 
           fields:
+            header_acl:
+              type: section
+              title: ACL
+              underline: true
             header.access:
               type: array
               label: Regra de Acesso

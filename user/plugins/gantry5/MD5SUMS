@@ -86,10 +86,10 @@ admin/templates/forms/fields/button/group/group.html.twig	d41d8cd98f00b204e98009
 admin/templates/forms/fields/button/button.html.twig	35333d3e63b204be65c64f96fe935737
 admin/templates/forms/fields/checkboxes/checkboxes.html.twig	e8d8971d3dace64b80d4aafad705a7ad
 admin/templates/forms/fields/collection/keyvalue.html.twig	23e105fb84f67d9ee1c916e986a16bef
-admin/templates/forms/fields/collection/list.html.twig	99ebc7127e9eb936770e1c3dbc655f32
+admin/templates/forms/fields/collection/list.html.twig	845cdcf1152b5baee97ee9aa2458953e
 admin/templates/forms/fields/collection/list.yaml	e5eb64a5b2f8303cb2af0715108e4693
 admin/templates/forms/fields/container/set.html.twig	d41b42cceeddb30290cf1995a81405e1
-admin/templates/forms/fields/container/tabs.html.twig	9edc7cb44f8d2129d3f822991a0932cd
+admin/templates/forms/fields/container/tabs.html.twig	67953ae3e7573b4293c54a7e55be1033
 admin/templates/forms/fields/enable/enable.html.twig	9d19e2e94ea5b3f9af7ea79be900a304
 admin/templates/forms/fields/gantry/atoms.html.twig	efea3df9a31e5418e2bfec0fd81faff9
 admin/templates/forms/fields/gantry/inherit.html.twig	2f5ead1111664d0362ebb9055a4aa285
@@ -164,7 +164,7 @@ admin/templates/modals/module-picker.html.twig	5a1896eb1f8cf94d2efe84272904ce80
 admin/templates/modals/particle-picker.html.twig	6716d460c132432383ce41360a021837
 admin/templates/modals/particle.html.twig	6d71fd006945780b832adb36388fa559
 admin/templates/pages/about/about.html.twig	4bb53138c945d9bf73f49ef91699ec29
-admin/templates/pages/configurations/assignments/assignments.html.twig	88ff0facbe6b585af89eb7d95ccb1ecd
+admin/templates/pages/configurations/assignments/assignments.html.twig	a6bea49e224c501cc7c7a8cc6c0876cd
 admin/templates/pages/configurations/layouts/container.html.twig	44a1f3fe1f086b92db6a22d3cb70e9d7
 admin/templates/pages/configurations/layouts/create.html.twig	b670b62ff631277ffa212c9879790618
 admin/templates/pages/configurations/layouts/edit.html.twig	932ef75d6bc7d2ca103ec5bd20f83047
@@ -227,7 +227,7 @@ admin/images/layouts/home.png	a245e5c2401d8eb641357e8e37b372cc
 admin/images/layouts/offline.png	62be3bedd74a07f5e038fe62accc4432
 admin/images/placeholder.png	85a94268260d40f95f690d88c97178b7
 admin/js/google-fonts.json	4747a6e3f9e4c74a5ea7962b9b086d1b
-admin/js/main.js	02f330a8651fb3bd1de522307e704451
+admin/js/main.js	67233316438e2d7efd312717dc94877e
 admin/js/tooltips.js	2462fb34ec347c0391c56569c1c5b419
 admin/translations/en/nucleus.yaml	9e54eddeb3fc7c19b27c06f5425c6b59
 admin/translations/en/platform.yaml	13fcf4359e383c9e9e382195737348c6
@@ -243,7 +243,7 @@ VERSION	1910ba5370af59f46175f5086b53489a
 gantry5.yaml	1ee7af301cb9f93c22367cbacad99a5b
 hebe.json	89ee8d6347efd5a6066620a45289fdec
 src/Loader.php	ca2419dbbc6aa32be63ffab39f0e3cb2
-src/RealLoader.php	f2d2a55675ad47415e616585e171d529
+src/RealLoader.php	3213e1e9f4eea91a5664f9ca67c489e5
 src/bootstrap.php	c0596c070aa6a3c63292a82f6a2feb32
 src/vendor/leafo/scssphp/src/Base/Range.php	8f6a764f9ff38a6aef85028b6c534ab7
 src/vendor/leafo/scssphp/src/Compiler/Environment.php	faf147879c2edd4d18962f7923c4547d
@@ -275,14 +275,14 @@ src/vendor/composer/installed.json	fa837842a494de96011d36087648286f
 src/vendor/composer/autoload_namespaces.php	35e12c7d76c4a81633bcf547c0e229a9
 src/vendor/composer/autoload_psr4.php	ae38a847f23c2a5631c2dfd940a88188
 src/vendor/composer/autoload_classmap.php	8645d3a4e3ad87e7cf4d88a46717aab4
-src/vendor/composer/autoload_static.php	96d573e453cced236b35ba53a25d67b5
-src/vendor/composer/autoload_real.php	859cb6ae32b3b0c1475d1e6ace2d2698
+src/vendor/composer/autoload_static.php	a60b96848e4c2b0f0f60c68d79882f3a
+src/vendor/composer/autoload_real.php	b3accdc12e5266c03b5ce2633c898b02
 src/vendor/composer/ClassLoader.php	292c079dbe63ba06bfbf37fd99fe4bf9
-src/vendor/autoload.php	e2fcbbb32e116ffc32c1dd4b5569cbd0
+src/vendor/autoload.php	d1dcf23e0ff1e4a92e20c0c3a6b12abf
 src/classes/Gantry/Admin/Controller/Html/Configurations/Assignments.php	f067a9c6afc531534c8242dc3a56e15b
 src/classes/Gantry/Admin/Controller/Html/Configurations/Layout.php	8a7ec997a11af0408984a26e2a7daead
 src/classes/Gantry/Admin/Controller/Html/Configurations/Page.php	ccd591d8c6ff0c2b7dd15b04e5ea4478
-src/classes/Gantry/Admin/Controller/Html/Configurations/Settings.php	19ebbfecb4005ec133507438d08dca20
+src/classes/Gantry/Admin/Controller/Html/Configurations/Settings.php	d89c3253d3f3422b7ea99858f554bc24
 src/classes/Gantry/Admin/Controller/Html/Configurations/Styles.php	963f8fb111ea75a6591f96cd10320ebf
 src/classes/Gantry/Admin/Controller/Html/About.php	391d7a58d99b95c5626948641d148ea9
 src/classes/Gantry/Admin/Controller/Html/Cache.php	0de32f0eb00c809f8e44f5ba0bc2a309
@@ -330,7 +330,7 @@ src/classes/Gantry/Component/Content/Block/ContentBlock.php	cdae900ee4f4061e404c
 src/classes/Gantry/Component/Content/Block/ContentBlockInterface.php	77eb2eb1912c772e1df08b0b85b6f4c6
 src/classes/Gantry/Component/Content/Block/HtmlBlock.php	75e06c78599c95fbf3a3fc92a06185ad
 src/classes/Gantry/Component/Content/Block/HtmlBlockInterface.php	d07876e7fd8ed7d7627bd1299d7886a5
-src/classes/Gantry/Component/Content/Document/HtmlDocument.php	2be13bceae5e48ba0fa3365418eb157e
+src/classes/Gantry/Component/Content/Document/HtmlDocument.php	6da55b44867acb3d850eecc232a860c2
 src/classes/Gantry/Component/Controller/BaseController.php	6603e73ed91aa8e667879774e411d8c3
 src/classes/Gantry/Component/Controller/HtmlController.php	7564c530b17f8a128ae3b577e772f374
 src/classes/Gantry/Component/Controller/JsonController.php	4a3f7cf43cff4310f8a49a0f87d736d9
@@ -344,7 +344,7 @@ src/classes/Gantry/Component/Gettext/Gettext.php	72a70e3f7f68d661c2e9198ecb355cd
 src/classes/Gantry/Component/Layout/Version/Format0.php	1e3b1c1a2a7b134b557141ee0b36fdd7
 src/classes/Gantry/Component/Layout/Version/Format1.php	70b5039c21a22ea36aae37c5fd31d30d
 src/classes/Gantry/Component/Layout/Version/Format2.php	3ce3ef35e132aa1533ff38c0d073a96b
-src/classes/Gantry/Component/Layout/Layout.php	a88f6cb2ceeb62d884e0ed4ac282fd82
+src/classes/Gantry/Component/Layout/Layout.php	f51f1d9c21001fa2b1c7d1d593bd32c6
 src/classes/Gantry/Component/Layout/LayoutReader.php	11352868575de32abbf7d1c891b08a0d
 src/classes/Gantry/Component/Menu/AbstractMenu.php	80fa1a2f0671f887a5c8471add9b78bf
 src/classes/Gantry/Component/Menu/Item.php	a79b661122213a2a7eb8887ea9e511d6
@@ -402,7 +402,7 @@ src/classes/Gantry/Framework/Outlines.php	9b059c10c8abec19840161fc6a12b37d
 src/classes/Gantry/Framework/Positions.php	6bd2bc88fdd51522a5f48b9d06304dce
 src/classes/Gantry/Framework/Request.php	58555c06be380d52a22c04a652620989
 src/classes/Gantry/Framework/Assignments.php	a772f9bf37f20cc02bfb89a7de76fc9d
-src/classes/Gantry/Framework/Document.php	7d0aec58e41e62ca77c26e107b634047
+src/classes/Gantry/Framework/Document.php	75320a7c624489260c719bb7ce447b7e
 src/classes/Gantry/Framework/Gantry.php	a854d287e07eec3f11e489e6f2bac609
 src/classes/Gantry/Framework/Importer.php	170455ab7c79378c143c0f32038811e2
 src/classes/Gantry/Framework/Menu.php	a952c678ad506c7372eb7a9ab28399eb
@@ -413,7 +413,7 @@ src/classes/Gantry/Framework/Theme.php	314351dc5faa2be43f2b036277d5b2db
 src/classes/Gantry/Framework/Translator.php	d2d9fa94b7d3f62fc77072e9643182a3
 src/classes/Gantry/Grav/Assignments/AssignmentsPage.php	53f7124abfee155753a4ac4ec222f188
 src/composer.json	a6dcc1bdc375d1bf46530072670d5778
-src/composer.lock	58ff468cb24931b69f17ded4ad56b134
+src/composer.lock	843364267ea9b289c43ebc2f259c83a2
 assets/css/font-awesome.min.css	269550530cc127b6aa5a35925a7de6ce
 assets/css/lightcase.min.css	35d140dcf674490e3b24329c4351322a
 assets/css/whoops.css	afac3c5ad7a94166ef0c93c42946fbe1
@@ -429,8 +429,8 @@ assets/fonts/lightcase.ttf	3b06e8ee1ad83746aad064beaf6dc56a
 assets/fonts/lightcase.woff	30cce75077e855a9f9c53b2ba6e76c4d
 assets/images/gantry5-logo.png	4760ca4f7e636cdb069bab077e6e4549
 assets/js/html5shiv-printshiv.min.js	28d2133e839a001a990d3e45abe46936
-assets/js/lightcase.js	7dfa191abe6c47d2b5aa47ca1b88d12a
-assets/js/main.js	17b3098f02ce2fbfcc1677334f535447
+assets/js/lightcase.js	0cd4cae778d20f926a0b3ccb2562643b
+assets/js/main.js	1d33f21815c35d4bb67c8b56faaa3489
 assets/js/matchmedia.polyfill.js	8e183f13e103b04da7798a7667f74530
 assets/yarn.lock	2d54ecdceb4c79c2aa29c5abc620cf60
 assets/.gitkeep	d41d8cd98f00b204e9800998ecf8427e
@@ -455,7 +455,7 @@ engines/nucleus/blueprints/page/head.yaml	0f66ad62f2acacfb1ae33f41fa93761f
 engines/nucleus/blueprints/pages/modular/features.yaml	6fc145362a2e2f005ae09d7a2668054d
 engines/nucleus/blueprints/pages/modular/showcase.yaml	cb606cfe1cedeef430eb266d0f1a2df9
 engines/nucleus/blueprints/pages/modular/text.yaml	58dc3faee4326baa01189a03970e079f
-engines/nucleus/blueprints/pages/blog_item.yaml	ffa43399e3c4d025dbc00a569df4da09
+engines/nucleus/blueprints/pages/blog_item.yaml	710929a7814bbb42f32dd8f553e8394b
 engines/nucleus/blueprints/pages/blog_list.yaml	b212ea62e57472584358a6c0d3fcbf09
 engines/nucleus/blueprints/pages/form.yaml	767d2af92974528bef2427a381731afd
 engines/nucleus/css-compiled/nucleus.css	70d57794e752253c02638c03c7045a4c
@@ -493,7 +493,7 @@ engines/nucleus/particles/totop.html.twig	11a8a23eadbf449ec87e062f90d6777f
 engines/nucleus/particles/totop.yaml	c0207346fe89effdad46d3306a308e1a
 engines/nucleus/particles/breadcrumbs.html.twig	ed59368818ace284f46a59cd784af185
 engines/nucleus/particles/breadcrumbs.yaml	b682186c0ddd12675f3bada7c5cecf73
-engines/nucleus/particles/contentarray.html.twig	b98b3ed9449e034c212973194714cfb1
+engines/nucleus/particles/contentarray.html.twig	f2447d70c381c571f10cf5852a7c8719
 engines/nucleus/particles/contentarray.yaml	3ac8cf9854333e7d2285c0292363d4b7
 engines/nucleus/particles/feed.html.twig	c30df833ebe8fb8ca4c1410b517fe38f
 engines/nucleus/particles/feed.yaml	9795592231f68ab977a84a45a094bffc
@@ -661,7 +661,7 @@ engines/nucleus/templates/layout/wrapper.html.twig	01ed721a852a5bd95e861b5057af7
 engines/nucleus/templates/partials/particle.html.twig	07935cff8475093e4c5e315985b39b99
 engines/nucleus/templates/partials/author.html.twig	b20f6e736d0d6c0dc59c0a61ce2d9b66
 engines/nucleus/templates/partials/base.html.twig	a941197b4afea4220e462825401ca5b3
-engines/nucleus/templates/partials/blog_item.html.twig	3089ce1ff6ed4ef175f3648dbfc8c311
+engines/nucleus/templates/partials/blog_item.html.twig	f050dc728314ef73f30ead740ad7b075
 engines/nucleus/templates/partials/metadata.html.twig	e594f19595ce28532b22104c01897aa8
 engines/nucleus/templates/partials/module.html.twig	aa74b8e4d9a1868fc9c63503391826f6
 engines/nucleus/templates/partials/page.html.twig	5c31f4ed7176588d17c6ae7b30f5e3a5
@@ -682,6 +682,6 @@ engines/nucleus/templates/modular.html.twig	9b4e95a0c13a6a09013a9264d7f9d39b
 engines/nucleus/templates/offline.html.twig	2ade8a2b0e44b8a11e4bd17dbb148c5d
 engines/nucleus/templates/snipcart.html.twig	aa7194c3ef9d32e5f74a8eb1751898b8
 engines/nucleus/yarn.lock	c9f24d7a378f26bf564c814e6675fe2e
-blueprints.yaml	58fb2704e8b8e1b90e1f6421ef2f8607
+blueprints.yaml	1b376534234a839b8790c525a60313a6
 gantry5.php	336484649d30cc60afabeffc4cff8f9c
 MD5SUMS	d41d8cd98f00b204e9800998ecf8427e

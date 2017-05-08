@@ -17,7 +17,11 @@ layout:
       -
         'aside 25': {  }
       -
-        'mainbar 50': {  }
+        'mainbar 50':
+          -
+            - custom-2962
+          -
+            - position-position-3025
       -
         'sidebar 25': {  }
   footer: {  }
@@ -98,12 +102,8 @@ structure:
   mainbar:
     type: section
     subtype: main
-    inherit:
-      outline: default
-      include:
-        - attributes
-        - block
-        - children
+    attributes:
+      class: ''
   sidebar:
     type: section
     subtype: aside
@@ -134,3 +134,16 @@ structure:
         - attributes
         - block
         - children
+content:
+  custom-2962:
+    title: 'Custom HTML'
+    attributes:
+      html: "<img src=\"gantry-media://page/error-404.png\">\n<h1>Página não encontrada!</h1>\n<p>Por favor retorne à <a href=\"/\">Página Inicial</a></p>\n\n"
+    block:
+      variations: center
+  position-position-3025:
+    title: 'Module Topics'
+    attributes:
+      key: module-topics
+    block:
+      class: block-module-topics

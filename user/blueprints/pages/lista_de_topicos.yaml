@@ -1,4 +1,4 @@
-title: Params
+title: Params Topic List
 '@extends':
     type: default
     context: blueprints://pages
@@ -15,21 +15,18 @@ form:
           title: Parâmetros
 
           fields:
-            header_acl:
-              type: section
-              title: ACL
-              underline: true
-
-            header.access:
-              type: array
-              label: Regra de Acesso
-              placeholder_key: Regra
-              placeholder_value: Valor(0 ou 1)
-
             header_topic:
               type: section
               title: Tópicos Filho
               underline: true
+
+            header.content.items:
+              type: textarea
+              yaml: true
+              label: Items
+              default: '@self.children'
+              validate:
+                required: true
 
             header.content.limit:
               type: text
