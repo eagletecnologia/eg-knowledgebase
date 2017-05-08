@@ -20,6 +20,14 @@ form:
               title: Tópicos Filho
               underline: true
 
+            header.content.items:
+              type: textarea
+              yaml: true
+              label: Items
+              default: '@self.children'
+              validate:
+                required: true
+
             header.content.limit:
               type: text
               label: Máximo ítens/página
