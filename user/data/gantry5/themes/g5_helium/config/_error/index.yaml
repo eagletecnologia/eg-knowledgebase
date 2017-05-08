@@ -1,5 +1,5 @@
 name: _error
-timestamp: 1488909752
+timestamp: 1494269182
 version: 7
 preset:
   image: 'gantry-admin://images/layouts/default.png'
@@ -32,6 +32,7 @@ particles:
   custom:
     custom-4391: 'Custom HTML'
     custom-3404: 'Custom HTML'
+    custom-2962: 'Custom HTML'
   logo:
     logo-3044: 'Logo / Image'
     logo-6728: 'Logo / Image'
@@ -42,10 +43,8 @@ particles:
     position-position-9681: 'Module Position'
     position-position-7260: 'Module Position'
     position-position-8274: Aside
-    position-position-2523: 'Module Topics'
+    position-position-3025: 'Module Topics'
     position-position-6609: Sidebar
-  content:
-    system-content-6880: 'Page Content'
   social:
     social-3341: Social
   totop:
@@ -59,33 +58,30 @@ particles:
 inherit:
   default:
     navigation: navigation
+    custom-4391: custom-8096
+    logo-3044: logo-9608
+    position-position-1190: position-position-1307
+    custom-3404: custom-3330
     header: header
+    position-position-9813: position-position-2334
+    position-position-7359: position-position-1050
+    position-position-9681: position-position-1701
     intro: intro
+    position-position-7260: position-position-2346
     features: features
     utility: utility
     above: above
     testimonials: testimonials
     expanded: expanded
     aside: aside
-    mainbar: mainbar
-    sidebar: sidebar
-    footer: footer
-    offcanvas: offcanvas
-    custom-4391: custom-8096
-    logo-3044: logo-9608
-    position-position-1190: position-position-1307
-    custom-3404: custom-3330
-    position-position-9813: position-position-2334
-    position-position-7359: position-position-1050
-    position-position-9681: position-position-1701
-    position-position-7260: position-position-2346
     position-position-8274: position-position-4734
-    system-content-6880: system-content-1400
-    position-position-2523: position-position-3025
+    sidebar: sidebar
     position-position-6609: position-position-3949
+    footer: footer
     logo-6728: logo-9571
     social-3341: social-6080
     totop-3139: totop-7223
     horizontalmenu-9379: horizontalmenu-9487
     copyright-6570: copyright-8167
+    offcanvas: offcanvas
     mobile-menu-8737: mobile-menu-5697
