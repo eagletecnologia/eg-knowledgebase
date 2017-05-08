@@ -1,3 +1,44 @@
+# v1.2.4
+## 04/24/2017
+
+1. [](#improved)
+    * Added optional ignores for `Installer::sophisticatedInstall()` [#1447](https://github.com/getgrav/grav/issues/1447)  
+1. [](#bugfix)
+    * Allow multiple calls to `Themes::initTheme()` without throwing errors
+    * Fixed querystrings in root pages with multi-lang enabled [#1436](https://github.com/getgrav/grav/issues/1436)
+    * Allow support for `Pages::getList()` with `show_modular` option [#1080](https://github.com/getgrav/grav-plugin-admin/issues/1080)
+    
+# v1.2.3
+## 04/19/2017
+
+1. [](#improved)
+    * Added new `pwd_regex` and `username_regex` system configuration options to allow format modifications
+    * Allow `user/accounts.yaml` overrides and implemented more robust theme initialization
+    * improved `getList()` method to do more powerful things
+    * Fix Typo in GPM [#1427](https://github.com/getgrav/grav/issues/1427)
+ 
+# v1.2.2
+## 04/11/2017
+
+1. [](#bugfix)
+    * Fix for redirects breaking [#1420](https://github.com/getgrav/grav/issues/1420)
+    * Fix issue in direct-install with github-style dependencies [#1405](https://github.com/getgrav/grav/issues/1405)
+
+# v1.2.1
+## 04/10/2017
+
+1. [](#improved)
+    * Added various `ancestor` helper methods in Page and Pages classes [#1362](https://github.com/getgrav/grav/pull/1362)
+    * Added new `parents` field and switched Page blueprints to use this
+    * Added `isajaxrequest()` Twig function [#1400](https://github.com/getgrav/grav/issues/1400)
+    * Added ability to inline CSS and JS code via Asset manager [#1377](https://github.com/getgrav/grav/pull/1377)
+    * Add query string in lighttpd default config [#1393](https://github.com/getgrav/grav/issues/1393)
+    * Add `--all-yes` and `--destination` options for `bin/gpm direct-install` [#1397](https://github.com/getgrav/grav/pull/1397)
+1. [](#bugfix)
+    * Fix for direct-install of plugins with `languages.yaml` [#1396](https://github.com/getgrav/grav/issues/1396)
+    * When determining language from HTTP_ACCEPT_LANGUAGE, also try base language only [#1402](https://github.com/getgrav/grav/issues/1402)
+    * Fixed a bad method signature causing warning when running tests on `GPMTest` object
+
 # v1.2.0
 ## 03/31/2017
 

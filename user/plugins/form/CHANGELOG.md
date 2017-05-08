@@ -1,3 +1,41 @@
+# v2.6.0
+## 05/04/2017
+
+1. [](#new)
+    * Allow form item replacement in redirect location [#144](https://github.com/getgrav/grav-plugin-form/issues/144)
+1. [](#bugfix)
+    * Fix regression with file uploads introduced in 2.5.0
+
+# v2.5.0
+## 04/24/2017
+
+1. [](#new)
+    * Support proper form handling with nested fields [#141](https://github.com/getgrav/grav-plugin-form/issues/141)
+1. [](#bugfix)
+    * Added check for valid Grav forms before trying to create a form object
+
+# v2.4.0
+## 04/19/2017
+
+1. [](#new)
+    * Added the ability for front-end forms to use advanced blueprint features such as `data-*@` and `config-*@`
+    * Added support for dynamically added pages to process forms properly
+    * Added a new avatar field for displaying account avatar
+    * Added method to get all `data` from a form
+    * Support `task` in button types
+1. [](#improved)
+    * Added `step` to range field [#136](https://github.com/getgrav/grav-plugin-form/issues/136)
+    * Added a new default ajax handler twig template
+    * Moved twig events to always process even if forms are not defined
+    * Some code cleanup
+    * Handle `null` with session-based form
+    * Added support for append/prepend to number field
+1. [](#bugfix)
+    * Always process form events as long as a `$_POST` exists [login #101](https://github.com/getgrav/grav-plugin-login/issues/101)
+    * Various fixes for `file` field
+    * Allow manually added pages to process forms and upload files
+    * Fixed issue with nested fileds not showing up in `data.*.twig` templates
+
 # v2.3.1
 ## 03/23/2017
 
