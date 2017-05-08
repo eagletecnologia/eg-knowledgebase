@@ -4,3 +4,13 @@ PLUGIN_SIMPLESEARCH:
     SEARCH_RESULTS_SUMMARY_SINGULAR: "Pesquisa: <strong>%s</strong>. Foram encontrados 1 resultados"
     SEARCH_RESULTS_SUMMARY_PLURAL: "Pesquisa: <strong>%s</strong>. Foram encontrados %s resultados"
     SEARCH_FIELD_MINIUMUM_CHARACTERS: "Por favor adicione pelo menos %s caractes"
+PLUGIN_LOGIN:
+    USERNAME_EMAIL: "Usuário/e-mail"
+    PASSWORD: "Senha"
+    LOGIN_FAILED: "Falha de Login"
+    LOGIN_SUCCESSFUL: "Você logou com sucesso"
+    BTN_LOGOUT: "Sair"
+    BTN_FORGOT: "Esqueceu"
+    WELCOME: "Olá"
+    REMEMBER_ME: "Me lembre"
+    BTN_LOGIN: "Entrar"
