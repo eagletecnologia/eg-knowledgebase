@@ -25,5 +25,8 @@
             <h3><i class="fa fa-pencil-square-o"></i> Este artigo te ajudou?</h3>
             {{ thumbs(page.slug)|raw }}
         </div>
+        <div>
+            {{ anchors(page.content)|raw }}
+        </div>
     </div>
 {% endblock %}
