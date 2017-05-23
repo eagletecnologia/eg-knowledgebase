@@ -1,32 +1,64 @@
 {% extends "partials/page.html.twig" %}
 
+
+{% set titleMenuItens = '' %}
+
+{% if page.header.menuright %}
+    {% set titleMenuItens = anchors(page.content,page.header.tagtitle) %}
+{% endif %}
+
 {% block content %}
-    <div class="content-page-default">
-        <h1 class="title-page"><i class="fa fa-file-text-o"></i> {{ page.title }}</h1>
-        {% include 'partials/breadcrumbs.html.twig' %}
-        <div class="block-info-page">
-            {% for autor in page.taxonomy.autor %}
-                <span class="info"><i class="fa fa-user"></i> <a href="{{ base_url_relative }}/search/query:{{ autor }}">{{ autor }}</a> |</span>
-            {% endfor %}
-            {% for categoria in page.taxonomy.categoria %}
-                <span class="info"><i class="fa fa-folder"></i> <a href="{{ base_url_relative }}/search/query:{{ categoria }}">{{ categoria }}</a> |</span>
-            {% endfor %}
-            <span class="info"><i class="fa fa-eye"></i> {{ config.plugins['count-views'].counts[page.url] }} |</span>
-            {% for tag in page.taxonomy.tag %}
-                <span class="tag info"><i class="fa fa-tag"></i> <a href="{{ base_url_relative }}/search/query:{{ tag }}">{{ tag }}</a></span>
-            {% endfor %}
-            <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}} | {{ snappygrav(page.route)|raw }}</span>
-        </div>
-        <div class="content">
-            {{ page.content|raw }}
-        </div>
-        <div class="rating-vote">
-            <hr>
-            <h3><i class="fa fa-pencil-square-o"></i> Este artigo te ajudou?</h3>
-            {{ thumbs(page.slug)|raw }}
-        </div>
-        <div>
-            {{ anchors(page.content)|raw }}
+
+    <div class="block-module-topics">
+        <div class="g-container">
+            <div class="g-grid">
+                {# Bloco de texto #}
+                <div class="g-block {% if titleMenuItens is empty %}size-100{% else %}size-75{% endif %}">
+                    <div class="g-content">
+                        <div class="content-page-default">
+                            <h1 class="title-page"><i class="fa fa-file-text-o"></i> {{ page.title }}</h1>
+                            {% include 'partials/breadcrumbs.html.twig' %}
+                            <div class="block-info-page">
+                                {% for autor in page.taxonomy.autor %}
+                                    <span class="info"><i class="fa fa-user"></i> <a href="{{ base_url_relative }}/search/query:{{ autor }}">{{ autor }}</a> |</span>
+                                {% endfor %}
+                                {% for categoria in page.taxonomy.categoria %}
+                                    <span class="info"><i class="fa fa-folder"></i> <a href="{{ base_url_relative }}/search/query:{{ categoria }}">{{ categoria }}</a> |</span>
+                                {% endfor %}
+                                <span class="info"><i class="fa fa-eye"></i> {{ config.plugins['count-views'].counts[page.url] }} |</span>
+                                {% for tag in page.taxonomy.tag %}
+                                    <span class="tag info"><i class="fa fa-tag"></i> <a href="{{ base_url_relative }}/search/query:{{ tag }}">{{ tag }}</a></span>
+                                {% endfor %}
+                                <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}} | {{ snappygrav(page.route)|raw }}</span>
+                            </div>
+                            <div class="content">
+                                {{ page.content|raw }}
+                            </div>
+                            <div class="rating-vote">
+                                <hr>
+                                <h3><i class="fa fa-pencil-square-o"></i> Este artigo te ajudou?</h3>
+                                {{ thumbs(page.slug)|raw }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Bloco de Menu #}
+                {% if not titleMenuItens is empty %}
+                <div class="g-block size-25 page-menu">
+                    <div class="g-content" id="sticker">
+                        {{ titleMenuItens|raw }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
+
 {% endblock %}
+
+{% do assets.addJs('theme://js/jquery.sticky.js') %}
+{% do assets.addInlineJs('
+    $(document).ready(function(){
+       $("#sticker").sticky({topSpacing:0});
+    });
+')%}

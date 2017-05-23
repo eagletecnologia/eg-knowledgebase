@@ -24,3 +24,30 @@ form:
               label: Regra de Acesso
               placeholder_key: Regra
               placeholder_value: Valor(0 ou 1)
+            header_menu:
+              type: section
+              title: Menu Lateral
+              underline: true
+            header.menuright:
+              type: toggle
+              label: Habilitar Menu
+              highlight: 1
+              default: 1
+              help: Escolha se quer que apareça um menu na lateral direita da página baseado na opção de título abaixo
+              options:
+                1: Sim
+                0: Não
+              validate:
+                type: bool
+            header.tagtitle:
+              type: select
+              size: small
+              classes: fancy
+              default: h2
+              label: Selecione o filtro
+              help: Selecione qual o tipo de título será usado para filtrar na página e gerar o menu lateral esquerdo
+              options:
+                h1: Título 1 (h1)
+                h2: Título 2 (h2)
+                h3: Título 3 (h3)
+                h4: Título 4 (h4)

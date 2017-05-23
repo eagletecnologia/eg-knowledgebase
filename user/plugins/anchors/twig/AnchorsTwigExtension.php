@@ -4,6 +4,14 @@ namespace Grav\Plugin;
 
 class AnchorsTwigExtension extends \Twig_Extension
 {
+
+    private $config;
+
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
     public function getName()
     {
         return 'AnchorsTwigExtension';
@@ -23,17 +31,43 @@ class AnchorsTwigExtension extends \Twig_Extension
      * @param $tag
      * @return string
      */
-    public function anchorsFunction($content, $tag = 2)
+    public function anchorsFunction($content, $tag = 'h2')
+    {
+
+        $configTags = explode(',',$this->config);
+
+        if (in_array($tag, $configTags)){
+            return $this->getHtml($tag, $content);
+        }else{
+            $tag = current($configTags);
+            return $this->getHtml($tag, $content);
+        }
+
+    }
+
+
+    /**
+     * It to do processo of regex find the tag
+     *
+     * @param $tag
+     * @param $content
+     * @return string
+     */
+    private function getHtml($tag, $content)
     {
         $textMenu = [];
-        $rx = '/<h'.$tag.'>(.*)<\/h'.$tag.'>/';
+        $rx = '/<'.$tag.'>(.*)<\/'.$tag.'>/';
 
         preg_match_all($rx, $content, $group);
 
-        foreach($group[1] as $element){
-            $textMenu[] = $element;
+        if (!empty($group[1])){
+            foreach($group[1] as $element){
+                $textMenu[] = $element;
+            }
+            return $this->getHtmlTag($textMenu);
+        }else{
+            return '';
         }
-        return $this->getHtmlTag($textMenu);
     }
 
 
@@ -47,7 +81,7 @@ class AnchorsTwigExtension extends \Twig_Extension
     {
         $html = '';
 
-        $html .= '<ul>';
+        $html .= '<ul class="items-menus-page">';
         foreach($itens as $item){
             $html .= '<li><a href="#'.$this->getUrl($item).'">'.$item.'</a></li>';
         }

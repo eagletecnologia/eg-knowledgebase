@@ -1,5 +1,4 @@
 enabled: true
 active: true
-selectors: h2
 placement: right
 visible: hover
