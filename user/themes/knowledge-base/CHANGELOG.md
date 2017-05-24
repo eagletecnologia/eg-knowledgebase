@@ -1,3 +1,21 @@
+# v1.3.2
+##  05/17/2017
+
+1. [](#new)
+    * Polish translation added thanks to @AvantaR.
+
+# v1.3.1
+##  05/14/2017
+
+1. [](#bugfix)
+    * Pages now sort as was originally intended.
+
+# v1.3.0
+##  05/14/2017
+
+1. [](#new)
+    * Added `params:articles:blacklist` setting to allow you to omit categories.
+
 # v1.2.1
 ##  04/04/2017
 
