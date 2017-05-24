@@ -31,43 +31,40 @@ class AnchorsTwigExtension extends \Twig_Extension
      * @param $tag
      * @return string
      */
-    public function anchorsFunction($content, $tag = 'h2')
+    public function anchorsFunction($content, $tag = 'h2', $terms)
     {
 
-        $configTags = explode(',',$this->config);
+        $configTags = array_map('trim', explode(',',$this->config));
 
         if (in_array($tag, $configTags)){
-            return $this->getHtml($tag, $content);
+            $textMenu = [];
+            $rx = '/<'.$tag.'>(.*)<\/'.$tag.'>/';
+
+            preg_match_all($rx, $content, $group);
+
+            if (!empty($group[1])){
+
+                if (!empty($terms)){
+                    $termsArray = array_map('trim', explode(',',$terms));
+                    $elements = array_diff($group[1],$termsArray);
+                }else{
+                    $elements = $group[1];
+                }
+
+                foreach($elements as $element){
+                    $textMenu[] = $element;
+                }
+                $html = $this->getHtmlTag($textMenu);
+            }else{
+                $html = '';
+            }
         }else{
             $tag = current($configTags);
-            return $this->getHtml($tag, $content);
+            $html = $this->anchorsFunction($tag, $content);
         }
 
-    }
+        return $html;
 
-
-    /**
-     * It to do processo of regex find the tag
-     *
-     * @param $tag
-     * @param $content
-     * @return string
-     */
-    private function getHtml($tag, $content)
-    {
-        $textMenu = [];
-        $rx = '/<'.$tag.'>(.*)<\/'.$tag.'>/';
-
-        preg_match_all($rx, $content, $group);
-
-        if (!empty($group[1])){
-            foreach($group[1] as $element){
-                $textMenu[] = $element;
-            }
-            return $this->getHtmlTag($textMenu);
-        }else{
-            return '';
-        }
     }
 
 

@@ -1,4 +1,5 @@
 enabled: true
-active: true
+active: false
+selectors: 'h1,h2,h3,h4'
 placement: right
 visible: hover

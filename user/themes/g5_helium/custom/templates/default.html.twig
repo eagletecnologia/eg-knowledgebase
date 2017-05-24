@@ -4,7 +4,7 @@
 {% set titleMenuItens = '' %}
 
 {% if page.header.menuright %}
-    {% set titleMenuItens = anchors(page.content,page.header.tagtitle) %}
+    {% set titleMenuItens = anchors(page.content,page.header.tagtitle,page.header.terms) %}
 {% endif %}
 
 {% block content %}

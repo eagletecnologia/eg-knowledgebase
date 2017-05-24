@@ -26,8 +26,19 @@ form:
               placeholder_value: Valor(0 ou 1)
             header_menu:
               type: section
-              title: Menu Lateral
+              title: Âncoras
               underline: true
+            header.anchors.active:
+              type: toggle
+              label: Ativar Âncora
+              highlight: 1
+              default: 0
+              help: Permita o plugin de âncora na página
+              options:
+                1: Sim
+                0: Não
+              validate:
+                type: bool
             header.menuright:
               type: toggle
               label: Habilitar Menu
@@ -51,3 +62,7 @@ form:
                 h2: Título 2 (h2)
                 h3: Título 3 (h3)
                 h4: Título 4 (h4)
+            header.terms:
+              type: text
+              label: Retirar títulos
+              help: Coloque os termos separados por vírgula que deseja retirar do filtro. Ex: Caso não queira que apareça o link de um determinado título na lista de âncoras da lateral, copie e cole o texto do título aqui.
