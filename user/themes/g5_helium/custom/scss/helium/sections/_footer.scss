@@ -94,12 +94,14 @@
 
     // To Top
     .footer-totop{
-        position: absolute;
+        position: fixed;
         right: rem(15px);
-        top: rem(-24px);
+        display: none;
+        //bottom: rem(140px);
         background: $accent-color-2;
         border-radius: 50%;
         @include size(rem(50px));
+        @include transition(all 0.3s linear);
     }
     .g-totop {
         text-align: center;

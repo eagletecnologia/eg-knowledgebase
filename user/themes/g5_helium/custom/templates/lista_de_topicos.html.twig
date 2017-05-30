@@ -31,9 +31,20 @@
     </div>
 {% endblock %}
 
+{% if not hasChildren is empty %}
 {% do assets.addJs('theme://js/jquery.sticky.js') %}
+{% do assets.addJs('theme://js/perfect-scrollbar.jquery.min.js') %}
+{% do assets.addCss('theme://css/perfect-scrollbar.min.css') %}
 {% do assets.addInlineJs('
     $(document).ready(function(){
        $("#sticker").sticky({topSpacing:0});
+
+       var divMenu = $("#sticker ul");
+       var h = divMenu.height();
+       if (h > 450){
+          divMenu.css("height","450");
+          divMenu.perfectScrollbar();
+       }
     });
 ')%}
+{% endif %}
