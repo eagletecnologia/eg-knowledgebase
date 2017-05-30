@@ -14,3 +14,40 @@ PLUGIN_LOGIN:
     WELCOME: "Olá"
     REMEMBER_ME: "Me lembre"
     BTN_LOGIN: "Entrar"
+NICETIME:
+    NO_DATE_PROVIDED: Nenhuma data fornecida
+    BAD_DATE: Data ruim
+    AGO: atrás
+    FROM_NOW: agora
+    SECOND: segundo
+    MINUTE: minuto
+    HOUR: hora
+    DAY: dia
+    WEEK: semana
+    MONTH: mês
+    YEAR: ano
+    DECADE: década
+    SEC: sec
+    MIN: min
+    HR: hr
+    DAY: dia
+    WK: sem
+    MO: mês
+    YR: ano
+    DEC: dec
+    SECOND_PLURAL: segundos
+    MINUTE_PLURAL: minutos
+    HOUR_PLURAL: horas
+    DAY_PLURAL: dias
+    WEEK_PLURAL: semanas
+    MONTH_PLURAL: meses
+    YEAR_PLURAL: anos
+    DECADE_PLURAL: décadas
+    SEC_PLURAL: segs
+    MIN_PLURAL: mins
+    HR_PLURAL: hrs
+    DAY_PLURAL: dias
+    WK_PLURAL: sems
+    MO_PLURAL: meses
+    YR_PLURAL: anos
+    DEC_PLURAL: decs
