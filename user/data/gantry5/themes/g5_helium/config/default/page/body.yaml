@@ -5,4 +5,4 @@ attribs:
 layout:
   sections: '0'
 body_top: ''
-body_bottom: ''
+body_bottom: "<script type=\"text/javascript\">\n$(document).ready(function(){\n$(window).scroll(function() {\n                    if($(this).scrollTop() != 0) {\n                        $('.footer-totop').fadeIn();\n                        $('.footer-totop').css('bottom','140px');\n                    } else {\n                        $('.footer-totop').css('bottom','-140px');\n                        $('.footer-totop').fadeOut();\n                    }\n                });\n})\n</script>"

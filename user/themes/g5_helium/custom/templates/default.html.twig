@@ -29,7 +29,7 @@
                                 {% for tag in page.taxonomy.tag %}
                                     <span class="tag info"><i class="fa fa-tag"></i> <a href="{{ base_url_relative }}/search/query:{{ tag }}">{{ tag }}</a></span>
                                 {% endfor %}
-                                <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}} | {{ snappygrav(page.route)|raw }}</span>
+                                <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}}</span>
                             </div>
                             <div class="content">
                                 {{ page.content|raw }}
@@ -56,9 +56,20 @@
 
 {% endblock %}
 
+{% if not titleMenuItens is empty %}
 {% do assets.addJs('theme://js/jquery.sticky.js') %}
+{% do assets.addJs('theme://js/perfect-scrollbar.jquery.min.js') %}
+{% do assets.addCss('theme://css/perfect-scrollbar.min.css') %}
 {% do assets.addInlineJs('
     $(document).ready(function(){
        $("#sticker").sticky({topSpacing:0});
+
+       var divMenu = $("#sticker ul");
+       var h = divMenu.height();
+       if (h > 450){
+          divMenu.css("height","450");
+          divMenu.perfectScrollbar();
+       }
     });
 ')%}
+{% endif %}
