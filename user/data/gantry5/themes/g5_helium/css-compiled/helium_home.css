@@ -77,7 +77,7 @@ textarea, select[multiple=multiple], input[type="color"], input[type="date"], in
   font-family: 'rockettheme-apps';
   font-style: normal;
   font-weight: normal;
-  src: url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.eot?5910780f#iefix') format("embedded-opentype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff2?5910780f') format("woff2"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff?5910780f') format("woff"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.ttf?5910780f') format("truetype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.svg?5910780f#rockettheme-apps') format("svg");
+  src: url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.eot#iefix') format("embedded-opentype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff2') format("woff2"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff') format("woff"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.ttf') format("truetype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.svg#rockettheme-apps') format("svg");
 }
 /* line 4, user/themes/g5_helium/custom/scss/helium/styles/_fonts.scss */
 i.fa-grav-spaceman, i.fa-grav-text, i.fa-grav-full, i.fa-grav-logo, i.fa-grav-symbol, i.fa-grav-logo-both, i.fa-grav-both, i.fa-gantry, i.fa-gantry-logo, i.fa-gantry-symbol, i.fa-gantry-logo-both, i.fa-gantry-both {
@@ -2077,32 +2077,41 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   list-style: none;
 }
 /* line 264, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-/* line 265, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+.page-menu .items-menus-page li {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+/* line 267, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
 .page-menu .items-menus-page li a {
   display: block;
   color: #424753;
   padding: 0.625rem;
   border-bottom: 1px dashed #ccc;
 }
-/* line 270, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+/* line 272, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
 .page-menu .items-menus-page li a:hover {
   background: #424753;
   color: #fff;
 }
-/* line 275, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-/* line 276, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+/* line 277, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+/* line 278, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
 .page-menu .items-menus-page li:last-child a {
   border-bottom: none;
 }
+/* line 284, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+/* line 285, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+.page-menu #sticker ul {
+  position: relative;
+}
 @media only all and (min-width: 60rem) and (max-width: 74.938rem) {
-  /* line 286, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 287, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 288, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 293, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 294, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 295, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .g-content {
     padding: 0.5rem 0;
   }
-  /* line 292, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 293, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 299, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 300, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .g-block.size-37 {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -2113,7 +2122,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     flex: 0 40%;
     width: 40%;
   }
-  /* line 297, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 304, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .g-block.size-29 {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -2124,7 +2133,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     flex: 0 40%;
     width: 40%;
   }
-  /* line 301, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 308, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .g-block.size-34 {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -2135,25 +2144,25 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     flex: 0 20%;
     width: 20%;
   }
-  /* line 306, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 307, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 313, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 314, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-b .desktop {
     display: none !important;
   }
-  /* line 310, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 317, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-b .mobile {
     padding: 0.625rem 1.875rem;
   }
 }
 @media only all and (min-width: 48rem) and (max-width: 59.938rem) {
-  /* line 318, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 319, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 320, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 325, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 326, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 327, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .g-content {
     padding: 0.5rem 0;
   }
-  /* line 324, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 325, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 331, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 332, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .g-block.size-37 {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -2164,7 +2173,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     flex: 0 40%;
     width: 40%;
   }
-  /* line 329, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 336, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .g-block.size-29 {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -2175,7 +2184,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     flex: 0 40%;
     width: 40%;
   }
-  /* line 333, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 340, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .g-block.size-34 {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -2186,41 +2195,41 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     flex: 0 20%;
     width: 20%;
   }
-  /* line 338, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 339, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 345, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 346, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-b .desktop {
     display: none;
   }
-  /* line 342, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 349, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-b .mobile {
     padding: 0.625rem 1.25rem;
   }
 }
 @media only all and (min-width: 30.062rem) and (max-width: 47.938rem) {
-  /* line 350, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 351, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 352, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 357, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 358, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 359, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-a .g-content {
     margin-top: 0.9375rem;
     text-align: center;
   }
-  /* line 355, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 356, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 362, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 363, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-a .g-content .g-logo img {
     display: inline-block;
     max-height: 100%;
   }
-  /* line 363, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 364, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 370, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 371, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .g-content {
     margin: 0.625rem;
   }
-  /* line 367, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 368, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 374, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 375, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .search-wrapper h1 {
     display: none;
   }
-  /* line 371, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 378, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .search-wrapper .search-input {
     padding-left: 2.1875rem;
     background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 0.625rem center;
@@ -2229,30 +2238,30 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   }
 }
 @media only all and (max-width: 30rem) {
-  /* line 383, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 384, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 385, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 390, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 391, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 392, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-a .g-content {
     margin-top: 0.9375rem;
     text-align: center;
   }
-  /* line 388, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 389, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 395, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 396, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-a .g-content .g-logo img {
     display: inline-block;
     max-height: 100%;
   }
-  /* line 396, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 397, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 403, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 404, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .g-content {
     margin: 0.625rem;
   }
-  /* line 400, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
-  /* line 401, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 407, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 408, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .search-wrapper h1 {
     display: none;
   }
-  /* line 404, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 411, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .search-wrapper .search-input {
     padding-left: 2.1875rem;
     background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 0.625rem center;
@@ -2261,7 +2270,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   }
 }
 @media print {
-  /* line 416, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
+  /* line 423, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation {
     background: #fff !important;
     color: #000 !important;
@@ -2616,7 +2625,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   padding: 3rem 0;
   position: relative;
   z-index: 10;
-  background: url('../../../../../themes/g5_helium/images/testimonials/img01.jpg?5910780f') no-repeat center top;
+  background: url('../../../../../themes/g5_helium/images/testimonials/img01.jpg') no-repeat center top;
   background-size: cover;
 }
 /* line 13, user/themes/g5_helium/custom/scss/helium/sections/_testimonials.scss */

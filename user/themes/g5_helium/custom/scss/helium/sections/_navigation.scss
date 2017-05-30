@@ -262,6 +262,8 @@
         margin: 0;
         list-style: none;
         li{
+            text-transform: uppercase;
+            font-size: 12px;
             a{
                 display: block;
                 color: $base-text-color;
@@ -277,6 +279,11 @@
                     border-bottom: none;
                 }
             }
+        }
+    }
+    #sticker{
+        ul{
+            position: relative;
         }
     }
 }
