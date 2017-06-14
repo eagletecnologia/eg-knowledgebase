@@ -5,7 +5,9 @@
     {% for i in 1..colum %}
         <li class="topic-children"><ul>
             {% for i in 1..ceil(itens/colum) if tmp < itens %}
-                <li><a href="{{ recent_posts[tmp].url }}" title="{{ recent_posts[tmp].title }}">{{ recent_posts[tmp].title }}</a></li>
+                <li><a href="{{ recent_posts[tmp].url }}" title="{{ recent_posts[tmp].title }}">
+                        {{ recent_posts[tmp].title|length > 40 ? recent_posts[tmp].title|slice(0, 40) ~ '...' : recent_posts[tmp].title  }}
+                </a></li>
                 {% set tmp = tmp + 1 %}
             {% endfor %}
         </ul></li>

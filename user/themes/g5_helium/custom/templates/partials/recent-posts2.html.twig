@@ -2,7 +2,7 @@
     {% for post in recent_posts %}
         <a title="post.title" href="{{ post.url }}">
             {#<span>{{ post.date|date("F Y") }}</span>#}
-            {{ post.title }},
+            {{ post.title|length > 40 ? post.title|slice(0, 40) ~ '...' : post.title  }} |
         </a>
     {% endfor %}
 </span>

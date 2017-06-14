@@ -2,8 +2,17 @@
 
 {% set collection = page.evaluate(['@root.descendants']) %}
 
+{% set count = 0 %}
+
 {% block particle %}
 
+    {% for row in collection %}
+        {% if config.plugins['count-views'].counts[row.url] > 100 %}
+            {% set count = count + 1 %}
+        {% endif %}
+    {% endfor %}
+    {{ count }}
+    {% if count > 0 %}
     <div>
         <h3><i class="fa fa-star"></i> Tópicos Populares</h3>
         <ul class="topic-wraper">
@@ -12,7 +21,9 @@
                         {% for p in row %}
                             {% if config.plugins['count-views'].counts[p.url] > 100 %}
                                 {% if p.home() != true %}
-                                <li><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></li>
+                                <li><a href="{{ p.url }}" title="{{ p.title }}">
+                                        {{ p.title|length > 40 ? p.title|slice(0, 40) ~ '...' : p.title  }}
+                                </a></li>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
@@ -20,5 +31,6 @@
             {% endfor %}
         </ul>
     </div>
+    {% endif %}
 
 {% endblock %}
