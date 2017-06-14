@@ -10,6 +10,32 @@ form:
       active: 1
 
       fields:
+        advanced:
+          type: tab
+          title: Avançado
+
+          fields:
+            columns:
+              type: columns
+              fields:
+                column1:
+                  type: column
+                  fields:
+
+                    name:
+                      replace@: true
+                      type: select
+                      classes: fancy
+                      label: PLUGIN_ADMIN.PAGE_FILE
+                      help: PLUGIN_ADMIN.PAGE_FILE_HELP
+                      default: default
+                      options:
+                        default: Padrão
+                        lista_de_topicos: Lista de Tópicos
+                        blog_list: Blog
+                        blog_item: Blog Item
+
+
         param:
           type: tab
           title: Parâmetros
@@ -19,11 +45,9 @@ form:
               type: section
               title: ACL
               underline: true
-            header.access:
-              type: array
-              label: Regra de Acesso
-              placeholder_key: Regra
-              placeholder_value: Valor(0 ou 1)
+              import@:
+                type: partials/acl
+                context: blueprints://
             header_menu:
               type: section
               title: Âncoras
