@@ -1,0 +1,7 @@
+form:
+  fields:
+    header.access:
+      type: array
+      label: Regra de Acesso
+      placeholder_key: Regra
+      placeholder_value: Valor(0 ou 1)
