@@ -63,11 +63,14 @@
 			span{
 				padding: 0;
 			}
+			height: inherit;
+			line-height: rem(30px);
 			border-bottom: 1px dashed #ccc;
 		}
 		.title-page{
 			color: $accent-color-2;
 			margin-bottom: rem(5px);
+			line-height: rem(50px);
 			i.fa{
 				color: $base-text-color;
 			}
@@ -113,6 +116,22 @@
 					height: 360px;
 					position: inherit;
 				}
+			}
+			/*Configura de Títulos*/
+			h2 {
+				text-transform: uppercase;
+				font-size: rem(30px);
+				line-height: rem(45px);
+			}
+			h3{
+				font-weight: normal;
+				font-size: rem(28px);
+				font-weight: bold;
+				line-height: rem(45px);
+			}
+			h4{
+				font-size: rem(24px);
+				line-height: rem(35px);
 			}
 		}
 		.content-page-topic{
@@ -276,6 +295,8 @@
 			}
 			#breadcrumbs{
 				font-size: rem(10px);
+				height: inherit;
+				line-height: rem(30px);
 			}
 			.block-info-page{
 				font-size: rem(12px);
