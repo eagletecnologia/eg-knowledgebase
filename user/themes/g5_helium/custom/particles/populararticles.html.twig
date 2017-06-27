@@ -11,13 +11,19 @@
 {% block particle %}
 
     {% for row in collection %}
-        {% if config.plugins['count-views'].counts[row.url] > 100 and row.home() != true %}
+        {% set item = page.find(row.url).parent %}
+        {% if config.plugins['count-views'].counts[row.url] > 100 and
+              row.home() != true and
+              item.header.access is not defined and
+              row.header.access is not defined %}
             {% set datas = datas|merge([row]) %}
             {% set count = count + 1 %}
         {% endif %}
     {% endfor %}
     {% set totalItens = datas|length %}
-    {% if count > 0%}
+    {% if count > 0 %}
+    {# Criar um array com valores randômicos com a cadeia de tamanho 9 #}
+    {% set datas = datas|randomize|slice(0,9) %}
     <div>
         <h3><i class="fa fa-star"></i> Tópicos Populares</h3>
         <ul class="topic-wraper" style="justify-content: {% if (totalItens/qtdItens)|round(0,'ceil') > 2 %} space-between {% else %} initial {% endif %}">

@@ -1,8 +1,11 @@
 <span class="sidebar-post">
     {% for post in recent_posts %}
-        <a title="post.title" href="{{ post.url }}">
-            {#<span>{{ post.date|date("F Y") }}</span>#}
-            {{ post.title|length > 40 ? post.title|slice(0, 40) ~ '...' : post.title }}
-        </a><span style="color:#A3FFFA">|</span>
+        {% set item = page.find(post.url).parent %}
+        {% if item.header.access is not defined and post.header.access is not defined%}
+            <a title="post.title" href="{{ post.url }}">
+                {#<span>{{ post.date|date("F Y") }}</span>#}
+                {{ post.title|length > 40 ? post.title|slice(0, 40) ~ '...' : post.title }}
+            </a><span style="color:#A3FFFA">|</span>
+        {% endif %}
     {% endfor %}
 </span>

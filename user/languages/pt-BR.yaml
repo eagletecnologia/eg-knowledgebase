@@ -51,3 +51,9 @@ NICETIME:
     MO_PLURAL: meses
     YR_PLURAL: anos
     DEC_PLURAL: decs
+FORM:
+  VALIDATION_FAIL: <strong><i class="fa fa-frown-o"></i> Falha na Validação:</strong>
+  INVALID_INPUT: Campo inválido em
+  MISSING_REQUIRED_FIELD: O seguinte campo é obrigatório:
+  MONTHS_OF_THE_YEAR: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+  DAYS_OF_THE_WEEK: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
