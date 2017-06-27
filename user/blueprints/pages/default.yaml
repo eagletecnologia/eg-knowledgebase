@@ -10,6 +10,20 @@ form:
       active: 1
 
       fields:
+        options:
+          type: tab
+          title: PLUGIN_ADMIN.OPTIONS
+
+          fields:
+            taxonomies:
+              type: section
+              title: PLUGIN_ADMIN.TAXONOMIES
+              underline: true
+
+              fields:
+                header.taxonomy:
+                  validate:
+                    required: true
         advanced:
           type: tab
           title: Avançado
