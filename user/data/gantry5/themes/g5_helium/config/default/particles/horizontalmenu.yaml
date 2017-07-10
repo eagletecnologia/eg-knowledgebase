@@ -1,32 +1,38 @@
 enabled: '1'
 class: ''
-target: _blank
 items:
   -
     text: Início
     link: /
+    target: _parent
     name: Início
   -
     text: Manuais
     link: manuais
+    target: _parent
     name: Manuais
   -
     text: FAQs
     link: faq
+    target: _parent
     name: FAQs
   -
     text: Materiais
     link: materiais
+    target: _parent
     name: Materiais
   -
     text: 'Formulários de Solicitação'
     link: /formularios-de-solicitacao
+    target: _parent
     name: 'Formulários de Solicitação'
   -
     text: Blog
     link: 'http://blog.eagletecnologia.com'
+    target: _blank
     name: Blog
   -
     text: Contate-nos
     link: 'https://eagletecnologia.com'
+    target: _blank
     name: Contate-nos
