@@ -19,6 +19,10 @@ items:
     link: materiais
     name: Materiais
   -
+    text: 'Formulários de Solicitação'
+    link: /formularios-de-solicitacao
+    name: 'Formulários de Solicitação'
+  -
     text: Blog
     link: 'http://blog.eagletecnologia.com'
     name: Blog
