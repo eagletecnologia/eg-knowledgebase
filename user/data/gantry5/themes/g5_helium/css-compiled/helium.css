@@ -292,6 +292,63 @@ hr {
   border-radius: 50%;
   padding: 0 0.3125rem !important;
 }
+/* line 48, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+/* line 49, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog h2 {
+  margin-bottom: 0;
+}
+/* line 52, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog h3 {
+  margin-top: 0;
+  font-size: 1.375rem !important;
+  font-weight: normal !important;
+}
+/* line 57, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ol {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem 0;
+}
+/* line 61, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ol a[href='#new'] + ul > li:before {
+  background-color: #207de5;
+  content: 'New';
+}
+/* line 65, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ol a[href='#improved'] + ul > li:before {
+  background-color: #fbca04;
+  color: #333;
+  content: 'Improved';
+}
+/* line 70, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ol a[href='#bugfix'] + ul > li:before {
+  background-color: #fc2929;
+  content: 'Bugfix';
+}
+/* line 75, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ul {
+  list-style: none;
+  padding: 0;
+}
+/* line 78, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ul li {
+  margin-bottom: 1rem;
+  padding-left: 4.5rem;
+}
+/* line 81, user/themes/g5_helium/custom/scss/helium/styles/_utilities.scss */
+.changelog ul li:before {
+  margin-left: -6rem;
+  display: inline-block;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 700;
+  margin-right: 1rem;
+  text-align: center;
+  width: 5rem;
+  font-size: 0.8rem;
+  padding: 2px 0;
+  font-style: normal;
+}
 /* line 2, user/themes/g5_helium/custom/scss/helium/styles/_variations.scss */
 /* line 4, user/themes/g5_helium/custom/scss/helium/styles/_variations.scss */
 .flush > .g-container, .g-flushed > .g-container, .flush > .g-content, .g-flushed > .g-content {

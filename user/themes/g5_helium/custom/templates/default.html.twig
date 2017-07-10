@@ -3,19 +3,20 @@
 
 {% set titleMenuItens = '' %}
 
+{% set titlePage = page.title %}
+
 {% if page.header.menuright %}
     {% set titleMenuItens = anchors(page.content,page.header.tagtitle,page.header.terms) %}
 {% endif %}
 
 {% block content %}
-
     <div class="block-module-topics">
         <div class="g-container">
             <div class="g-grid">
                 {# Bloco de texto #}
                 <div class="g-block {% if titleMenuItens is empty %}size-100{% else %}size-75{% endif %}">
                     <div class="g-content">
-                        <div class="content-page-default">
+                        <div class="content-page-default {% if titlePage == 'Changelog' %}changelog{% endif %}">
                             <h1 class="title-page"><i class="fa fa-file-text-o"></i> {{ page.title }}</h1>
                             {% include 'partials/breadcrumbs.html.twig' %}
                             <div class="block-info-page">
