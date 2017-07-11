@@ -223,6 +223,7 @@
 				position: absolute;
 				top:0;
 				left: 0;
+				z-index: 99;
 			}
 			&:hover{
 				@include transition(all 0.3s linear);
@@ -239,6 +240,15 @@
 			.read-more{
 				display: none;
 			}
+		}
+		#breadcrumbs{
+			span{
+				padding: 0;
+			}
+			height: inherit;
+			line-height: rem(30px);
+			border-bottom: 1px dashed #ccc;
+			padding: rem(10px) 0;
 		}
 	}
 	.blog-header{

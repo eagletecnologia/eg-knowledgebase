@@ -48,6 +48,8 @@ form:
                         lista_de_topicos: Lista de Tópicos
                         blog_list: Blog
                         blog_item: Blog Item
+                        form: Formulário
+                        formdata: Resposta de Formulário
 
 
         param:

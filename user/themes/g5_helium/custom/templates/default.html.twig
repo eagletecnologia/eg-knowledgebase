@@ -3,19 +3,22 @@
 
 {% set titleMenuItens = '' %}
 
+{% set titlePage = page.title %}
+
+{% set readTime = page.content|readingtime %}
+
 {% if page.header.menuright %}
     {% set titleMenuItens = anchors(page.content,page.header.tagtitle,page.header.terms) %}
 {% endif %}
 
 {% block content %}
-
     <div class="block-module-topics">
         <div class="g-container">
             <div class="g-grid">
                 {# Bloco de texto #}
                 <div class="g-block {% if titleMenuItens is empty %}size-100{% else %}size-75{% endif %}">
                     <div class="g-content">
-                        <div class="content-page-default">
+                        <div class="content-page-default {% if titlePage == 'Changelog' %}changelog{% endif %}">
                             <h1 class="title-page"><i class="fa fa-file-text-o"></i> {{ page.title }}</h1>
                             {% include 'partials/breadcrumbs.html.twig' %}
                             <div class="block-info-page">
@@ -29,7 +32,7 @@
                                 {% for tag in page.taxonomy.tag %}
                                     <span class="tag info"><i class="fa fa-tag"></i> <a href="{{ base_url_relative }}/search/query:{{ tag }}">{{ tag }}</a></span>
                                 {% endfor %}
-                                <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}}</span>
+                                <span class="float-right datetime"><strong>Página atualizada:</strong> <i class="fa fa-clock-o"></i> {{ page.date|nicetime(false)}} {% if readTime != '0 mins' %}| <span title="Tempo de Leitura da Página"><i class="fa fa-file-text-o"></i> {{ page.content|readingtime }}</span> {% endif %}</span>
                             </div>
                             <div class="content">
                                 {{ page.content|raw }}
