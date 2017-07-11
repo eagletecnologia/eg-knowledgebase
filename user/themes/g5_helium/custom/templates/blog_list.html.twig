@@ -11,7 +11,7 @@
     {% endif %}
 
     <div class="list-blog cols-{{ page.header.content.columns }}">
-
+        {% include 'partials/breadcrumbs.html.twig' %}
         {# Leading #}
         {% if page.header.content.leading > 0 %}
             {% for child in collection | slice(0, page.header.content.leading) %}
