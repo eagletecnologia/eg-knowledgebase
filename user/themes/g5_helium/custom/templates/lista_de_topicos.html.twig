@@ -36,6 +36,7 @@
 {% do assets.addJs('theme://js/perfect-scrollbar.jquery.min.js') %}
 {% do assets.addCss('theme://css/perfect-scrollbar.min.css') %}
 {% do assets.addInlineJs('
+
     $(document).ready(function(){
        $("#sticker").sticky({topSpacing:0});
 
@@ -46,5 +47,6 @@
           divMenu.perfectScrollbar();
        }
     });
+
 ')%}
 {% endif %}

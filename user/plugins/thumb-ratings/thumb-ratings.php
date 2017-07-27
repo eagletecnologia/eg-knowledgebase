@@ -204,7 +204,7 @@ class ThumbRatingsPlugin extends Plugin
             $existsIp = ' true';
         }
         
-        $html = '<div class="thumb-rating-container" data-thumb-rating="'.$data.'">';
+                $html = '<div class="thumb-rating-container" data-thumb-rating="'.$data.'">';
 
         $html .= '<div id="t0-'.$id.'" class="thumb up'.$existsIp.'" style="color:'.$up_color.';background-color:'.$up_bgcolor.';">';
         $html .= '<i class="fa fa-heart" aria-hidden="true"></i>&nbsp;';
