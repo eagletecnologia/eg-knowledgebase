@@ -56,23 +56,49 @@
             </div>
         </div>
     </div>
+    {% if not titleMenuItens is empty %}
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $(document).on("click", "a[href^= '#']", function (e) {
+                    var id = $(this).attr("href");
+
+                    var target = $(id);
+
+                    if (target.length === 0) {
+                      return;
+                    }
+
+                    e.preventDefault();
+
+                    $("body, html").animate({ scrollTop: target.offset().top });
+                });
+            });
+        </script>
+    {% endif %}
 
 {% endblock %}
 
 {% if not titleMenuItens is empty %}
+
 {% do assets.addJs('theme://js/jquery.sticky.js') %}
 {% do assets.addJs('theme://js/perfect-scrollbar.jquery.min.js') %}
 {% do assets.addCss('theme://css/perfect-scrollbar.min.css') %}
 {% do assets.addInlineJs('
+    
     $(document).ready(function(){
-       $("#sticker").sticky({topSpacing:0});
+        
+        $("#sticker").sticky({topSpacing:0});
 
-       var divMenu = $("#sticker ul");
-       var h = divMenu.height();
-       if (h > 450){
+        var divMenu = $("#sticker ul");
+        var h = divMenu.height();
+        if (h > 450){
           divMenu.css("height","450");
           divMenu.perfectScrollbar();
-       }
+        }
+
     });
+
 ')%}
 {% endif %}
