@@ -204,17 +204,17 @@ class ThumbRatingsPlugin extends Plugin
             $existsIp = ' true';
         }
         
-        $html = '<div class="thumb-rating-container" data-thumb-rating="'.$data.'">';
+                $html = '<div class="thumb-rating-container" data-thumb-rating="'.$data.'">';
 
-        $html .= '<div id="t0-'.$id.'" class="thumb'.$existsIp.'" style="color:'.$up_color.';background-color:'.$up_bgcolor.';">';
-        $html .= '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;';
-        $html .= $count_up;
-        $html .= '</div>';
+        $html .= '<div id="t0-'.$id.'" class="thumb up'.$existsIp.'" style="color:'.$up_color.';background-color:'.$up_bgcolor.';">';
+        $html .= '<i class="fa fa-heart" aria-hidden="true"></i>&nbsp;';
+        $html .= '('.$count_up.')';
+        $html .= ' Sim, obrigado</div>';
 
-        $html .= '<div id="t1-'.$id.'" class="thumb'.$existsIp.'" style="color:'.$down_color.';background-color:'.$down_bgcolor.';">';
-        $html .= '<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>&nbsp;';
-        $html .= $count_down;
-        $html .= '</div>';
+        $html .= '<div id="t1-'.$id.'" class="thumb down'.$existsIp.'" style="color:'.$down_color.';background-color:'.$down_bgcolor.';">';
+        $html .= '<i class="fa fa-frown-o" aria-hidden="true"></i>&nbsp;';
+        $html .= '('.$count_down.')';
+        $html .= ' Infelizmente não</div>';
         
         $html .= '</div>';
 
