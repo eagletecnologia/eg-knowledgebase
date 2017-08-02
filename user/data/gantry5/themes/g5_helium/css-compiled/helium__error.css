@@ -831,7 +831,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
 }
 /* line 1, user/themes/g5_helium/custom/scss/helium/styles/_notices.scss */
 .notices {
-  padding: 1px 1px 1px 75px;
+  padding: 1px 15px 1px 75px;
   margin: 15px 0;
   position: relative;
 }
