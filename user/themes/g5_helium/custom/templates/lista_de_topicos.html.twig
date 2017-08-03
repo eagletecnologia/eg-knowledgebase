@@ -17,6 +17,10 @@
                             {{ p.summary|raw }}
                             {% include 'partials/lista_de_topicos_item.html.twig' with {'pagina': p.url} %}
                         {% endfor %}
+                        {# Render the pagination list #}
+                        {% if config.plugins.pagination.enabled and collection.params.pagination %}
+                            {% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+                        {% endif %}
                     </div>
                 </div>
                 {% if not hasChildren is empty %}
