@@ -250,6 +250,24 @@
 			border-bottom: 1px dashed #ccc;
 			padding: rem(10px) 0;
 		}
+		.pagination{
+			text-align: right;
+			li{
+				border: 1px solid #ccc;
+				span{
+					color: #aaa;
+				}
+				a{
+					color: #00a39b;
+					&:hover{
+						color: #FF7100;
+					}
+				}
+			}
+		}
+		.form-eaglegestao {
+			margin: 0 150px;
+		}
 	}
 	.blog-header{
 		text-align: center;
@@ -347,6 +365,12 @@
 					float: none !important;
 				}
 			}
+			.form-eaglegestao {
+				margin: 0;
+				.buttons{
+					text-align: center;
+				}
+			}
 		}
 		.content-page-topic{
 			figure{
@@ -408,6 +432,12 @@
 				}
 				.float-right{
 					float: none !important;
+				}
+			}
+			.form-eaglegestao {
+				margin: 0;
+				.buttons{
+					text-align: center;
 				}
 			}
 		}
