@@ -18,7 +18,7 @@ use Grav\Common\Uri;
 class AssignmentsPage implements AssignmentsInterface
 {
     public $type = 'page';
-    public $priority = 1;
+    public $priority = 3;
 
     /**
      * Returns list of rules which apply to the current page.
@@ -70,7 +70,6 @@ class AssignmentsPage implements AssignmentsInterface
             $route = trim($page->route(), '/');
             $items[] = [
                 'name' => $route,
-                'field' => ['id', 'link/' . $route],
                 'disabled' => !$page->isPage(),
                 'label' => str_repeat('—', substr_count($route, '/')) . ' ' . $page->title(),
             ];

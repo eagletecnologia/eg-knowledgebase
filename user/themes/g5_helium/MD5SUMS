@@ -132,8 +132,8 @@ fonts/rockettheme-apps/rockettheme-apps.svg	431a7de65db6fea600722c933bb795ee
 fonts/rockettheme-apps/rockettheme-apps.ttf	2185692f8168ab2fa54c0923be97f190
 fonts/rockettheme-apps/rockettheme-apps.woff	f1258374fedaa30401743337048a64bb
 fonts/rockettheme-apps/rockettheme-apps.woff2	0b76f0674592d3d4653e6524045e890e
-gantry/presets.yaml	536601ff9bbd7ad772cd12e4e1671bce
-gantry/theme.yaml	623967ed7f28bee506fdaae82572dafe
+gantry/presets.yaml	4edfd8f32f98ba3020831b1ed61db43f
+gantry/theme.yaml	624d2bb127d57e3293cfbc1cc9b620c7
 images/above/img01.jpeg	45d1bc6fa1ac764f15b937a1e1e9a377
 images/above/img02.jpeg	c08f1ce863d7c69e1b73ce49f8b48416
 images/header/img01.jpg	fb3b9862ecc04e7206e246659e68f2af
@@ -170,7 +170,7 @@ scss/configuration/_colors.scss	28683b7095123463ba85bb72c5cc94ab
 scss/configuration/_core.scss	fc259e6dd1781e54d78ad9a1b678513f
 scss/configuration/_nav.scss	4570e1c2ba67fbc42d985b67ca38359a
 scss/configuration/_offcanvas.scss	d1b6ac6d7b59da93e1e4127f8659ba50
-scss/configuration/_typography.scss	849c282613a4efbf11346f1ddc401b0a
+scss/configuration/_typography.scss	3ba0b425fa53049936a99dc19d88a09a
 scss/helium/layouts/_error.scss	5991af5f16d29d51b190c0e65638aaf1
 scss/helium/layouts/_offline.scss	9e40ebce3147eadfeed256fe8d85251c
 scss/helium/particles/_contentarray.scss	ede3fd1b7cb7ff17abdae8fbcea136fd
@@ -196,7 +196,7 @@ scss/helium/sections/_pagesurround.scss	b7f668e1881677160ff4e6204a90d962
 scss/helium/sections/_sidebar.scss	ac2a885692e8d186903e5e471ac5e535
 scss/helium/sections/_testimonials.scss	28f2c02615b8e4b0c317759822003baf
 scss/helium/sections/_utility.scss	0a686bf3c045f9dae4f99ee496f23fc9
-scss/helium/styles/_buttons.scss	74d31bf9bfdca92777851895562cd09d
+scss/helium/styles/_buttons.scss	0b3abf205d0f557b76fa045993137818
 scss/helium/styles/_core.scss	e8d0c0eb9d9815be073c9c1305640f72
 scss/helium/styles/_dropdownanimations.scss	c377e197affd33d0a9391411f67654d7
 scss/helium/styles/_fonts.scss	b101ca9e6436bca82ff603915d9e68c8
@@ -215,6 +215,6 @@ includes/theme.php	ab4f31781afc5855a01ddebfc2ea1d0d
 g5_helium.yaml	c992c6c2943becc7320a32e402e7e4f8
 screenshot.jpg	8c441eee4bbff673b59e8f260c8c63b0
 thumbnail.jpg	04c6c1b93403ff58809bf441687f9a48
-blueprints.yaml	53978bb858723a6ea260b78a8f83ce44
+blueprints.yaml	9ee6e781cc1325b8a4a9fbd0743a2cde
 theme.php	fb6046bdf5a8465e8c688a5ffa5a3ab6
 MD5SUMS	d41d8cd98f00b204e9800998ecf8427e

@@ -1,8 +1,8 @@
 details:
   name: Helium
-  version: '5.4.14'
+  version: '5.4.18'
   icon: paper-plane
-  date: 'July  6, 2017'
+  date: 'September 21, 2017'
   author:
     name: RocketTheme, LLC
     email: support@rockettheme.com
@@ -17,7 +17,7 @@ details:
   updates:
     link: http://updates.rockettheme.com/themes/helium.yaml
 
-  copyright: (C) 2005 - 2016 RocketTheme, LLC. All rights reserved.
+  copyright: (C) 2005 - 2017 RocketTheme, LLC. All rights reserved.
   license: GPLv2
   description: Helium Theme
   images:

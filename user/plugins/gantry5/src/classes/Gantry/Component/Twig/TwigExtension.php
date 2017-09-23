@@ -13,6 +13,7 @@
 
 namespace Gantry\Component\Twig;
 
+use Gantry\Component\Content\Document\HtmlDocument;
 use Gantry\Component\Gantry\GantryTrait;
 use Gantry\Component\Translator\TranslatorInterface;
 use Gantry\Framework\Gantry;
@@ -54,7 +55,10 @@ class TwigExtension extends \Twig_Extension
             new \Twig_SimpleFilter('truncate_text', [$this, 'truncateText']),
             new \Twig_SimpleFilter('truncate_html', [$this, 'truncateHtml']),
             new \Twig_SimpleFilter('string', [$this, 'stringFilter']),
+            new \Twig_SimpleFilter('int', [$this, 'intFilter']),
+            new \Twig_SimpleFilter('float', [$this, 'floatFilter']),
             new \Twig_SimpleFilter('array', [$this, 'arrayFilter']),
+            new \Twig_SimpleFilter('attribute_array', [$this, 'attributeArrayFilter'], ['is_safe' => true]),
         ];
     }
 
@@ -212,6 +216,29 @@ class TwigExtension extends \Twig_Extension
         return (string) $input;
     }
 
+
+    /**
+     * Casts input to int.
+     *
+     * @param mixed $input
+     * @return int
+     */
+    public function intFilter($input)
+    {
+        return (int) $input;
+    }
+
+    /**
+     * Casts input to float.
+     *
+     * @param mixed $input
+     * @return float
+     */
+    public function floatFilter($input)
+    {
+        return (float) $input;
+    }
+
     /**
      * Casts input to array.
      *
@@ -221,6 +248,34 @@ class TwigExtension extends \Twig_Extension
     public function arrayFilter($input)
     {
         return (array) $input;
+    }
+
+    /**
+     * Takes array of attribute keys and values and converts it to properly escaped HTML attributes.
+     *
+     * @example ['data-id' => 'id', 'data-key' => 'key'] => ' data-id="id" data-key="key"'
+     * @example [['data-id' => 'id'], ['data-key' => 'key']] => ' data-id="id" data-key="key"'
+     *
+     * @param string|string[] $input
+     * @return string
+     */
+    public function attributeArrayFilter($input)
+    {
+        if (is_string($input)) {
+            return $input;
+        }
+
+        $array = [];
+        foreach ((array) $input as $key => $value) {
+            if (is_array($value)) {
+                foreach ((array) $value as $key2 => $value2) {
+                    $array[] = HtmlDocument::escape($key2) . '="' . HtmlDocument::escape($value2, 'html_attr') . '"';
+                }
+            } elseif ($key) {
+                $array[] = HtmlDocument::escape($key) . '="' . HtmlDocument::escape($value, 'html_attr') . '"';
+            }
+        }
+        return $array ? ' ' . implode(' ', $array) : '';
     }
 
     public function is_selectedFunc($a, $b)

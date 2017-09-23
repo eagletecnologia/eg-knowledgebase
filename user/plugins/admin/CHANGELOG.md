@@ -1,3 +1,40 @@
+# v1.6.0
+## 09/07/2017
+
+1. [](#new)
+    * **Added 2-Factor Authentication support to the admin!**
+    * **Added rate-limiting for "failed login attempts" and "forgot password"**
+1. [](#improved)
+    * Revamped the toggle switch CSS so it's more flexible and works better [#1198](https://github.com/getgrav/grav-plugin-admin/issues/1198)
+    * Improved toggle/button alignment on Page edit view
+1. [](#bugfix)
+    * Fixed an issue where icon-picker style was hiding field elements [#1199](https://github.com/getgrav/grav-plugin-admin/issues/1199)
+    * Fixed https -> http redirect issue [#1195](https://github.com/getgrav/grav-plugin-admin/issues/1195)
+    * Also check `/.` for home route [#1191](https://github.com/getgrav/grav-plugin-admin/issues/1191)
+    * Fixed administration being broken in multi-site environments with plugin overrides
+    * Fixed lang-switcher broken in MS Edge browser [#1213](https://github.com/getgrav/grav-plugin-admin/pull/1213)
+    * Added custom `form_id` attribute for modal forms [#1216](https://github.com/getgrav/grav-plugin-admin/issues/1216)
+    * Fixed partially cropped line in Markdown editor for MS Edge/Firefox [#1219](https://github.com/getgrav/grav-plugin-admin/pull/1219)
+    * Downgraded Babel libraries to v6.x for compatibility with webpack [#1218](https://github.com/getgrav/grav-plugin-admin/pull/1218)
+
+# v1.5.2
+## 08/16/2017
+
+1. [](#new)
+    * Added a new icon quick-tray in side navigation that plugins can utilize
+    * Added ability to set and retrieve temporary admin messages
+1. [](#improved)
+    * Allow different field to be used as page label in list of pages [#1122](https://github.com/getgrav/grav-plugin-admin/pull/1122)
+    * Updated `en` language for `cache-control` + `clear_images_by_default` system settings
+    * Allow sorting of page based on custom ordering [#1182](https://github.com/getgrav/grav-plugin-admin/pull/1182)
+    * Search for pages by slug and folder name [#1183](https://github.com/getgrav/grav-plugin-admin/pull/1183)
+    * Allow all page data to be used during `onAdminCreatePageFrontmatter()` event [#1175](https://github.com/getgrav/grav-plugin-admin/pull/1175)
+    * Remove single quotes when slugifying title [#1178](https://github.com/getgrav/grav-plugin-admin/pull/1178)
+1. [](#bugfix)
+    * Ignore missing Twig files [#1169](https://github.com/getgrav/grav-plugin-admin/issues/1169)
+    * If from is already defined, don't override it [#1129](https://github.com/getgrav/grav-plugin-admin/issues/1129)
+    * Fixed SelectUnique field not working with files with spaces
+
 # v1.5.1
 ## 07/19/2017
 
