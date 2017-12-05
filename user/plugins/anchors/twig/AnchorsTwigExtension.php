@@ -26,7 +26,6 @@ class AnchorsTwigExtension extends \Twig_Extension
 
     /**
      * Get a list of anchors link
-     *
      * @param $content
      * @param $tag
      * @return string
