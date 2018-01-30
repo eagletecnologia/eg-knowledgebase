@@ -1,3 +1,28 @@
+# v2.0.0
+## 09-12-2017
+
+1. [](#new)
+    * V2 release
+
+# v2.0.0-beta2
+## 30-11-2017
+
+1. [](#improved)
+    * Regex-capture pattern to include Markdown Extra syntax
+    * Unit tests to include Markdown Extra syntax
+
+# v2.0.0-beta1
+## 25-11-2017
+
+1. [](#new)
+    * Changed name to 'ImgCaptions'
+    * Added template-rendering
+    * Added Markdown-mode
+    * Added Event override
+    * Added unit tests
+2. [](#improved)
+    * Refactored plugin
+
 # v1.2.6
 ## 29-05-2017
 

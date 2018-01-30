@@ -45,8 +45,8 @@ abstract class RealLoader
             throw new \LogicException(self::$errorMessageGantryLoaded);
         }
 
-        define('GANTRY5_VERSION', '5.4.19');
-        define('GANTRY5_VERSION_DATE', 'October 18, 2017');
+        define('GANTRY5_VERSION', '5.4.22');
+        define('GANTRY5_VERSION_DATE', 'December 12, 2017');
 
         if (!defined('DS')) {
             define('DS', DIRECTORY_SEPARATOR);
@@ -75,7 +75,7 @@ abstract class RealLoader
                 define('GANTRY5_ROOT', preg_replace('|' . preg_quote(CONTENT_DIR). '$|', '', WP_CONTENT_DIR));
             } else {
                 // Plain WP support.
-                define('GANTRY5_ROOT', ABSPATH);
+                define('GANTRY5_ROOT', dirname(WP_CONTENT_DIR));
             }
         } elseif (defined('GRAV_VERSION') && defined('ROOT_DIR')) {
             define('GANTRY5_PLATFORM', 'grav');

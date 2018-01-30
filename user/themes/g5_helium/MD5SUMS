@@ -21,7 +21,6 @@ blueprints/styles/navigation.yaml	7bb0e28697e3072a1a36d2a465fa67de
 blueprints/styles/offcanvas.yaml	e038e93b6ee9e928aac702d2282a487c
 blueprints/styles/testimonials.yaml	2ba12c91c790bd858ea3e152e3c4515f
 blueprints/styles/utility.yaml	3c2db8279b257842247146042f900eea
-blueprints.yaml	d3739bb9a203224a12840b745f8bd6c4
 config/default/page/body.yaml	951fc10febe2180289a7ab7c57c291d8
 config/default/particles/branding.yaml	3e70aa1c6e2baefb8c7c165b903819e9
 config/default/particles/copyright.yaml	f7a684993646a37f2f2abd320dd9170b
@@ -133,9 +132,8 @@ fonts/rockettheme-apps/rockettheme-apps.svg	431a7de65db6fea600722c933bb795ee
 fonts/rockettheme-apps/rockettheme-apps.ttf	2185692f8168ab2fa54c0923be97f190
 fonts/rockettheme-apps/rockettheme-apps.woff	f1258374fedaa30401743337048a64bb
 fonts/rockettheme-apps/rockettheme-apps.woff2	0b76f0674592d3d4653e6524045e890e
-g5_helium.yaml	c992c6c2943becc7320a32e402e7e4f8
 gantry/presets.yaml	4edfd8f32f98ba3020831b1ed61db43f
-gantry/theme.yaml	98ed58ce9bb14228c2e89cc9d2da6265
+gantry/theme.yaml	6b921db184914c9e4014654f21b75f9d
 images/above/img01.jpeg	45d1bc6fa1ac764f15b937a1e1e9a377
 images/above/img02.jpeg	c08f1ce863d7c69e1b73ce49f8b48416
 images/header/img01.jpg	fb3b9862ecc04e7206e246659e68f2af
@@ -149,7 +147,6 @@ images/styles/preset5.png	e6c9becfc68f1c17272648012a282660
 images/styles/preset6.png	ca4e91b130ff7af13e53b6f1a6d0304c
 images/testimonials/face.jpg	118d004b5e5309af72459585aa1ff789
 images/testimonials/img01.jpg	272ee57acb3c0cc6d863f60001143da6
-includes/theme.php	ab4f31781afc5855a01ddebfc2ea1d0d
 js/juitabs.js	1e05f058abf0f4eaacc926a14e936d19
 js/owlcarousel.js	0aa8dbbc9beca33dd418f7b2a3c966b1
 layouts/_body_only.yaml	43dce3ad03bac74c337c6151f59bc94a
@@ -157,7 +154,6 @@ layouts/_error.yaml	ade3d185bc08148bd7295c1e89f1e4b1
 layouts/_offline.yaml	8a05c4dde55e6811ac95fdc639c88404
 layouts/default.yaml	15fd05bda30a83f05ccfde7b970d716f
 layouts/home_-_particles.yaml	83439c33dd1e3ee0c16fae1d0bfba5b8
-MD5SUMS	d41d8cd98f00b204e9800998ecf8427e
 particles/contentcubes.html.twig	9e0caa29709930da5340b13f3d0fe6bb
 particles/contentcubes.yaml	286ea382c0919026540047d4e0eea53b
 particles/contenttabs.html.twig	0e3fb88150268b4889603c451a03e52e
@@ -169,8 +165,6 @@ particles/horizontalmenu.yaml	1916d0a5cf34d6e2ac31e736dec6db7c
 particles/owlcarousel.html.twig	271feff699d8e466356a633064fef502
 particles/owlcarousel.yaml	19354e82f21458da91daa517f297bdf8
 particles/totop.html.twig	b129b99b62916d5ab4b5df2985721182
-screenshot.jpg	8c441eee4bbff673b59e8f260c8c63b0
-scss/_dependencies.scss	4084325166da53696bb301f7946a78e2
 scss/configuration/_base.scss	eca6279273f288549eee4130846fe2cf
 scss/configuration/_colors.scss	28683b7095123463ba85bb72c5cc94ab
 scss/configuration/_core.scss	fc259e6dd1781e54d78ad9a1b678513f
@@ -213,8 +207,14 @@ scss/helium/styles/_tables.scss	84e30ada4aa5c38ee47079cfcaaefe3d
 scss/helium/styles/_typography.scss	b68a76910605a7eb183a0210c6906d08
 scss/helium/styles/_utilities.scss	f3c0da4c31924096832a8a866103dfbd
 scss/helium/styles/_variations.scss	e71e10fbd7111c99822b38b98d339bd6
+scss/_dependencies.scss	4084325166da53696bb301f7946a78e2
+scss/helium.scss	4e03acb7c4719038e88a9089f9b7934f
 scss/helium-grav/_core.scss	34aca9b16a13205eabcab585f2fe427f
 scss/helium-grav.scss	ae237e3bf6f435f7aea7802725710314
-scss/helium.scss	4e03acb7c4719038e88a9089f9b7934f
-theme.php	fb6046bdf5a8465e8c688a5ffa5a3ab6
+includes/theme.php	ab4f31781afc5855a01ddebfc2ea1d0d
+g5_helium.yaml	c992c6c2943becc7320a32e402e7e4f8
+screenshot.jpg	8c441eee4bbff673b59e8f260c8c63b0
 thumbnail.jpg	04c6c1b93403ff58809bf441687f9a48
+blueprints.yaml	ea3a368500b587f61665865af133bd7e
+theme.php	fb6046bdf5a8465e8c688a5ffa5a3ab6
+MD5SUMS	d41d8cd98f00b204e9800998ecf8427e

@@ -1,5 +1,6 @@
 enabled: '1'
 url: ''
+target: _self
 image: 'gantry-media://top/logo.png'
 link: '1'
 svg: ''
