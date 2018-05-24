@@ -7,23 +7,28 @@
             <h4>{{ 'PLUGIN_LOGIN.WELCOME'|t }} <strong>{{ grav.user.fullname ?: grav.user.username }}</strong></h4>
             <hr>
             <a class="button button-square button-small logout" href="{{ uri.addNonce(base_url_relative ~ uri.path ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce') }}">{{ 'PLUGIN_LOGIN.BTN_LOGOUT'|t }}</a>
-
+        {% elseif user.authenticated and user.twofa_enabled %}
+            {% include 'partials/login-twofa.html.twig' %}
         {% else %}
             <h1 class="title"><i class="fa fa-lock"></i> Autenticação</h1>
             <p class="auth-msn">Esta página é restrita</p>
+            {# NEW WAY OF INCLUDING 3RD PARTY LOGIN OPTIONS #}
+            {% for template in grav.login.getProviderLoginTemplates %}
+                {% include template %}
+            {% endfor %}
 
-            <form method="post" action="{{ base_url_relative ~ uri.path }}">
+            <form method="post" action="{{ (base_url_relative ~ uri.path)|e }}">
+            
                 {% if grav.twig.plugins_hooked_loginPage %}
                     {% for label in grav.twig.plugins_hooked_loginPage %}
                         {% include label %}
                     {% endfor %}
                 {% endif %}
 
-                {% for field in page.header.form.fields %}
+                {% for field in form.fields %}
+                    {% set value = field.name == 'username' ? username : '' %}
                     {% if field.type %}
-                        <div>
-                            {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}
-                        </div>
+                        {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}
                     {% endif %}
                 {% endfor %}
 

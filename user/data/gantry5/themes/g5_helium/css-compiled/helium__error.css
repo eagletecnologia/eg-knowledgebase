@@ -77,7 +77,7 @@ textarea, select[multiple=multiple], input[type="color"], input[type="date"], in
   font-family: 'rockettheme-apps';
   font-style: normal;
   font-weight: normal;
-  src: url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.eot?5b06a2f1#iefix') format("embedded-opentype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff2?5b06a2f1') format("woff2"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff?5b06a2f1') format("woff"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.ttf?5b06a2f1') format("truetype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.svg?5b06a2f1#rockettheme-apps') format("svg");
+  src: url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.eot#iefix') format("embedded-opentype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff2') format("woff2"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.woff') format("woff"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.ttf') format("truetype"), url('../../../../../themes/g5_helium/fonts/rockettheme-apps/rockettheme-apps.svg#rockettheme-apps') format("svg");
 }
 /* line 4, user/themes/g5_helium/custom/scss/helium/styles/_fonts.scss */
 i.fa-grav-spaceman, i.fa-grav-text, i.fa-grav-full, i.fa-grav-logo, i.fa-grav-symbol, i.fa-grav-logo-both, i.fa-grav-both, i.fa-gantry, i.fa-gantry-logo, i.fa-gantry-symbol, i.fa-gantry-logo-both, i.fa-gantry-both {
@@ -1612,7 +1612,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
 }
 /* line 15, user/themes/g5_helium/custom/scss/helium/sections/_pagesurround.scss */
 #g-page-surround {
-  background: url('../../../../../themes/g5_helium/images/page/back-page-image-min.jpg?5b06a2f1') no-repeat top center;
+  background: url('../../../../../themes/g5_helium/images/page/back-page-image-min.jpg') no-repeat top center;
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
@@ -1683,7 +1683,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   padding: 1.25rem;
   padding-left: 5.625rem;
   font-size: 1.5625rem;
-  background: url('../../../../../themes/g5_helium/images/header/icon-search.png?5b06a2f1') #fff no-repeat left 1.5625rem center;
+  background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 1.5625rem center;
 }
 /* line 78, user/themes/g5_helium/custom/scss/helium/sections/_header.scss */
 #g-header .block-recent-posts {
@@ -1790,7 +1790,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     padding: 0.9375rem;
     padding-left: 5.3125rem;
     font-size: 1.25rem;
-    background: url('../../../../../themes/g5_helium/images/header/icon-search.png?5b06a2f1') #fff no-repeat left 1.25rem center;
+    background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 1.25rem center;
     width: 100% !important;
   }
   /* line 177, user/themes/g5_helium/custom/scss/helium/sections/_header.scss */
@@ -1845,7 +1845,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
     padding: 0.9375rem;
     padding-left: 5.3125rem;
     font-size: 1.25rem;
-    background: url('../../../../../themes/g5_helium/images/header/icon-search.png?5b06a2f1') #fff no-repeat left 1.25rem center;
+    background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 1.25rem center;
     width: 100% !important;
   }
   /* line 217, user/themes/g5_helium/custom/scss/helium/sections/_header.scss */
@@ -2102,7 +2102,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   color: #999;
   border-radius: 0;
   padding-left: 2.1875rem;
-  background: url('../../../../../themes/g5_helium/images/header/icon-search.png?5b06a2f1') #fff no-repeat left 0.625rem center;
+  background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 0.625rem center;
   background-size: 1rem;
   width: 100%;
 }
@@ -2289,7 +2289,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   /* line 378, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .search-wrapper .search-input {
     padding-left: 2.1875rem;
-    background: url('../../../../../themes/g5_helium/images/header/icon-search.png?5b06a2f1') #fff no-repeat left 0.625rem center;
+    background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 0.625rem center;
     background-size: 1rem;
     width: 100%;
   }
@@ -2321,7 +2321,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   /* line 411, user/themes/g5_helium/custom/scss/helium/sections/_navigation.scss */
   #g-navigation .block-small-search .search-wrapper .search-input {
     padding-left: 2.1875rem;
-    background: url('../../../../../themes/g5_helium/images/header/icon-search.png?5b06a2f1') #fff no-repeat left 0.625rem center;
+    background: url('../../../../../themes/g5_helium/images/header/icon-search.png') #fff no-repeat left 0.625rem center;
     background-size: 1rem;
     width: 100%;
   }
@@ -2682,7 +2682,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   padding: 3rem 0;
   position: relative;
   z-index: 10;
-  background: url('../../../../../themes/g5_helium/images/testimonials/img01.jpg?5b06a2f1') no-repeat center top;
+  background: url('../../../../../themes/g5_helium/images/testimonials/img01.jpg') no-repeat center top;
   background-size: cover;
 }
 /* line 13, user/themes/g5_helium/custom/scss/helium/sections/_testimonials.scss */
@@ -2938,7 +2938,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
 #g-mainbar .block-module-topics .topic-children ul, #g-mainbar .content-page-default .topic-children ul {
   margin-left: 0;
   padding-right: 1.5625rem;
-  list-style-image: url('../../../../../themes/g5_helium/images/page/list-style-topics.gif?5b06a2f1');
+  list-style-image: url('../../../../../themes/g5_helium/images/page/list-style-topics.gif');
 }
 /* line 163, user/themes/g5_helium/custom/scss/helium/sections/_main.scss */
 #g-mainbar .block-module-topics .topic-children ul li, #g-mainbar .content-page-default .topic-children ul li {

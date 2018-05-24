@@ -1,0 +1,16 @@
+{% set providers = grav.oauth2.providers %}
+{% set style_class = grav.oauth2.config.button_style == 'row' ? 'row-style' : 'square-style' %}
+<div class="form-oauth2 {{ style_class }}">
+    <p>Login with one of these available social accounts...</p>
+    <form method="post">
+        {% for provider in providers %}
+            {% include 'login-oauth2/providers/' ~ provider ~ '.html.twig' %}
+        {% endfor %}
+        <input type="hidden" name="task" value="login.oauth2" />
+    </form>
+    <div class="oauth2-or">
+        <span class="line"></span>
+        <span class="or">or</span>
+        <span class="line"></span>
+    </div>
+</div>
