@@ -1,0 +1,126 @@
+version: '2'
+services:
+  portainer:
+    image: portainer/portainer
+    restart: always
+    container_name: portainer
+    ports:
+        - "9000:9000"
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ~/docker/volumes/portainer/data:/data
+
+  web:
+    image: shincoder/homestead:php7.0
+    restart: always
+    container_name: web
+    ports:
+        - "80:80"
+        - "2222:22"
+        - "35729:35729"
+        - "9876:9876"
+    volumes:
+        - ~/.composer:/home/homestead/.composer
+        - ~/.gitconfig:/home/homestead/.gitconfig
+        - ~/.ssh:/home/homestead/.ssh
+        - ~/docker/volumes/web/www/:/apps/www
+        - ~/docker/volumes/web/nginx/sites-available:/etc/nginx/sites-available
+        - ~/docker/volumes/web/nginx/sites-enabled:/etc/nginx/sites-enabled
+    links:
+        - mysql
+
+  gitlab:
+    image: gitlab/gitlab-ce:9.1.3-ce.0
+    restart: always
+    container_name: gitlab
+    ports:
+      - "8000:80"
+      - "443:443"
+      - "2221:22"
+    volumes:
+      - ~/docker/volumes/gitlab/config:/etc/gitlab
+      - ~/docker/volumes/gitlab/logs:/var/log/gitlab
+      - ~/docker/volumes/gitlab/data:/var/opt/gitlab
+
+  jenkins:
+    image: jenkins/jenkins
+    container_name: jenkins
+    environment:
+      JAVA_OPTS: "-Djava.awt.headless=true"
+    ports:
+      - "50000:50000"
+      - "8001:8080"
+    volumes:
+      - '~/docker/volumes/jenkins:/var/jenkins_home'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    container_name: phpmyadmin
+    links:
+        - mysql
+    ports:
+        - "8080:80"
+    environment:
+        PMA_HOST: mysql
+        MYSQL_USERNAME: "suasenha"
+        MYSQL_ROOT_PASSWORD: "suasenha"
+
+  pgadmin:
+    image: fenglc/pgadmin4
+    restart: always
+    container_name: pgadmin
+    links:
+       - postgres
+    ports:
+       - "8081:5050"
+
+  sonarqube:
+    image: sonarqube:6.4-alpine
+    restart: always
+    container_name: sonarqube
+    ports:
+       - "8002:9000"
+       - "8092:9092"
+    environment:
+       SONARQUBE_JDBC_USERNAME: postgres
+       SONARQUBE_JDBC_PASSWORD: suasenha
+       SONARQUBE_JDBC_URL: jdbc:postgresql://postgres:5432/postgres
+    volumes:
+       - ~/docker/volumes/sonarqube/conf:/opt/sonarqube/conf
+       - ~/docker/volumes/sonarqube/data:/opt/sonarqube/data
+       - ~/docker/volumes/sonarqube/extensions:/opt/sonarqube/extensions
+       - ~/docker/volumes/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    links:
+       - postgres
+
+  testlink:
+    image: eagletec/testlink
+    restart: always
+    container_name: testlink
+    ports:
+        - "8003:80"
+    links:
+        - postgres
+    volumes:
+        - ~/docker/volumes/testlink/html:/var/www/html
+
+  mysql:
+    image: mysql
+    restart: always
+    container_name: mysql
+    ports:
+        - "33060:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: "suasenha"
+    volumes:
+        - ~/docker/volumes/mysql:/var/lib/mysql
+
+  postgres:
+    image: postgres
+    restart: always
+    container_name: postgres
+    environment:
+        POSTGRES_PASSWORD: "suasenha" #user = postgres
+    volumes:
+        - ~/docker/volumes/posgres:/var/lib/postgresql/data
