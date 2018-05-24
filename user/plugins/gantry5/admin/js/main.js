@@ -26871,6 +26871,7 @@ module.exports = Options
 
 },{"mout/object/merge":287,"prime":289}],298:[function(require,module,exports){
 (function (process,global){
+<<<<<<< HEAD
 /*
 defer
 */"use strict"
@@ -28887,6 +28888,2024 @@ var parse = function(expression){
 }
 
 module.exports = parse
+=======
+/*
+defer
+*/"use strict"
+
+var kindOf  = require("mout/lang/kindOf"),
+    now     = require("mout/time/now"),
+    forEach = require("mout/array/forEach"),
+    indexOf = require("mout/array/indexOf")
+
+var callbacks = {
+    timeout: {},
+    frame: [],
+    immediate: []
+}
+
+var push = function(collection, callback, context, defer){
+
+    var iterator = function(){
+        iterate(collection)
+    }
+
+    if (!collection.length) defer(iterator)
+
+    var entry = {
+        callback: callback,
+        context: context
+    }
+
+    collection.push(entry)
+
+    return function(){
+        var io = indexOf(collection, entry)
+        if (io > -1) collection.splice(io, 1)
+    }
+}
+
+var iterate = function(collection){
+    var time = now()
+
+    forEach(collection.splice(0), function(entry) {
+        entry.callback.call(entry.context, time)
+    })
+}
+
+var defer = function(callback, argument, context){
+    return (kindOf(argument) === "Number") ? defer.timeout(callback, argument, context) : defer.immediate(callback, argument)
+}
+
+if (global.process && process.nextTick){
+
+    defer.immediate = function(callback, context){
+        return push(callbacks.immediate, callback, context, process.nextTick)
+    }
+
+} else if (global.setImmediate){
+
+    defer.immediate = function(callback, context){
+        return push(callbacks.immediate, callback, context, setImmediate)
+    }
+
+} else if (global.postMessage && global.addEventListener){
+
+    addEventListener("message", function(event){
+        if (event.source === global && event.data === "@deferred"){
+            event.stopPropagation()
+            iterate(callbacks.immediate)
+        }
+    }, true)
+
+    defer.immediate = function(callback, context){
+        return push(callbacks.immediate, callback, context, function(){
+            postMessage("@deferred", "*")
+        })
+    }
+
+} else {
+
+    defer.immediate = function(callback, context){
+        return push(callbacks.immediate, callback, context, function(iterator){
+            setTimeout(iterator, 0)
+        })
+    }
+
+}
+
+var requestAnimationFrame = global.requestAnimationFrame ||
+    global.webkitRequestAnimationFrame ||
+    global.mozRequestAnimationFrame ||
+    global.oRequestAnimationFrame ||
+    global.msRequestAnimationFrame ||
+    function(callback) {
+        setTimeout(callback, 1e3 / 60)
+    }
+
+defer.frame = function(callback, context){
+    return push(callbacks.frame, callback, context, requestAnimationFrame)
+}
+
+var clear
+
+defer.timeout = function(callback, ms, context){
+    var ct = callbacks.timeout
+
+    if (!clear) clear = defer.immediate(function(){
+        clear = null
+        callbacks.timeout = {}
+    })
+
+    return push(ct[ms] || (ct[ms] = []), callback, context, function(iterator){
+        setTimeout(iterator, ms)
+    })
+}
+
+module.exports = defer
+
+}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"_process":1,"mout/array/forEach":302,"mout/array/indexOf":303,"mout/lang/kindOf":305,"mout/time/now":310}],299:[function(require,module,exports){
+/*
+Emitter
+*/"use strict"
+
+var indexOf = require("mout/array/indexOf"),
+    forEach = require("mout/array/forEach")
+
+var prime = require("./index"),
+    defer = require("./defer")
+
+var slice = Array.prototype.slice;
+
+var Emitter = prime({
+
+    constructor: function(stoppable){
+        this._stoppable = stoppable
+    },
+
+    on: function(event, fn){
+        var listeners = this._listeners || (this._listeners = {}),
+            events = listeners[event] || (listeners[event] = [])
+
+        if (indexOf(events, fn) === -1) events.push(fn)
+
+        return this
+    },
+
+    off: function(event, fn){
+        var listeners = this._listeners, events
+        if (listeners && (events = listeners[event])){
+
+            var io = indexOf(events, fn)
+            if (io > -1) events.splice(io, 1)
+            if (!events.length) delete listeners[event];
+            for (var l in listeners) return this
+            delete this._listeners
+        }
+        return this
+    },
+
+    emit: function(event){
+        var self = this,
+            args = slice.call(arguments, 1)
+
+        var emit = function(){
+            var listeners = self._listeners, events
+            if (listeners && (events = listeners[event])){
+                forEach(events.slice(0), function(event){
+                    var result = event.apply(self, args)
+                    if (self._stoppable) return result
+                })
+            }
+        }
+
+        if (args[args.length - 1] === Emitter.EMIT_SYNC){
+            args.pop()
+            emit()
+        } else {
+            defer(emit)
+        }
+
+        return this
+    }
+
+})
+
+Emitter.EMIT_SYNC = {}
+
+module.exports = Emitter
+
+},{"./defer":298,"./index":300,"mout/array/forEach":302,"mout/array/indexOf":303}],300:[function(require,module,exports){
+/*
+prime
+ - prototypal inheritance
+*/"use strict"
+
+var hasOwn = require("mout/object/hasOwn"),
+    mixIn  = require("mout/object/mixIn"),
+    create = require("mout/lang/createObject"),
+    kindOf = require("mout/lang/kindOf")
+
+var hasDescriptors = true
+
+try {
+    Object.defineProperty({}, "~", {})
+    Object.getOwnPropertyDescriptor({}, "~")
+} catch (e){
+    hasDescriptors = false
+}
+
+// we only need to be able to implement "toString" and "valueOf" in IE < 9
+var hasEnumBug = !({valueOf: 0}).propertyIsEnumerable("valueOf"),
+    buggy      = ["toString", "valueOf"]
+
+var verbs = /^constructor|inherits|mixin$/
+
+var implement = function(proto){
+    var prototype = this.prototype
+
+    for (var key in proto){
+        if (key.match(verbs)) continue
+        if (hasDescriptors){
+            var descriptor = Object.getOwnPropertyDescriptor(proto, key)
+            if (descriptor){
+                Object.defineProperty(prototype, key, descriptor)
+                continue
+            }
+        }
+        prototype[key] = proto[key]
+    }
+
+    if (hasEnumBug) for (var i = 0; (key = buggy[i]); i++){
+        var value = proto[key]
+        if (value !== Object.prototype[key]) prototype[key] = value
+    }
+
+    return this
+}
+
+var prime = function(proto){
+
+    if (kindOf(proto) === "Function") proto = {constructor: proto}
+
+    var superprime = proto.inherits
+
+    // if our nice proto object has no own constructor property
+    // then we proceed using a ghosting constructor that all it does is
+    // call the parent's constructor if it has a superprime, else an empty constructor
+    // proto.constructor becomes the effective constructor
+    var constructor = (hasOwn(proto, "constructor")) ? proto.constructor : (superprime) ? function(){
+        return superprime.apply(this, arguments)
+    } : function(){}
+
+    if (superprime){
+
+        mixIn(constructor, superprime)
+
+        var superproto = superprime.prototype
+        // inherit from superprime
+        var cproto = constructor.prototype = create(superproto)
+
+        // setting constructor.parent to superprime.prototype
+        // because it's the shortest possible absolute reference
+        constructor.parent = superproto
+        cproto.constructor = constructor
+    }
+
+    if (!constructor.implement) constructor.implement = implement
+
+    var mixins = proto.mixin
+    if (mixins){
+        if (kindOf(mixins) !== "Array") mixins = [mixins]
+        for (var i = 0; i < mixins.length; i++) constructor.implement(create(mixins[i].prototype))
+    }
+
+    // implement proto and return constructor
+    return constructor.implement(proto)
+
+}
+
+module.exports = prime
+
+},{"mout/lang/createObject":304,"mout/lang/kindOf":305,"mout/object/hasOwn":308,"mout/object/mixIn":309}],301:[function(require,module,exports){
+/*
+Map
+*/"use strict"
+
+var indexOf = require("mout/array/indexOf")
+
+var prime = require("./index")
+
+var Map = prime({
+
+    constructor: function Map(){
+        this.length = 0
+        this._values = []
+        this._keys = []
+    },
+
+    set: function(key, value){
+        var index = indexOf(this._keys, key)
+
+        if (index === -1){
+            this._keys.push(key)
+            this._values.push(value)
+            this.length++
+        } else {
+            this._values[index] = value
+        }
+
+        return this
+    },
+
+    get: function(key){
+        var index = indexOf(this._keys, key)
+        return (index === -1) ? null : this._values[index]
+    },
+
+    count: function(){
+        return this.length
+    },
+
+    forEach: function(method, context){
+        for (var i = 0, l = this.length; i < l; i++){
+            if (method.call(context, this._values[i], this._keys[i], this) === false) break
+        }
+        return this
+    },
+
+    map: function(method, context){
+        var results = new Map
+        this.forEach(function(value, key){
+            results.set(key, method.call(context, value, key, this))
+        }, this)
+        return results
+    },
+
+    filter: function(method, context){
+        var results = new Map
+        this.forEach(function(value, key){
+            if (method.call(context, value, key, this)) results.set(key, value)
+        }, this)
+        return results
+    },
+
+    every: function(method, context){
+        var every = true
+        this.forEach(function(value, key){
+            if (!method.call(context, value, key, this)) return (every = false)
+        }, this)
+        return every
+    },
+
+    some: function(method, context){
+        var some = false
+        this.forEach(function(value, key){
+            if (method.call(context, value, key, this)) return !(some = true)
+        }, this)
+        return some
+    },
+
+    indexOf: function(value){
+        var index = indexOf(this._values, value)
+        return (index > -1) ? this._keys[index] : null
+    },
+
+    remove: function(value){
+        var index = indexOf(this._values, value)
+
+        if (index !== -1){
+            this._values.splice(index, 1)
+            this.length--
+            return this._keys.splice(index, 1)[0]
+        }
+
+        return null
+    },
+
+    unset: function(key){
+        var index = indexOf(this._keys, key)
+
+        if (index !== -1){
+            this._keys.splice(index, 1)
+            this.length--
+            return this._values.splice(index, 1)[0]
+        }
+
+        return null
+    },
+
+    keys: function(){
+        return this._keys.slice()
+    },
+
+    values: function(){
+        return this._values.slice()
+    }
+
+})
+
+var map = function(){
+    return new Map
+}
+
+map.prototype = Map.prototype
+
+module.exports = map
+
+},{"./index":300,"mout/array/indexOf":303}],302:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],303:[function(require,module,exports){
+arguments[4][81][0].apply(exports,arguments)
+},{"dup":81}],304:[function(require,module,exports){
+arguments[4][83][0].apply(exports,arguments)
+},{"../object/mixIn":309,"dup":83}],305:[function(require,module,exports){
+arguments[4][89][0].apply(exports,arguments)
+},{"dup":89}],306:[function(require,module,exports){
+arguments[4][91][0].apply(exports,arguments)
+},{"./hasOwn":308,"dup":91}],307:[function(require,module,exports){
+arguments[4][92][0].apply(exports,arguments)
+},{"./forIn":306,"./hasOwn":308,"dup":92}],308:[function(require,module,exports){
+arguments[4][93][0].apply(exports,arguments)
+},{"dup":93}],309:[function(require,module,exports){
+arguments[4][94][0].apply(exports,arguments)
+},{"./forOwn":307,"dup":94}],310:[function(require,module,exports){
+arguments[4][100][0].apply(exports,arguments)
+},{"dup":100}],311:[function(require,module,exports){
+/**
+ * sifter.js
+ * Copyright (c) 2013 Brian Reavis & contributors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at:
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+ * ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ *
+ * @author Brian Reavis <brian@thirdroute.com>
+ */
+
+(function(root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+	} else if (typeof exports === 'object') {
+		module.exports = factory();
+	} else {
+		root.Sifter = factory();
+	}
+}(this, function() {
+
+	/**
+	 * Textually searches arrays and hashes of objects
+	 * by property (or multiple properties). Designed
+	 * specifically for autocomplete.
+	 *
+	 * @constructor
+	 * @param {array|object} items
+	 * @param {object} items
+	 */
+	var Sifter = function(items, settings) {
+		this.items = items;
+		this.settings = settings || {diacritics: true};
+	};
+
+	/**
+	 * Splits a search string into an array of individual
+	 * regexps to be used to match results.
+	 *
+	 * @param {string} query
+	 * @returns {array}
+	 */
+	Sifter.prototype.tokenize = function(query) {
+		query = trim(String(query || '').toLowerCase());
+		if (!query || !query.length) return [];
+
+		var i, n, regex, letter;
+		var tokens = [];
+		var words = query.split(/ +/);
+
+		for (i = 0, n = words.length; i < n; i++) {
+			regex = escape_regex(words[i]);
+			if (this.settings.diacritics) {
+				for (letter in DIACRITICS) {
+					if (DIACRITICS.hasOwnProperty(letter)) {
+						regex = regex.replace(new RegExp(letter, 'g'), DIACRITICS[letter]);
+					}
+				}
+			}
+			tokens.push({
+				string : words[i],
+				regex  : new RegExp(regex, 'i')
+			});
+		}
+
+		return tokens;
+	};
+
+	/**
+	 * Iterates over arrays and hashes.
+	 *
+	 * ```
+	 * this.iterator(this.items, function(item, id) {
+	 *    // invoked for each item
+	 * });
+	 * ```
+	 *
+	 * @param {array|object} object
+	 */
+	Sifter.prototype.iterator = function(object, callback) {
+		var iterator;
+		if (is_array(object)) {
+			iterator = Array.prototype.forEach || function(callback) {
+				for (var i = 0, n = this.length; i < n; i++) {
+					callback(this[i], i, this);
+				}
+			};
+		} else {
+			iterator = function(callback) {
+				for (var key in this) {
+					if (this.hasOwnProperty(key)) {
+						callback(this[key], key, this);
+					}
+				}
+			};
+		}
+
+		iterator.apply(object, [callback]);
+	};
+
+	/**
+	 * Returns a function to be used to score individual results.
+	 *
+	 * Good matches will have a higher score than poor matches.
+	 * If an item is not a match, 0 will be returned by the function.
+	 *
+	 * @param {object|string} search
+	 * @param {object} options (optional)
+	 * @returns {function}
+	 */
+	Sifter.prototype.getScoreFunction = function(search, options) {
+		var self, fields, tokens, token_count, nesting;
+
+		self        = this;
+		search      = self.prepareSearch(search, options);
+		tokens      = search.tokens;
+		fields      = search.options.fields;
+		token_count = tokens.length;
+		nesting     = search.options.nesting;
+
+		/**
+		 * Calculates how close of a match the
+		 * given value is against a search token.
+		 *
+		 * @param {mixed} value
+		 * @param {object} token
+		 * @return {number}
+		 */
+		var scoreValue = function(value, token) {
+			var score, pos;
+
+			if (!value) return 0;
+			value = String(value || '');
+			pos = value.search(token.regex);
+			if (pos === -1) return 0;
+			score = token.string.length / value.length;
+			if (pos === 0) score += 0.5;
+			return score;
+		};
+
+		/**
+		 * Calculates the score of an object
+		 * against the search query.
+		 *
+		 * @param {object} token
+		 * @param {object} data
+		 * @return {number}
+		 */
+		var scoreObject = (function() {
+			var field_count = fields.length;
+			if (!field_count) {
+				return function() { return 0; };
+			}
+			if (field_count === 1) {
+				return function(token, data) {
+					return scoreValue(getattr(data, fields[0], nesting), token);
+				};
+			}
+			return function(token, data) {
+				for (var i = 0, sum = 0; i < field_count; i++) {
+					sum += scoreValue(getattr(data, fields[i], nesting), token);
+				}
+				return sum / field_count;
+			};
+		})();
+
+		if (!token_count) {
+			return function() { return 0; };
+		}
+		if (token_count === 1) {
+			return function(data) {
+				return scoreObject(tokens[0], data);
+			};
+		}
+
+		if (search.options.conjunction === 'and') {
+			return function(data) {
+				var score;
+				for (var i = 0, sum = 0; i < token_count; i++) {
+					score = scoreObject(tokens[i], data);
+					if (score <= 0) return 0;
+					sum += score;
+				}
+				return sum / token_count;
+			};
+		} else {
+			return function(data) {
+				for (var i = 0, sum = 0; i < token_count; i++) {
+					sum += scoreObject(tokens[i], data);
+				}
+				return sum / token_count;
+			};
+		}
+	};
+
+	/**
+	 * Returns a function that can be used to compare two
+	 * results, for sorting purposes. If no sorting should
+	 * be performed, `null` will be returned.
+	 *
+	 * @param {string|object} search
+	 * @param {object} options
+	 * @return function(a,b)
+	 */
+	Sifter.prototype.getSortFunction = function(search, options) {
+		var i, n, self, field, fields, fields_count, multiplier, multipliers, get_field, implicit_score, sort;
+
+		self   = this;
+		search = self.prepareSearch(search, options);
+		sort   = (!search.query && options.sort_empty) || options.sort;
+
+		/**
+		 * Fetches the specified sort field value
+		 * from a search result item.
+		 *
+		 * @param  {string} name
+		 * @param  {object} result
+		 * @return {mixed}
+		 */
+		get_field = function(name, result) {
+			if (name === '$score') return result.score;
+			return getattr(self.items[result.id], name, options.nesting);
+		};
+
+		// parse options
+		fields = [];
+		if (sort) {
+			for (i = 0, n = sort.length; i < n; i++) {
+				if (search.query || sort[i].field !== '$score') {
+					fields.push(sort[i]);
+				}
+			}
+		}
+
+		// the "$score" field is implied to be the primary
+		// sort field, unless it's manually specified
+		if (search.query) {
+			implicit_score = true;
+			for (i = 0, n = fields.length; i < n; i++) {
+				if (fields[i].field === '$score') {
+					implicit_score = false;
+					break;
+				}
+			}
+			if (implicit_score) {
+				fields.unshift({field: '$score', direction: 'desc'});
+			}
+		} else {
+			for (i = 0, n = fields.length; i < n; i++) {
+				if (fields[i].field === '$score') {
+					fields.splice(i, 1);
+					break;
+				}
+			}
+		}
+
+		multipliers = [];
+		for (i = 0, n = fields.length; i < n; i++) {
+			multipliers.push(fields[i].direction === 'desc' ? -1 : 1);
+		}
+
+		// build function
+		fields_count = fields.length;
+		if (!fields_count) {
+			return null;
+		} else if (fields_count === 1) {
+			field = fields[0].field;
+			multiplier = multipliers[0];
+			return function(a, b) {
+				return multiplier * cmp(
+					get_field(field, a),
+					get_field(field, b)
+				);
+			};
+		} else {
+			return function(a, b) {
+				var i, result, a_value, b_value, field;
+				for (i = 0; i < fields_count; i++) {
+					field = fields[i].field;
+					result = multipliers[i] * cmp(
+						get_field(field, a),
+						get_field(field, b)
+					);
+					if (result) return result;
+				}
+				return 0;
+			};
+		}
+	};
+
+	/**
+	 * Parses a search query and returns an object
+	 * with tokens and fields ready to be populated
+	 * with results.
+	 *
+	 * @param {string} query
+	 * @param {object} options
+	 * @returns {object}
+	 */
+	Sifter.prototype.prepareSearch = function(query, options) {
+		if (typeof query === 'object') return query;
+
+		options = extend({}, options);
+
+		var option_fields     = options.fields;
+		var option_sort       = options.sort;
+		var option_sort_empty = options.sort_empty;
+
+		if (option_fields && !is_array(option_fields)) options.fields = [option_fields];
+		if (option_sort && !is_array(option_sort)) options.sort = [option_sort];
+		if (option_sort_empty && !is_array(option_sort_empty)) options.sort_empty = [option_sort_empty];
+
+		return {
+			options : options,
+			query   : String(query || '').toLowerCase(),
+			tokens  : this.tokenize(query),
+			total   : 0,
+			items   : []
+		};
+	};
+
+	/**
+	 * Searches through all items and returns a sorted array of matches.
+	 *
+	 * The `options` parameter can contain:
+	 *
+	 *   - fields {string|array}
+	 *   - sort {array}
+	 *   - score {function}
+	 *   - filter {bool}
+	 *   - limit {integer}
+	 *
+	 * Returns an object containing:
+	 *
+	 *   - options {object}
+	 *   - query {string}
+	 *   - tokens {array}
+	 *   - total {int}
+	 *   - items {array}
+	 *
+	 * @param {string} query
+	 * @param {object} options
+	 * @returns {object}
+	 */
+	Sifter.prototype.search = function(query, options) {
+		var self = this, value, score, search, calculateScore;
+		var fn_sort;
+		var fn_score;
+
+		search  = this.prepareSearch(query, options);
+		options = search.options;
+		query   = search.query;
+
+		// generate result scoring function
+		fn_score = options.score || self.getScoreFunction(search);
+
+		// perform search and sort
+		if (query.length) {
+			self.iterator(self.items, function(item, id) {
+				score = fn_score(item);
+				if (options.filter === false || score > 0) {
+					search.items.push({'score': score, 'id': id});
+				}
+			});
+		} else {
+			self.iterator(self.items, function(item, id) {
+				search.items.push({'score': 1, 'id': id});
+			});
+		}
+
+		fn_sort = self.getSortFunction(search, options);
+		if (fn_sort) search.items.sort(fn_sort);
+
+		// apply limits
+		search.total = search.items.length;
+		if (typeof options.limit === 'number') {
+			search.items = search.items.slice(0, options.limit);
+		}
+
+		return search;
+	};
+
+	// utilities
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	var cmp = function(a, b) {
+		if (typeof a === 'number' && typeof b === 'number') {
+			return a > b ? 1 : (a < b ? -1 : 0);
+		}
+		a = asciifold(String(a || ''));
+		b = asciifold(String(b || ''));
+		if (a > b) return 1;
+		if (b > a) return -1;
+		return 0;
+	};
+
+	var extend = function(a, b) {
+		var i, n, k, object;
+		for (i = 1, n = arguments.length; i < n; i++) {
+			object = arguments[i];
+			if (!object) continue;
+			for (k in object) {
+				if (object.hasOwnProperty(k)) {
+					a[k] = object[k];
+				}
+			}
+		}
+		return a;
+	};
+
+	/**
+	 * A property getter resolving dot-notation
+	 * @param  {Object}  obj     The root object to fetch property on
+	 * @param  {String}  name    The optionally dotted property name to fetch
+	 * @param  {Boolean} nesting Handle nesting or not
+	 * @return {Object}          The resolved property value
+	 */
+	var getattr = function(obj, name, nesting) {
+	    if (!obj || !name) return;
+	    if (!nesting) return obj[name];
+	    var names = name.split(".");
+	    while(names.length && (obj = obj[names.shift()]));
+	    return obj;
+	};
+
+	var trim = function(str) {
+		return (str + '').replace(/^\s+|\s+$|/g, '');
+	};
+
+	var escape_regex = function(str) {
+		return (str + '').replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1');
+	};
+
+	var is_array = Array.isArray || (typeof $ !== 'undefined' && $.isArray) || function(object) {
+		return Object.prototype.toString.call(object) === '[object Array]';
+	};
+
+	var DIACRITICS = {
+		'a': '[aḀḁĂăÂâǍǎȺⱥȦȧẠạÄäÀàÁáĀāÃãÅåąĄÃąĄ]',
+		'b': '[b␢βΒB฿𐌁ᛒ]',
+		'c': '[cĆćĈĉČčĊċC̄c̄ÇçḈḉȻȼƇƈɕᴄＣｃ]',
+		'd': '[dĎďḊḋḐḑḌḍḒḓḎḏĐđD̦d̦ƉɖƊɗƋƌᵭᶁᶑȡᴅＤｄð]',
+		'e': '[eÉéÈèÊêḘḙĚěĔĕẼẽḚḛẺẻĖėËëĒēȨȩĘęᶒɆɇȄȅẾếỀềỄễỂểḜḝḖḗḔḕȆȇẸẹỆệⱸᴇＥｅɘǝƏƐε]',
+		'f': '[fƑƒḞḟ]',
+		'g': '[gɢ₲ǤǥĜĝĞğĢģƓɠĠġ]',
+		'h': '[hĤĥĦħḨḩẖẖḤḥḢḣɦʰǶƕ]',
+		'i': '[iÍíÌìĬĭÎîǏǐÏïḮḯĨĩĮįĪīỈỉȈȉȊȋỊịḬḭƗɨɨ̆ᵻᶖİiIıɪＩｉ]',
+		'j': '[jȷĴĵɈɉʝɟʲ]',
+		'k': '[kƘƙꝀꝁḰḱǨǩḲḳḴḵκϰ₭]',
+		'l': '[lŁłĽľĻļĹĺḶḷḸḹḼḽḺḻĿŀȽƚⱠⱡⱢɫɬᶅɭȴʟＬｌ]',
+		'n': '[nŃńǸǹŇňÑñṄṅŅņṆṇṊṋṈṉN̈n̈ƝɲȠƞᵰᶇɳȵɴＮｎŊŋ]',
+		'o': '[oØøÖöÓóÒòÔôǑǒŐőŎŏȮȯỌọƟɵƠơỎỏŌōÕõǪǫȌȍՕօ]',
+		'p': '[pṔṕṖṗⱣᵽƤƥᵱ]',
+		'q': '[qꝖꝗʠɊɋꝘꝙq̃]',
+		'r': '[rŔŕɌɍŘřŖŗṘṙȐȑȒȓṚṛⱤɽ]',
+		's': '[sŚśṠṡṢṣꞨꞩŜŝŠšŞşȘșS̈s̈]',
+		't': '[tŤťṪṫŢţṬṭƮʈȚțṰṱṮṯƬƭ]',
+		'u': '[uŬŭɄʉỤụÜüÚúÙùÛûǓǔŰűŬŭƯưỦủŪūŨũŲųȔȕ∪]',
+		'v': '[vṼṽṾṿƲʋꝞꝟⱱʋ]',
+		'w': '[wẂẃẀẁŴŵẄẅẆẇẈẉ]',
+		'x': '[xẌẍẊẋχ]',
+		'y': '[yÝýỲỳŶŷŸÿỸỹẎẏỴỵɎɏƳƴ]',
+		'z': '[zŹźẐẑŽžŻżẒẓẔẕƵƶ]'
+	};
+
+	var asciifold = (function() {
+		var i, n, k, chunk;
+		var foreignletters = '';
+		var lookup = {};
+		for (k in DIACRITICS) {
+			if (DIACRITICS.hasOwnProperty(k)) {
+				chunk = DIACRITICS[k].substring(2, DIACRITICS[k].length - 1);
+				foreignletters += chunk;
+				for (i = 0, n = chunk.length; i < n; i++) {
+					lookup[chunk.charAt(i)] = k;
+				}
+			}
+		}
+		var regexp = new RegExp('[' +  foreignletters + ']', 'g');
+		return function(str) {
+			return str.replace(regexp, function(foreignletter) {
+				return lookup[foreignletter];
+			}).toLowerCase();
+		};
+	})();
+
+
+	// export
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	return Sifter;
+}));
+
+
+},{}],312:[function(require,module,exports){
+/*
+Slick Finder
+*/"use strict"
+
+// Notable changes from Slick.Finder 1.0.x
+
+// faster bottom -> up expression matching
+// prefers mental sanity over *obsessive compulsive* milliseconds savings
+// uses prototypes instead of objects
+// tries to use matchesSelector smartly, whenever available
+// can populate objects as well as arrays
+// lots of stuff is broken or not implemented
+
+var parse = require("./parser")
+
+// utilities
+
+var index = 0,
+    counter = document.__counter = (parseInt(document.__counter || -1, 36) + 1).toString(36),
+    key = "uid:" + counter
+
+var uniqueID = function(n, xml){
+    if (n === window) return "window"
+    if (n === document) return "document"
+    if (n === document.documentElement) return "html"
+
+    if (xml) {
+        var uid = n.getAttribute(key)
+        if (!uid) {
+            uid = (index++).toString(36)
+            n.setAttribute(key, uid)
+        }
+        return uid
+    } else {
+        return n[key] || (n[key] = (index++).toString(36))
+    }
+}
+
+var uniqueIDXML = function(n) {
+    return uniqueID(n, true)
+}
+
+var isArray = Array.isArray || function(object){
+    return Object.prototype.toString.call(object) === "[object Array]"
+}
+
+// tests
+
+var uniqueIndex = 0;
+
+var HAS = {
+
+    GET_ELEMENT_BY_ID: function(test, id){
+        id = "slick_" + (uniqueIndex++);
+        // checks if the document has getElementById, and it works
+        test.innerHTML = '<a id="' + id + '"></a>'
+        return !!this.getElementById(id)
+    },
+
+    QUERY_SELECTOR: function(test){
+        // this supposedly fixes a webkit bug with matchesSelector / querySelector & nth-child
+        test.innerHTML = '_<style>:nth-child(2){}</style>'
+
+        // checks if the document has querySelectorAll, and it works
+        test.innerHTML = '<a class="MiX"></a>'
+
+        return test.querySelectorAll('.MiX').length === 1
+    },
+
+    EXPANDOS: function(test, id){
+        id = "slick_" + (uniqueIndex++);
+        // checks if the document has elements that support expandos
+        test._custom_property_ = id
+        return test._custom_property_ === id
+    },
+
+    // TODO: use this ?
+
+    // CHECKED_QUERY_SELECTOR: function(test){
+    //
+    //     // checks if the document supports the checked query selector
+    //     test.innerHTML = '<select><option selected="selected">a</option></select>'
+    //     return test.querySelectorAll(':checked').length === 1
+    // },
+
+    // TODO: use this ?
+
+    // EMPTY_ATTRIBUTE_QUERY_SELECTOR: function(test){
+    //
+    //     // checks if the document supports the empty attribute query selector
+    //     test.innerHTML = '<a class=""></a>'
+    //     return test.querySelectorAll('[class*=""]').length === 1
+    // },
+
+    MATCHES_SELECTOR: function(test){
+
+        test.className = "MiX"
+
+        // checks if the document has matchesSelector, and we can use it.
+
+        var matches = test.matchesSelector || test.mozMatchesSelector || test.webkitMatchesSelector
+
+        // if matchesSelector trows errors on incorrect syntax we can use it
+        if (matches) try {
+            matches.call(test, ':slick')
+        } catch(e){
+            // just as a safety precaution, also test if it works on mixedcase (like querySelectorAll)
+            return matches.call(test, ".MiX") ? matches : false
+        }
+
+        return false
+    },
+
+    GET_ELEMENTS_BY_CLASS_NAME: function(test){
+        test.innerHTML = '<a class="f"></a><a class="b"></a>'
+        if (test.getElementsByClassName('b').length !== 1) return false
+
+        test.firstChild.className = 'b'
+        if (test.getElementsByClassName('b').length !== 2) return false
+
+        // Opera 9.6 getElementsByClassName doesnt detects the class if its not the first one
+        test.innerHTML = '<a class="a"></a><a class="f b a"></a>'
+        if (test.getElementsByClassName('a').length !== 2) return false
+
+        // tests passed
+        return true
+    },
+
+    // no need to know
+
+    // GET_ELEMENT_BY_ID_NOT_NAME: function(test, id){
+    //     test.innerHTML = '<a name="'+ id +'"></a><b id="'+ id +'"></b>'
+    //     return this.getElementById(id) !== test.firstChild
+    // },
+
+    // this is always checked for and fixed
+
+    // STAR_GET_ELEMENTS_BY_TAG_NAME: function(test){
+    //
+    //     // IE returns comment nodes for getElementsByTagName('*') for some documents
+    //     test.appendChild(this.createComment(''))
+    //     if (test.getElementsByTagName('*').length > 0) return false
+    //
+    //     // IE returns closed nodes (EG:"</foo>") for getElementsByTagName('*') for some documents
+    //     test.innerHTML = 'foo</foo>'
+    //     if (test.getElementsByTagName('*').length) return false
+    //
+    //     // tests passed
+    //     return true
+    // },
+
+    // this is always checked for and fixed
+
+    // STAR_QUERY_SELECTOR: function(test){
+    //
+    //     // returns closed nodes (EG:"</foo>") for querySelector('*') for some documents
+    //     test.innerHTML = 'foo</foo>'
+    //     return !!(test.querySelectorAll('*').length)
+    // },
+
+    GET_ATTRIBUTE: function(test){
+        // tests for working getAttribute implementation
+        var shout = "fus ro dah"
+        test.innerHTML = '<a class="' + shout + '"></a>'
+        return test.firstChild.getAttribute('class') === shout
+    }
+
+}
+
+// Finder
+
+var Finder = function Finder(document){
+
+    this.document        = document
+    var root = this.root = document.documentElement
+    this.tested          = {}
+
+    // uniqueID
+
+    this.uniqueID = this.has("EXPANDOS") ? uniqueID : uniqueIDXML
+
+    // getAttribute
+
+    this.getAttribute = (this.has("GET_ATTRIBUTE")) ? function(node, name){
+
+        return node.getAttribute(name)
+
+    } : function(node, name){
+
+        node = node.getAttributeNode(name)
+        return (node && node.specified) ? node.value : null
+
+    }
+
+    // hasAttribute
+
+    this.hasAttribute = (root.hasAttribute) ? function(node, attribute){
+
+        return node.hasAttribute(attribute)
+
+    } : function(node, attribute) {
+
+        node = node.getAttributeNode(attribute)
+        return !!(node && node.specified)
+
+    }
+
+    // contains
+
+    this.contains = (document.contains && root.contains) ? function(context, node){
+
+        return context.contains(node)
+
+    } : (root.compareDocumentPosition) ? function(context, node){
+
+        return context === node || !!(context.compareDocumentPosition(node) & 16)
+
+    } : function(context, node){
+
+        do {
+            if (node === context) return true
+        } while ((node = node.parentNode))
+
+        return false
+    }
+
+    // sort
+    // credits to Sizzle (http://sizzlejs.com/)
+
+    this.sorter = (root.compareDocumentPosition) ? function(a, b){
+
+        if (!a.compareDocumentPosition || !b.compareDocumentPosition) return 0
+        return a.compareDocumentPosition(b) & 4 ? -1 : a === b ? 0 : 1
+
+    } : ('sourceIndex' in root) ? function(a, b){
+
+        if (!a.sourceIndex || !b.sourceIndex) return 0
+        return a.sourceIndex - b.sourceIndex
+
+    } : (document.createRange) ? function(a, b){
+
+        if (!a.ownerDocument || !b.ownerDocument) return 0
+        var aRange = a.ownerDocument.createRange(),
+            bRange = b.ownerDocument.createRange()
+
+        aRange.setStart(a, 0)
+        aRange.setEnd(a, 0)
+        bRange.setStart(b, 0)
+        bRange.setEnd(b, 0)
+        return aRange.compareBoundaryPoints(Range.START_TO_END, bRange)
+
+    } : null
+
+    this.failed = {}
+
+    var nativeMatches = this.has("MATCHES_SELECTOR")
+
+    if (nativeMatches) this.matchesSelector = function(node, expression){
+
+        if (this.failed[expression]) return null
+
+        try {
+            return nativeMatches.call(node, expression)
+        } catch(e){
+            if (slick.debug) console.warn("matchesSelector failed on " + expression)
+            this.failed[expression] = true
+            return null
+        }
+
+    }
+
+    if (this.has("QUERY_SELECTOR")){
+
+        this.querySelectorAll = function(node, expression){
+
+            if (this.failed[expression]) return true
+
+            var result, _id, _expression, _combinator, _node
+
+
+            // non-document rooted QSA
+            // credits to Andrew Dupont
+
+            if (node !== this.document){
+
+                _combinator = expression[0].combinator
+
+                _id         = node.getAttribute("id")
+                _expression = expression
+
+                if (!_id){
+                    _node = node
+                    _id = "__slick__"
+                    _node.setAttribute("id", _id)
+                }
+
+                expression = "#" + _id + " " + _expression
+
+
+                // these combinators need a parentNode due to how querySelectorAll works, which is:
+                // finding all the elements that match the given selector
+                // then filtering by the ones that have the specified element as an ancestor
+                if (_combinator.indexOf("~") > -1 || _combinator.indexOf("+") > -1){
+
+                    node = node.parentNode
+                    if (!node) result = true
+                    // if node has no parentNode, we return "true" as if it failed, without polluting the failed cache
+
+                }
+
+            }
+
+            if (!result) try {
+                result = node.querySelectorAll(expression.toString())
+            } catch(e){
+                if (slick.debug) console.warn("querySelectorAll failed on " + (_expression || expression))
+                result = this.failed[_expression || expression] = true
+            }
+
+            if (_node) _node.removeAttribute("id")
+
+            return result
+
+        }
+
+    }
+
+}
+
+Finder.prototype.has = function(FEATURE){
+
+    var tested        = this.tested,
+        testedFEATURE = tested[FEATURE]
+
+    if (testedFEATURE != null) return testedFEATURE
+
+    var root     = this.root,
+        document = this.document,
+        testNode = document.createElement("div")
+
+    testNode.setAttribute("style", "display: none;")
+
+    root.appendChild(testNode)
+
+    var TEST = HAS[FEATURE], result = false
+
+    if (TEST) try {
+        result = TEST.call(document, testNode)
+    } catch(e){}
+
+    if (slick.debug && !result) console.warn("document has no " + FEATURE)
+
+    root.removeChild(testNode)
+
+    return tested[FEATURE] = result
+
+}
+
+var combinators = {
+
+    " ": function(node, part, push){
+
+        var item, items
+
+        var noId = !part.id, noTag = !part.tag, noClass = !part.classes
+
+        if (part.id && node.getElementById && this.has("GET_ELEMENT_BY_ID")){
+            item = node.getElementById(part.id)
+
+            // return only if id is found, else keep checking
+            // might be a tad slower on non-existing ids, but less insane
+
+            if (item && item.getAttribute('id') === part.id){
+                items = [item]
+                noId = true
+                // if tag is star, no need to check it in match()
+                if (part.tag === "*") noTag = true
+            }
+        }
+
+        if (!items){
+
+            if (part.classes && node.getElementsByClassName && this.has("GET_ELEMENTS_BY_CLASS_NAME")){
+                items = node.getElementsByClassName(part.classList)
+                noClass = true
+                // if tag is star, no need to check it in match()
+                if (part.tag === "*") noTag = true
+            } else {
+                items = node.getElementsByTagName(part.tag)
+                // if tag is star, need to check it in match because it could select junk, boho
+                if (part.tag !== "*") noTag = true
+            }
+
+            if (!items || !items.length) return false
+
+        }
+
+        for (var i = 0; item = items[i++];)
+            if ((noTag && noId && noClass && !part.attributes && !part.pseudos) || this.match(item, part, noTag, noId, noClass))
+                push(item)
+
+        return true
+
+    },
+
+    ">": function(node, part, push){ // direct children
+        if ((node = node.firstChild)) do {
+            if (node.nodeType == 1 && this.match(node, part)) push(node)
+        } while ((node = node.nextSibling))
+    },
+
+    "+": function(node, part, push){ // next sibling
+        while ((node = node.nextSibling)) if (node.nodeType == 1){
+            if (this.match(node, part)) push(node)
+            break
+        }
+    },
+
+    "^": function(node, part, push){ // first child
+        node = node.firstChild
+        if (node){
+            if (node.nodeType === 1){
+                if (this.match(node, part)) push(node)
+            } else {
+                combinators['+'].call(this, node, part, push)
+            }
+        }
+    },
+
+    "~": function(node, part, push){ // next siblings
+        while ((node = node.nextSibling)){
+            if (node.nodeType === 1 && this.match(node, part)) push(node)
+        }
+    },
+
+    "++": function(node, part, push){ // next sibling and previous sibling
+        combinators['+'].call(this, node, part, push)
+        combinators['!+'].call(this, node, part, push)
+    },
+
+    "~~": function(node, part, push){ // next siblings and previous siblings
+        combinators['~'].call(this, node, part, push)
+        combinators['!~'].call(this, node, part, push)
+    },
+
+    "!": function(node, part, push){ // all parent nodes up to document
+        while ((node = node.parentNode)) if (node !== this.document && this.match(node, part)) push(node)
+    },
+
+    "!>": function(node, part, push){ // direct parent (one level)
+        node = node.parentNode
+        if (node !== this.document && this.match(node, part)) push(node)
+    },
+
+    "!+": function(node, part, push){ // previous sibling
+        while ((node = node.previousSibling)) if (node.nodeType == 1){
+            if (this.match(node, part)) push(node)
+            break
+        }
+    },
+
+    "!^": function(node, part, push){ // last child
+        node = node.lastChild
+        if (node){
+            if (node.nodeType == 1){
+                if (this.match(node, part)) push(node)
+            } else {
+                combinators['!+'].call(this, node, part, push)
+            }
+        }
+    },
+
+    "!~": function(node, part, push){ // previous siblings
+        while ((node = node.previousSibling)){
+            if (node.nodeType === 1 && this.match(node, part)) push(node)
+        }
+    }
+
+}
+
+Finder.prototype.search = function(context, expression, found){
+
+    if (!context) context = this.document
+    else if (!context.nodeType && context.document) context = context.document
+
+    var expressions = parse(expression)
+
+    // no expressions were parsed. todo: is this really necessary?
+    if (!expressions || !expressions.length) throw new Error("invalid expression")
+
+    if (!found) found = []
+
+    var uniques, push = isArray(found) ? function(node){
+        found[found.length] = node
+    } : function(node){
+        found[found.length++] = node
+    }
+
+    // if there is more than one expression we need to check for duplicates when we push to found
+    // this simply saves the old push and wraps it around an uid dupe check.
+    if (expressions.length > 1){
+        uniques = {}
+        var plush = push
+        push = function(node){
+            var uid = uniqueID(node)
+            if (!uniques[uid]){
+                uniques[uid] = true
+                plush(node)
+            }
+        }
+    }
+
+    // walker
+
+    var node, nodes, part
+
+    main: for (var i = 0; expression = expressions[i++];){
+
+        // querySelector
+
+        // TODO: more functional tests
+
+        // if there is querySelectorAll (and the expression does not fail) use it.
+        if (!slick.noQSA && this.querySelectorAll){
+
+            nodes = this.querySelectorAll(context, expression)
+            if (nodes !== true){
+                if (nodes && nodes.length) for (var j = 0; node = nodes[j++];) if (node.nodeName > '@'){
+                    push(node)
+                }
+                continue main
+            }
+        }
+
+        // if there is only one part in the expression we don't need to check each part for duplicates.
+        // todo: this might be too naive. while solid, there can be expression sequences that do not
+        // produce duplicates. "body div" for instance, can never give you each div more than once.
+        // "body div a" on the other hand might.
+        if (expression.length === 1){
+
+            part = expression[0]
+            combinators[part.combinator].call(this, context, part, push)
+
+        } else {
+
+            var cs = [context], c, f, u, p = function(node){
+                var uid = uniqueID(node)
+                if (!u[uid]){
+                    u[uid] = true
+                    f[f.length] = node
+                }
+            }
+
+            // loop the expression parts
+            for (var j = 0; part = expression[j++];){
+                f = []; u = {}
+                // loop the contexts
+                for (var k = 0; c = cs[k++];) combinators[part.combinator].call(this, c, part, p)
+                // nothing was found, the expression failed, continue to the next expression.
+                if (!f.length) continue main
+                cs = f // set the contexts for future parts (if any)
+            }
+
+            if (i === 0) found = f // first expression. directly set found.
+            else for (var l = 0; l < f.length; l++) push(f[l]) // any other expression needs to push to found.
+        }
+
+    }
+
+    if (uniques && found && found.length > 1) this.sort(found)
+
+    return found
+
+}
+
+Finder.prototype.sort = function(nodes){
+    return this.sorter ? Array.prototype.sort.call(nodes, this.sorter) : nodes
+}
+
+// TODO: most of these pseudo selectors include <html> and qsa doesnt. fixme.
+
+var pseudos = {
+
+
+    // TODO: returns different results than qsa empty.
+
+    'empty': function(){
+        return !(this && this.nodeType === 1) && !(this.innerText || this.textContent || '').length
+    },
+
+    'not': function(expression){
+        return !slick.matches(this, expression)
+    },
+
+    'contains': function(text){
+        return (this.innerText || this.textContent || '').indexOf(text) > -1
+    },
+
+    'first-child': function(){
+        var node = this
+        while ((node = node.previousSibling)) if (node.nodeType == 1) return false
+        return true
+    },
+
+    'last-child': function(){
+        var node = this
+        while ((node = node.nextSibling)) if (node.nodeType == 1) return false
+        return true
+    },
+
+    'only-child': function(){
+        var prev = this
+        while ((prev = prev.previousSibling)) if (prev.nodeType == 1) return false
+
+        var next = this
+        while ((next = next.nextSibling)) if (next.nodeType == 1) return false
+
+        return true
+    },
+
+    'first-of-type': function(){
+        var node = this, nodeName = node.nodeName
+        while ((node = node.previousSibling)) if (node.nodeName == nodeName) return false
+        return true
+    },
+
+    'last-of-type': function(){
+        var node = this, nodeName = node.nodeName
+        while ((node = node.nextSibling)) if (node.nodeName == nodeName) return false
+        return true
+    },
+
+    'only-of-type': function(){
+        var prev = this, nodeName = this.nodeName
+        while ((prev = prev.previousSibling)) if (prev.nodeName == nodeName) return false
+        var next = this
+        while ((next = next.nextSibling)) if (next.nodeName == nodeName) return false
+        return true
+    },
+
+    'enabled': function(){
+        return !this.disabled
+    },
+
+    'disabled': function(){
+        return this.disabled
+    },
+
+    'checked': function(){
+        return this.checked || this.selected
+    },
+
+    'selected': function(){
+        return this.selected
+    },
+
+    'focus': function(){
+        var doc = this.ownerDocument
+        return doc.activeElement === this && (this.href || this.type || slick.hasAttribute(this, 'tabindex'))
+    },
+
+    'root': function(){
+        return (this === this.ownerDocument.documentElement)
+    }
+
+}
+
+Finder.prototype.match = function(node, bit, noTag, noId, noClass){
+
+    // TODO: more functional tests ?
+
+    if (!slick.noQSA && this.matchesSelector){
+        var matches = this.matchesSelector(node, bit)
+        if (matches !== null) return matches
+    }
+
+    // normal matching
+
+    if (!noTag && bit.tag){
+
+        var nodeName = node.nodeName.toLowerCase()
+        if (bit.tag === "*"){
+            if (nodeName < "@") return false
+        } else if (nodeName != bit.tag){
+            return false
+        }
+
+    }
+
+    if (!noId && bit.id && node.getAttribute('id') !== bit.id) return false
+
+    var i, part
+
+    if (!noClass && bit.classes){
+
+        var className = this.getAttribute(node, "class")
+        if (!className) return false
+
+        for (part in bit.classes) if (!RegExp('(^|\\s)' + bit.classes[part] + '(\\s|$)').test(className)) return false
+    }
+
+    var name, value
+
+    if (bit.attributes) for (i = 0; part = bit.attributes[i++];){
+
+        var operator  = part.operator,
+            escaped   = part.escapedValue
+
+        name  = part.name
+        value = part.value
+
+        if (!operator){
+
+            if (!this.hasAttribute(node, name)) return false
+
+        } else {
+
+            var actual = this.getAttribute(node, name)
+            if (actual == null) return false
+
+            switch (operator){
+                case '^=' : if (!RegExp(      '^' + escaped            ).test(actual)) return false; break
+                case '$=' : if (!RegExp(            escaped + '$'      ).test(actual)) return false; break
+                case '~=' : if (!RegExp('(^|\\s)' + escaped + '(\\s|$)').test(actual)) return false; break
+                case '|=' : if (!RegExp(      '^' + escaped + '(-|$)'  ).test(actual)) return false; break
+
+                case '='  : if (actual !== value) return false; break
+                case '*=' : if (actual.indexOf(value) === -1) return false; break
+                default   : return false
+            }
+
+        }
+    }
+
+    if (bit.pseudos) for (i = 0; part = bit.pseudos[i++];){
+
+        name  = part.name
+        value = part.value
+
+        if (pseudos[name]) return pseudos[name].call(node, value)
+
+        if (value != null){
+            if (this.getAttribute(node, name) !== value) return false
+        } else {
+            if (!this.hasAttribute(node, name)) return false
+        }
+
+    }
+
+    return true
+
+}
+
+Finder.prototype.matches = function(node, expression){
+
+    var expressions = parse(expression)
+
+    if (expressions.length === 1 && expressions[0].length === 1){ // simplest match
+        return this.match(node, expressions[0][0])
+    }
+
+    // TODO: more functional tests ?
+
+    if (!slick.noQSA && this.matchesSelector){
+        var matches = this.matchesSelector(node, expressions)
+        if (matches !== null) return matches
+    }
+
+    var nodes = this.search(this.document, expression, {length: 0})
+
+    for (var i = 0, res; res = nodes[i++];) if (node === res) return true
+    return false
+
+}
+
+var finders = {}
+
+var finder = function(context){
+    var doc = context || document
+    if (doc.ownerDocument) doc = doc.ownerDocument
+    else if (doc.document) doc = doc.document
+
+    if (doc.nodeType !== 9) throw new TypeError("invalid document")
+
+    var uid = uniqueID(doc)
+    return finders[uid] || (finders[uid] = new Finder(doc))
+}
+
+// ... API ...
+
+var slick = function(expression, context){
+    return slick.search(expression, context)
+}
+
+slick.search = function(expression, context, found){
+    return finder(context).search(context, expression, found)
+}
+
+slick.find = function(expression, context){
+    return finder(context).search(context, expression)[0] || null
+}
+
+slick.getAttribute = function(node, name){
+    return finder(node).getAttribute(node, name)
+}
+
+slick.hasAttribute = function(node, name){
+    return finder(node).hasAttribute(node, name)
+}
+
+slick.contains = function(context, node){
+    return finder(context).contains(context, node)
+}
+
+slick.matches = function(node, expression){
+    return finder(node).matches(node, expression)
+}
+
+slick.sort = function(nodes){
+    if (nodes && nodes.length > 1) finder(nodes[0]).sort(nodes)
+    return nodes
+}
+
+slick.parse = parse;
+
+// slick.debug = true
+// slick.noQSA  = true
+
+module.exports = slick
+
+},{"./parser":314}],313:[function(require,module,exports){
+(function (global){
+/*
+slick
+*/"use strict"
+
+module.exports = "document" in global ? require("./finder") : { parse: require("./parser") }
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"./finder":312,"./parser":314}],314:[function(require,module,exports){
+/*
+Slick Parser
+ - originally created by the almighty Thomas Aylott <@subtlegradient> (http://subtlegradient.com)
+*/"use strict"
+
+// Notable changes from Slick.Parser 1.0.x
+
+// The parser now uses 2 classes: Expressions and Expression
+// `new Expressions` produces an array-like object containing a list of Expression objects
+// - Expressions::toString() produces a cleaned up expressions string
+// `new Expression` produces an array-like object
+// - Expression::toString() produces a cleaned up expression string
+// The only exposed method is parse, which produces a (cached) `new Expressions` instance
+// parsed.raw is no longer present, use .toString()
+// parsed.expression is now useless, just use the indices
+// parsed.reverse() has been removed for now, due to its apparent uselessness
+// Other changes in the Expressions object:
+// - classNames are now unique, and save both escaped and unescaped values
+// - attributes now save both escaped and unescaped values
+// - pseudos now save both escaped and unescaped values
+
+var escapeRe   = /([-.*+?^${}()|[\]\/\\])/g,
+    unescapeRe = /\\/g
+
+var escape = function(string){
+    // XRegExp v2.0.0-beta-3
+    // « https://github.com/slevithan/XRegExp/blob/master/src/xregexp.js
+    return (string + "").replace(escapeRe, '\\$1')
+}
+
+var unescape = function(string){
+    return (string + "").replace(unescapeRe, '')
+}
+
+var slickRe = RegExp(
+/*
+#!/usr/bin/env ruby
+puts "\t\t" + DATA.read.gsub(/\(\?x\)|\s+#.*$|\s+|\\$|\\n/,'')
+__END__
+    "(?x)^(?:\
+      \\s* ( , ) \\s*               # Separator          \n\
+    | \\s* ( <combinator>+ ) \\s*   # Combinator         \n\
+    |      ( \\s+ )                 # CombinatorChildren \n\
+    |      ( <unicode>+ | \\* )     # Tag                \n\
+    | \\#  ( <unicode>+       )     # ID                 \n\
+    | \\.  ( <unicode>+       )     # ClassName          \n\
+    |                               # Attribute          \n\
+    \\[  \
+        \\s* (<unicode1>+)  (?:  \
+            \\s* ([*^$!~|]?=)  (?:  \
+                \\s* (?:\
+                    ([\"']?)(.*?)\\9 \
+                )\
+            )  \
+        )?  \\s*  \
+    \\](?!\\]) \n\
+    |   :+ ( <unicode>+ )(?:\
+    \\( (?:\
+        (?:([\"'])([^\\12]*)\\12)|((?:\\([^)]+\\)|[^()]*)+)\
+    ) \\)\
+    )?\
+    )"
+*/
+"^(?:\\s*(,)\\s*|\\s*(<combinator>+)\\s*|(\\s+)|(<unicode>+|\\*)|\\#(<unicode>+)|\\.(<unicode>+)|\\[\\s*(<unicode1>+)(?:\\s*([*^$!~|]?=)(?:\\s*(?:([\"']?)(.*?)\\9)))?\\s*\\](?!\\])|(:+)(<unicode>+)(?:\\((?:(?:([\"'])([^\\13]*)\\13)|((?:\\([^)]+\\)|[^()]*)+))\\))?)"
+    .replace(/<combinator>/, '[' + escape(">+~`!@$%^&={}\\;</") + ']')
+    .replace(/<unicode>/g, '(?:[\\w\\u00a1-\\uFFFF-]|\\\\[^\\s0-9a-f])')
+    .replace(/<unicode1>/g, '(?:[:\\w\\u00a1-\\uFFFF-]|\\\\[^\\s0-9a-f])')
+)
+
+// Part
+
+var Part = function Part(combinator){
+    this.combinator = combinator || " "
+    this.tag = "*"
+}
+
+Part.prototype.toString = function(){
+
+    if (!this.raw){
+
+        var xpr = "", k, part
+
+        xpr += this.tag || "*"
+        if (this.id) xpr += "#" + this.id
+        if (this.classes) xpr += "." + this.classList.join(".")
+        if (this.attributes) for (k = 0; part = this.attributes[k++];){
+            xpr += "[" + part.name + (part.operator ? part.operator + '"' + part.value + '"' : '') + "]"
+        }
+        if (this.pseudos) for (k = 0; part = this.pseudos[k++];){
+            xpr += ":" + part.name
+            if (part.value) xpr += "(" + part.value + ")"
+        }
+
+        this.raw = xpr
+
+    }
+
+    return this.raw
+}
+
+// Expression
+
+var Expression = function Expression(){
+    this.length = 0
+}
+
+Expression.prototype.toString = function(){
+
+    if (!this.raw){
+
+        var xpr = ""
+
+        for (var j = 0, bit; bit = this[j++];){
+            if (j !== 1) xpr += " "
+            if (bit.combinator !== " ") xpr += bit.combinator + " "
+            xpr += bit
+        }
+
+        this.raw = xpr
+
+    }
+
+    return this.raw
+}
+
+var replacer = function(
+    rawMatch,
+
+    separator,
+    combinator,
+    combinatorChildren,
+
+    tagName,
+    id,
+    className,
+
+    attributeKey,
+    attributeOperator,
+    attributeQuote,
+    attributeValue,
+
+    pseudoMarker,
+    pseudoClass,
+    pseudoQuote,
+    pseudoClassQuotedValue,
+    pseudoClassValue
+){
+
+    var expression, current
+
+    if (separator || !this.length){
+        expression = this[this.length++] = new Expression
+        if (separator) return ''
+    }
+
+    if (!expression) expression = this[this.length - 1]
+
+    if (combinator || combinatorChildren || !expression.length){
+        current = expression[expression.length++] = new Part(combinator)
+    }
+
+    if (!current) current = expression[expression.length - 1]
+
+    if (tagName){
+
+        current.tag = unescape(tagName)
+
+    } else if (id){
+
+        current.id = unescape(id)
+
+    } else if (className){
+
+        var unescaped = unescape(className)
+
+        var classes = current.classes || (current.classes = {})
+        if (!classes[unescaped]){
+            classes[unescaped] = escape(className)
+            var classList = current.classList || (current.classList = [])
+            classList.push(unescaped)
+            classList.sort()
+        }
+
+    } else if (pseudoClass){
+
+        pseudoClassValue = pseudoClassValue || pseudoClassQuotedValue
+
+        ;(current.pseudos || (current.pseudos = [])).push({
+            type         : pseudoMarker.length == 1 ? 'class' : 'element',
+            name         : unescape(pseudoClass),
+            escapedName  : escape(pseudoClass),
+            value        : pseudoClassValue ? unescape(pseudoClassValue) : null,
+            escapedValue : pseudoClassValue ? escape(pseudoClassValue) : null
+        })
+
+    } else if (attributeKey){
+
+        attributeValue = attributeValue ? escape(attributeValue) : null
+
+        ;(current.attributes || (current.attributes = [])).push({
+            operator     : attributeOperator,
+            name         : unescape(attributeKey),
+            escapedName  : escape(attributeKey),
+            value        : attributeValue ? unescape(attributeValue) : null,
+            escapedValue : attributeValue ? escape(attributeValue) : null
+        })
+
+    }
+
+    return ''
+
+}
+
+// Expressions
+
+var Expressions = function Expressions(expression){
+    this.length = 0
+
+    var self = this
+
+    var original = expression, replaced
+
+    while (expression){
+        replaced = expression.replace(slickRe, function(){
+            return replacer.apply(self, arguments)
+        })
+        if (replaced === expression) throw new Error(original + ' is an invalid expression')
+        expression = replaced
+    }
+}
+
+Expressions.prototype.toString = function(){
+    if (!this.raw){
+        var expressions = []
+        for (var i = 0, expression; expression = this[i++];) expressions.push(expression)
+        this.raw = expressions.join(", ")
+    }
+
+    return this.raw
+}
+
+var cache = {}
+
+var parse = function(expression){
+    if (expression == null) return null
+    expression = ('' + expression).replace(/^\s+|\s+$/g, '')
+    return cache[expression] || (cache[expression] = new Expressions(expression))
+}
+
+module.exports = parse
+>>>>>>> master
 
 },{}],315:[function(require,module,exports){
 /**!
