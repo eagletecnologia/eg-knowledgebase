@@ -3433,7 +3433,7 @@ input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focu
   padding: 0;
   margin: 0;
   text-transform: uppercase;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 /* line 87, user/themes/g5_helium/custom/scss/helium/sections/_footer.scss */
 #g-footer .footer-menu .g-horizontalmenu li a:hover {

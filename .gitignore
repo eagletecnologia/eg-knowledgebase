@@ -13,4 +13,4 @@ tmp/*
 user/data/count-views.yaml
 user/pages/*
 user/config/system.yaml
-user/data/gantry5/themes/g5_helium/css-compiled
+user/data/gantry5/themes/g5_helium/css-compiled/*.*

@@ -135,7 +135,7 @@ content:
   custom-3330:
     title: 'Custom HTML'
     attributes:
-      html: "<a class=\"button button-outline2 button-xsmall button-square desktop\" href=\"https://eagletecnologia.com\" target=\"_blank\">Contate-nos</a>\n\n<a class=\"button button-outline2 button-xsmall button-square mobile hidden-large\" href=\"https://eagletecnologia.com\" target=\"_blank\"><i class=\"fa fa-envelope\"></i></a>\n\n<a  class=\"button button-outline2 button-xsmall button-square desktop\" href=\"https://eagletecnologia.com/blog\"target=\"_blank\">Blog</a>\n\n<a  class=\"button button-outline2 button-xsmall button-square mobile hidden-large\" href=\"https://eagletecnologia.com/blog\" target=\"_blank\"><i class=\"fa fa-newspaper-o\"></i></a>"
+      html: "<a class=\"button button-outline2 button-xsmall button-square desktop\" href=\"https://eagletecnologia.com/#wgModalCustomHtmlOpen154\" target=\"_blank\">Contate-nos</a>\n\n<a class=\"button button-outline2 button-xsmall button-square mobile hidden-large\" href=\"https://eagletecnologia.com/#wgModalCustomHtmlOpen154\" target=\"_blank\"><i class=\"fa fa-envelope\"></i></a>\n\n<a  class=\"button button-outline2 button-xsmall button-square desktop\" href=\"https://eagletecnologia.com/blog\"target=\"_blank\">Blog</a>\n\n<a  class=\"button button-outline2 button-xsmall button-square mobile hidden-large\" href=\"https://eagletecnologia.com/blog\" target=\"_blank\"><i class=\"fa fa-newspaper-o\"></i></a>"
     block:
       class: 'block-b hidden-phone'
       variations: align-right

@@ -28,11 +28,16 @@ items:
     name: 'Formulários de Solicitação'
   -
     text: Blog
-    link: 'http://blog.eagletecnologia.com'
+    link: 'https://eagletecnologia.com/blog'
     target: _blank
     name: Blog
   -
     text: Contate-nos
-    link: 'https://eagletecnologia.com'
+    link: 'https://eagletecnologia.com/#wgModalCustomHtmlOpen154'
     target: _blank
     name: Contate-nos
+  -
+    text: Login
+    link: login
+    target: _parent
+    name: Login
