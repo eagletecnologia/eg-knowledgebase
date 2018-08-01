@@ -813,6 +813,8 @@ class Page
      */
     public function setRawContent($content)
     {
+        $content = $content === null ? '': $content;
+
         $this->content = $content;
     }
 
@@ -1790,7 +1792,7 @@ class Page
     public function routeCanonical($var = null)
     {
         if ($var !== null) {
-            $this->routes['canonical'] = (array)$var;
+            $this->routes['canonical'] = $var;
         }
 
         if (!empty($this->routes) && isset($this->routes['canonical'])) {
@@ -2954,5 +2956,27 @@ class Page
         } else {
             return $route;
         }
+    }
+
+    /**
+     * Gets the Page Unmodified (original) version of the page.
+     *
+     * @return Page
+     *   The original version of the page.
+     */
+    public function getOriginal()
+    {
+      return $this->_original;
+    }
+
+    /**
+     * Gets the action.
+     *
+     * @return string
+     *   The Action string.
+     */
+    public function getAction()
+    {
+      return $this->_action;
     }
 }

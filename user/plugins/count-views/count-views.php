@@ -58,6 +58,7 @@ class CountViewsPlugin extends Plugin
         // Get page route
         $page = $this->grav['page'];
         $route = $page->route();
+        if (empty($route)) $route = $this->config->get('plugins.error.routes.404', '/error');
 
         // Open data file
         $datafh = File::instance($path);
@@ -66,9 +67,6 @@ class CountViewsPlugin extends Plugin
 
         // Load count data into a twig variable
         $this->grav['twig']->twig_vars['viewcounts'] = $data;
-
-        // DEPRECATED! Load count data into `config.plugins` space
-        $this->config->set('plugins.count-views.counts', $data);
     }
 
     // This increments the counter
@@ -83,6 +81,7 @@ class CountViewsPlugin extends Plugin
         // Get page route
         $page = $this->grav['page'];
         $route = $page->route();
+        if (empty($route)) $route = $this->config->get('plugins.error.routes.404', '/error');
 
         // Open data file
         $datafh = File::instance($path);

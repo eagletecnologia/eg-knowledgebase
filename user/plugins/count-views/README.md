@@ -43,7 +43,15 @@ datafile: count-views.yaml
 
 This is a simple, naive page view counter. Whenever the Grav system produces a page (cached or not), the route is stored and the count incremented. Obviously if you have a front-end cache that delivers the page without invoking `index.php`, then the view won't be counted. You also can't filter out views by IP or user (though pull requests are always welcome).
 
-The full view count data is dumped as an associative array (i.e., route => count) into the Twig variable `viewcounts`. To support backwards compatibility, the counts are also still dumped into the `config.plugins.count-views.counts` namespace, but this is now officially deprecated and will be removed in a future major release.
+The full view count data is dumped as an associative array (i.e., route => count) into the Twig variable `viewcounts`. So to get the counts associated with a specific route, use the following code:
+
+`{{ viewcounts[page.route] }}`
+
+To get a list of, say, the top 10 routes, you could use the following code:
+
+`{% for route,views in viewcounts|sort|reverse|slice(0,10) %}`
+
+Also, this was one of my first plugins, before I understood the problem PHP had with hyphens in names. To use this plugin with dot notation, you need to do it as follows: `{% if config.plugins['count-views'].enabled %}`.
 
 ## Performance
 

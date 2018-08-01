@@ -1,5 +1,5 @@
 name: Login OAuth2
-version: 1.0.0
+version: 1.0.1
 description: OAuth2 Client Plugin to integrate with Grav's Login
 icon: plug
 author:
@@ -267,6 +267,11 @@ form:
                   classes: fancy
                   validate:
                     type: commalist
+
+                providers.google.options.hd:
+                  type: text
+                  label: PLUGIN_LOGIN_OAUTH2.RESTRICT_DOMAIN
+                  placeholder: domain.com
 
                 providers.google.options.avatar_size:
                   type: number
