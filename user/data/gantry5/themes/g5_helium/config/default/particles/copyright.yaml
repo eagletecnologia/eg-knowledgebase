@@ -1,11 +1,11 @@
 enabled: '1'
 date:
-  start: '2016'
+  start: '2018'
   end: now
-owner: 'Eagle Tecnologia - Base v1.7.1, Grav v1.4.5,   '
+owner: 'Skeleton Eagle Base de Conhecimento  v1.0.0, Grav v1.5.1,   '
 link: 'http://getgrav.org'
 target: _blank
 additional:
-  text: 'Desenvolvido com Grav'
+  text: 'Theme build with Gantry 5'
 css:
   class: ''

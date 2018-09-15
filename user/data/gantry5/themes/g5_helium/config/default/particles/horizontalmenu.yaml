@@ -22,11 +22,6 @@ items:
     target: _parent
     name: Materiais
   -
-    text: 'Formulários de Solicitação'
-    link: /formularios-de-solicitacao
-    target: _parent
-    name: 'Formulários de Solicitação'
-  -
     text: Blog
     link: 'https://eagletecnologia.com/blog'
     target: _blank

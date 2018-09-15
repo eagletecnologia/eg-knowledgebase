@@ -133,7 +133,7 @@ fonts/rockettheme-apps/rockettheme-apps.ttf	2185692f8168ab2fa54c0923be97f190
 fonts/rockettheme-apps/rockettheme-apps.woff	f1258374fedaa30401743337048a64bb
 fonts/rockettheme-apps/rockettheme-apps.woff2	0b76f0674592d3d4653e6524045e890e
 gantry/presets.yaml	4edfd8f32f98ba3020831b1ed61db43f
-gantry/theme.yaml	13327a51d1406a540d47abc84663df57
+gantry/theme.yaml	c3b09f353fb802c316c0767845f18ebe
 images/above/img01.jpeg	45d1bc6fa1ac764f15b937a1e1e9a377
 images/above/img02.jpeg	c08f1ce863d7c69e1b73ce49f8b48416
 images/header/img01.jpg	fb3b9862ecc04e7206e246659e68f2af
@@ -158,13 +158,13 @@ layouts/default.yaml	15fd05bda30a83f05ccfde7b970d716f
 layouts/home_-_particles.yaml	83439c33dd1e3ee0c16fae1d0bfba5b8
 particles/contentcubes.html.twig	9e0caa29709930da5340b13f3d0fe6bb
 particles/contentcubes.yaml	286ea382c0919026540047d4e0eea53b
-particles/contenttabs.html.twig	0e3fb88150268b4889603c451a03e52e
+particles/contenttabs.html.twig	79e65ef13245781f3544620a751dfa71
 particles/contenttabs.yaml	788cc99146d2f08683391eb83f33007a
 particles/copyright.html.twig	b0524afc8f1f531702585117a770d2dc
 particles/copyright.yaml	d317213bf88779adbe3d89885a1b1f2c
 particles/horizontalmenu.html.twig	af11beb3720496aaf9d52a0dcea6718e
 particles/horizontalmenu.yaml	1916d0a5cf34d6e2ac31e736dec6db7c
-particles/owlcarousel.html.twig	706275cce9b7160097734e9001b8325a
+particles/owlcarousel.html.twig	7dcd3886128a662dff2aaa2eda9aabef
 particles/owlcarousel.yaml	8cdc062111b5dec46011eb7334834f1a
 particles/totop.html.twig	b129b99b62916d5ab4b5df2985721182
 scss/configuration/_base.scss	eca6279273f288549eee4130846fe2cf
@@ -188,7 +188,7 @@ scss/helium/sections/_aside.scss	d38b7309fc3a662b033a3299eb764944
 scss/helium/sections/_expanded.scss	089d57ec191c986e98fa3967b8033099
 scss/helium/sections/_features.scss	cd05dfae19562cbf00a4b5edab2b97cd
 scss/helium/sections/_footer.scss	15d226de243605a9a48925251004f552
-scss/helium/sections/_header.scss	b86fc799115e0eb042bf5485ed70cf30
+scss/helium/sections/_header.scss	0f5d5d2df6cccf1835e9025b489fb8c1
 scss/helium/sections/_intro.scss	d3c816a0dcc244c458bdaa5ed5284d0d
 scss/helium/sections/_main.scss	77a09834b25a9ba42dbd594dd284a3b3
 scss/helium/sections/_mainnav.scss	dbba082389905bfb82b39ff977e77d11
@@ -217,6 +217,6 @@ includes/theme.php	ab4f31781afc5855a01ddebfc2ea1d0d
 g5_helium.yaml	c992c6c2943becc7320a32e402e7e4f8
 screenshot.jpg	8c441eee4bbff673b59e8f260c8c63b0
 thumbnail.jpg	04c6c1b93403ff58809bf441687f9a48
-blueprints.yaml	48e7a7fe05dd65f4c2bdf621b2711ac6
+blueprints.yaml	ddc861e25b2af88ee211eb515c935d8e
 theme.php	fb6046bdf5a8465e8c688a5ffa5a3ab6
 MD5SUMS	d41d8cd98f00b204e9800998ecf8427e
