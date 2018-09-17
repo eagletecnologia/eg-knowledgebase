@@ -31,6 +31,16 @@ If you want to run without a server, you can run with the built-in php server us
 
 `php -S localhost:8080 system/router.php`
 
+Upgrade Platform
+
+`php bin/gpm selfupgrade`
+
+Update Plugins
+
+`php bin/gpm update`
+
+For more information on upgrade [access](https://learn.getgrav.org/cli-console/grav-cli-gpm) 
+
 # Main Plugins Used
 
 - [Img Captions](https://github.com/olevik/grav-plugin-imgcaptions)
@@ -42,5 +52,5 @@ If you want to run without a server, you can run with the built-in php server us
 
 # Access and Permissions
 
-- The Skeleton is already configured with 3 users: client, moderator, superadmin with the default `Eg-knowledge10` Password. For more information on user creation and password change, go to (Login Documentation)[https://github.com/getgrav/grav-plugin-login]
-- For information on how to block the page, go to (Documentação)[https://ajuda.eagletecnologia.com/manuais/base-de-conhecimento/bloqueando-paginas]
+- The Skeleton is already configured with 3 users: client, moderator, superadmin with the default `Eg-knowledge10` Password. For more information on user creation and password change, go to [Login Documentation](https://github.com/getgrav/grav-plugin-login)
+- For information on how to block the page, go to [Documentação](ttps://ajuda.eagletecnologia.com/manuais/base-de-conhecimento/bloqueando-paginas)
