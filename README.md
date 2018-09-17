@@ -53,4 +53,4 @@ For more information on upgrade [access](https://learn.getgrav.org/cli-console/g
 # Access and Permissions
 
 - The Skeleton is already configured with 3 users: client, moderator, superadmin with the default `Eg-knowledge10` Password. For more information on user creation and password change, go to [Login Documentation](https://github.com/getgrav/grav-plugin-login)
-- For information on how to block the page, go to [Documentação](ttps://ajuda.eagletecnologia.com/manuais/base-de-conhecimento/bloqueando-paginas)
+- For information on how to block the page, go to [Documentation](https://ajuda.eagletecnologia.com/manuais/base-de-conhecimento/bloqueando-paginas)
