@@ -1,0 +1,14 @@
+email: contato@user.com
+state: enabled
+access:
+  admin:
+    login: 'true'
+    cache: 'true'
+    pages: 'true'
+  site:
+    client: 'true'
+    login: 'true'
+hashed_password: $2y$10$oKzSzyxO96I9MkcyVTTNKebevlODOK7y7yt3xp0wNrth/2B2ruRbq
+fullname: 'Moderador Eagle'
+title: Moderador
+language: pt

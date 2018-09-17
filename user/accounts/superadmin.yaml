@@ -1,4 +1,4 @@
-email: websites@eagletecnologia.com
+email: contato@user.com
 fullname: Léo
 title: WG
 state: enabled
@@ -8,8 +8,6 @@ access:
     login: 'true'
   site:
     login: 'true'
-    cliente: 'true'
-    colaborador: 'true'
-    revenda: 'true'
-hashed_password: $2y$10$rzjfzn7DgrYT0Ocu78S8qeIks2r9Ko4hyE6Q5/65DwDHz4od7PCoy
+    client: 'true'
+hashed_password: $2y$10$4CWvu3ikkWTeHHeR/iKV9u4hTQRIAuDW0BYOkDJyZ.ETj5oG42REC
 language: pt

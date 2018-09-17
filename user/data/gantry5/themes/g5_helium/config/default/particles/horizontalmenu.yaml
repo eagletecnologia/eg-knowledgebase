@@ -8,17 +8,17 @@ items:
     name: Início
   -
     text: Manuais
-    link: manuais
+    link: /manuais
     target: _parent
     name: Manuais
   -
     text: FAQs
-    link: faq
+    link: /faq
     target: _parent
     name: FAQs
   -
     text: Materiais
-    link: materiais
+    link: /materiais
     target: _parent
     name: Materiais
   -
@@ -33,6 +33,6 @@ items:
     name: Contate-nos
   -
     text: Login
-    link: login
+    link: /login
     target: _parent
     name: Login

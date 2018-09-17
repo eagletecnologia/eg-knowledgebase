@@ -1,6 +1,6 @@
-Eagle Knowledge Base Skeleton for Grav [https://getgrav.org/](https://getgrav.org/)
+Eagle Knowledge Base Skeleton for Grav [https://getgrav.org/](https://getgrav.org/) | [Documentation](https://learn.getgrav.org/)
 
-Demo: [https://ajuda.eagletecnologia.com/](https://ajuda.eagletecnologia.com/)
+[Demo](https://ajuda.eagletecnologia.com/) | [Docs](https://ajuda.eagletecnologia.com/manuais/base-de-conhecimento) 
 
 # Requirements
 
@@ -39,3 +39,8 @@ If you want to run without a server, you can run with the built-in php server us
 - [Simple Search](https://github.com/getgrav/grav-plugin-simplesearch)
 - [Thumb Ratings](https://github.com/iusvar/grav-plugin-thumb-ratings)
 - [You Tube](https://github.com/getgrav/grav-plugin-youtube)
+
+# Access and Permissions
+
+- The Skeleton is already configured with 3 users: client, moderator, superadmin with the default `Eg-knowledge10` Password. For more information on user creation and password change, go to (Login Documentation)[https://github.com/getgrav/grav-plugin-login]
+- For information on how to block the page, go to (Documentação)[https://ajuda.eagletecnologia.com/manuais/base-de-conhecimento/bloqueando-paginas]

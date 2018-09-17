@@ -1,0 +1,8 @@
+email: contato@user.com
+state: enabled
+access:
+  site:
+    client: 'true'
+    login: 'true'
+hashed_password: $2y$10$X6AG4kkU4g1ESsyV4rr.ZOdxSep7KAAnxsK.7vsokVIMkMuuB4DjK
+language: pt
