@@ -3,7 +3,7 @@ version: 1.0.0
 description: "Eagle Knowledge Base is a skeleton to centralize all the information of a company or institution"
 icon: empire
 author:
-  name: Lauro W. Guedes
+  name: Eagle Tecnologia
   email: dev@eagletecnologia.com
   url: https://eagletecnologia.com
 homepage: https://github.com/eagletecnologia/eg-knowledgebase
