@@ -1,0 +1,27 @@
+name: Eagle Knowledge Base
+version: 1.0.0
+description: "Eagle Knowledge Base is a skeleton to centralize all the information of a company or institution"
+icon: empire
+author:
+  name: Lauro W. Guedes
+  email: dev@eagletecnologia.com
+  url: https://eagletecnologia.com
+homepage: https://github.com/eagletecnologia/eg-knowledgebase
+demo: https://ajuda.eagletecnologia.com/
+keywords: knowledge base, base de conhecimento, template base de conhecimento, knowledge base skeleton, knowledge base template
+bugs: https://github.com/eagletecnologia/eg-knowledgebase/issues
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in navbar
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool

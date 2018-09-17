@@ -1,5 +1,7 @@
 Eagle Knowledge Base Skeleton for Grav [https://getgrav.org/](https://getgrav.org/) | [Documentation](https://learn.getgrav.org/)
 
+![Preview](screenshot.jpg)
+
 [Demo](https://ajuda.eagletecnologia.com/) | [Docs](https://ajuda.eagletecnologia.com/manuais/base-de-conhecimento) 
 
 # Requirements
