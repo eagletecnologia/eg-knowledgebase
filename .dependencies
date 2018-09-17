@@ -1,0 +1,232 @@
+git:
+    error:
+        url: https://github.com/getgrav/grav-plugin-error
+        path: user/plugins/error
+        branch: master
+    problems:
+        url: https://github.com/getgrav/grav-plugin-problems
+        path: user/plugins/problems
+        branch: master
+    admin:
+        url: https://github.com/getgrav/grav-plugin-admin
+        path: user/plugins/admin
+        branch: master
+    simplesearch:
+        url: https://github.com/getgrav/grav-plugin-simplesearch
+        path: user/plugins/simplesearch
+        branch: master
+    anchors:
+        url: https://github.com/getgrav/grav-plugin-anchors
+        path: user/plugins/anchors
+        branch: master
+    'bigfoot-js':
+        url: https://github.com/CPPL/grav-bigfootjs
+        path: user/plugins/bigfoot-js
+        branch: master
+    breadcrumbs:
+        url: https://github.com/getgrav/grav-plugin-breadcrumbs
+        path: user/plugins/breadcrumbs
+        branch: master
+    'count-views':
+        url: https://github.com/Perlkonig/grav-plugin-count-views
+        path: user/plugins/count-views
+        branch: master
+    email:
+        url: https://github.com/getgrav/grav-plugin-email
+        path: user/plugins/email
+        branch: master
+    external_links:
+        url: https://github.com/sommerregen/grav-plugin-external-links
+        path: user/plugins/external_links
+        branch: master
+    featherlight:
+        url: https://github.com/getgrav/grav-plugin-featherlight
+        path: user/plugins/featherlight
+        branch: master
+    form:
+        url: https://github.com/getgrav/grav-plugin-form
+        path: user/plugins/form
+        branch: master
+    gantry5:
+        url: http://gantry.org/
+        path: user/plugins/gantry5
+        branch: master
+    highlight:
+        url: https://github.com/getgrav/grav-plugin-highlight
+        path: user/plugins/highlight
+        branch: master
+    imgcaptions:
+        url: https://github.com/olevik/grav-plugin-imgcaptions
+        path: user/plugins/imgcaptions
+        branch: master
+    login:
+        url: https://github.com/getgrav/grav-plugin-login
+        path: user/plugins/login
+        branch: master
+    'markdown-color':
+        path: user/plugins/markdown-color
+        branch: master
+    'markdown-notices':
+        url: https://github.com/getgrav/grav-plugin-markdown-notices
+        path: user/plugins/markdown-notices
+        branch: master
+    mediaembed:
+        url: https://github.com/sommerregen/grav-plugin-mediaembed
+        path: user/plugins/mediaembed
+        branch: master
+    pagination:
+        url: https://github.com/getgrav/grav-plugin-pagination
+        path: user/plugins/pagination
+        branch: master
+    readingtime:
+        url: https://github.com/getgrav/grav-plugin-readingtime
+        path: user/plugins/readingtime
+        branch: master
+    'recent-posts':
+        url: https://github.com/GittiHab/grav-recent-posts
+        path: user/plugins/recent-posts
+        branch: master
+    relatedpages:
+        url: https://github.com/getgrav/grav-plugin-relatedpages
+        path: user/plugins/relatedpages
+        branch: master
+    'shortcode-core':
+        url: https://github.com/getgrav/grav-plugin-shortcode-core
+        path: user/plugins/shortcode-core
+        branch: master
+    'shortcode-ui':
+        url: https://github.com/getgrav/grav-plugin-shortcode-ui
+        path: user/plugins/shortcode-ui
+        branch: master
+    shortcodes:
+        url: https://github.com/sommerregen/grav-plugin-shortcodes
+        path: user/plugins/shortcodes
+        branch: master
+    'table-importer':
+        url: https://github.com/Perlkonig/grav-plugin-table-importer
+        path: user/plugins/table-importer
+        branch: master
+    'thumb-ratings':
+        url: https://github.com/iusvar/grav-plugin-thumb-ratings
+        path: user/plugins/thumb-ratings
+        branch: master
+    youtube:
+        url: https://github.com/getgrav/grav-plugin-youtube
+        path: user/plugins/youtube
+        branch: master
+links:
+    error:
+        src: grav-plugin-error
+        path: user/plugins/error
+        scm: github
+    problems:
+        src: grav-plugin-problems
+        path: user/plugins/problems
+        scm: github
+    relatedpages:
+        src: grav-plugin-relatedpages
+        path: user/plugins/relatedpages
+        scm: github
+    simplesearch:
+        src: grav-plugin-simplesearch
+        path: user/plugins/simplesearch
+        scm: github
+    readingtime:
+        src: grav-plugin-readingtime
+        path: user/plugins/readingtime
+        scm: github
+    'count-views':
+        src: grav-plugin-count-views
+        path: user/plugins/count-views
+        scm: github
+    admin:
+        src: grav-plugin-admin
+        path: user/plugins/grav-plugin-admin
+        scm: github
+    anchors:
+        src: grav-plugin-anchors
+        path: user/plugins/anchors
+        scm: github
+    'bigfoot-js':
+        src: grav-bigfootjs
+        path: user/plugins/bigfoot-js
+        scm: github
+    breadcrumbs:
+        src: grav-plugin-breadcrumbs
+        path: user/plugins/breadcrumbs
+        scm: github
+    email:
+        src: grav-plugin-email
+        path: user/plugins/email
+        scm: github
+    external_links:
+        src: grav-plugin-external-links
+        path: user/plugins/external_links
+        scm: github
+    featherlight:
+        src: grav-plugin-featherlight
+        path: user/plugins/featherlight
+        scm: github
+    form:
+        src: grav-plugin-form
+        path: user/plugins/form
+        scm: github
+    gantry5:
+        src: grav-plugin-gantry5
+        path: user/plugins/gantry5
+        scm: github
+    highlight:
+        src: grav-plugin-highlight
+        path: user/plugins/highlight
+        scm: github
+    imgcaptions:
+        src: grav-plugin-imgcaptions
+        path: user/plugins/imgcaptions
+        scm: github
+    login:
+        src: grav-plugin-login
+        path: user/plugins/login
+        scm: github
+    'markdown-color':
+        path: user/plugins/markdown-color
+        scm: github
+    'markdown-notices':
+        src: grav-plugin-markdown-notices
+        path: user/plugins/markdown-notices
+        scm: github
+    mediaembed:
+        src: grav-plugin-mediaembed
+        path: user/plugins/mediaembed
+        scm: github
+    pagination:
+        src: grav-plugin-pagination
+        path: user/plugins/pagination
+        scm: github
+    'recent-posts':
+        src: grav-recent-posts
+        path: user/plugins/recent-posts
+        scm: github
+    'shortcode-core':
+        src: grav-plugin-shortcode-core
+        path: user/plugins/shortcode-core
+        scm: github
+    'shortcode-ui':
+        src: grav-plugin-shortcode-ui
+        path: user/plugins/shortcode-ui
+        scm: github
+    shortcodes:
+        src: grav-plugin-shortcodes
+        path: user/plugins/shortcodes
+        scm: github
+    'table-importer':
+        src: grav-plugin-table-importer
+        path: user/plugins/table-importer
+        scm: github
+    'thumb-ratings':
+        src: grav-plugin-thumb-ratings
+        path: user/plugins/thumb-ratings
+        scm: github
+    youtube:
+        src: grav-plugin-youtube
+        path: user/plugins/youtube
+        scm: github
